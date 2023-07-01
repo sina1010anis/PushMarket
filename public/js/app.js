@@ -17468,6 +17468,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
 /* harmony import */ var bootstrap_icons_font_bootstrap_icons_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap-icons/font/bootstrap-icons.css */ "./node_modules/bootstrap-icons/font/bootstrap-icons.css");
 /* harmony import */ var _components_Version__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Version */ "./resources/js/components/Version.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+
 
 
 
@@ -17476,11 +17478,37 @@ __webpack_require__.r(__webpack_exports__);
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
   data: function data() {
     return {
-      text: 'Vue'
+      text: 'Vue',
+      barcode: null,
+      first_product: null,
+      factor_product: null,
+      total_number: null,
+      total_price: null,
+      number: null
     };
   },
   components: {
     Version: _components_Version__WEBPACK_IMPORTED_MODULE_4__["default"]
+  },
+  methods: {
+    send_product: function send_product() {
+      var _this = this;
+      axios__WEBPACK_IMPORTED_MODULE_5__["default"].post('/cashier/save/product', {
+        code: this.barcode
+      }).then(function (res) {
+        //return console.log(res.data)
+        _this.barcode = null;
+        _this.first_product = res.data.first;
+        _this.factor_product = res.data.factor;
+        _this.total_number = res.data.total_number;
+        _this.total_price = res.data.total_price;
+        _this.number = res.data.number;
+      })["catch"](function (res) {
+        _this.first_product = null;
+        _this.factor_product = null;
+        console.error(res.data);
+      });
+    }
   }
 });
 app.mount('#app');

@@ -1,18 +1,15 @@
 @font-face {
     font-family: IYM;
-    src: url(/fonts/IRANYekanMedium.ttf?48838b15fe97aed66635c4ade2724794);
+    src: url("./font/IRANYekanMedium.ttf");
 }
 
 .my-font-IYM {
     font-family: IYM;
 }
-a{
-    text-decoration: none!important;
-}
 
 @font-face {
     font-family: IS;
-    src: url(/fonts/IRANSansWeb.ttf?84fda3e85b2ec3885be12fd7d550129a);
+    src: url("./font/IRANSansWeb.ttf");
 }
 
 .my-font-IS {
@@ -21,7 +18,7 @@ a{
 
 @font-face {
     font-family: ISL;
-    src: url(/fonts/IRANSansWeb_Light.ttf?00ee5b29c5221d5e5f902aa222b882a1);
+    src: url("./font/IRANSansWeb_Light.ttf");
 }
 
 .my-font-ISL {
@@ -30,7 +27,7 @@ a{
 
 @font-face {
     font-family: IYL;
-    src: url(/fonts/IRANYekanLight.ttf?b206776de8f325cfc3e2a867b72920b6);
+    src: url("./font/IRANYekanLight.ttf");
 }
 
 .my-font-IYL {
@@ -39,7 +36,7 @@ a{
 
 @font-face {
     font-family: IYB;
-    src: url(/fonts/IRANYekanBold.ttf?8d30b4f4ff85a40484fdce72cae4cbf3);
+    src: url("./font/IRANYekanBold.ttf");
 }
 
 .my-font-IYB {
@@ -450,4 +447,3 @@ input:focus{
 .my-h-25-i{
     height: 25%!important;
 }
-
