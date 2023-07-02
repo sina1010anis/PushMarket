@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $guardad = [];
+    public $fillable = ['name' , 'barcode' , 'image' ,  'price'];
 
     public function product_simpels()
     {

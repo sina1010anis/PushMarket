@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditNumber;
+use App\Http\Requests\NewProduct;
 use App\Models\Factors;
 use App\Models\Product;
 use App\Models\ProductSimpel;
@@ -11,7 +13,8 @@ class CashierContoller extends Controller
 {
     public function index()
     {
-        return view('cashier.index');
+        $data = ProductSimpel::where('factor_id' , null)->get();
+        return view('cashier.index' , compact('data'));
     }
 
     public function save_factor()
@@ -53,5 +56,57 @@ class CashierContoller extends Controller
             $product_count = ProductSimpel::where('factor_id' , null)->count();
             return ['first' => null , 'factor' => $factor, 'total_number'=> $factor->sum('total_number'), 'total_price'=> $factor->sum('total_price') , 'number'=>$product_count];
         }
+    }
+
+    public function edit_number(EditNumber $request)
+    {
+        $data = ProductSimpel::find($request->id);
+        if($request->number > 0){
+            ProductSimpel::where('id',$data->id)->update(['total_number' => $request->number , 'total_price' => $request->number*$data->price]);
+        }else{
+            ProductSimpel::whereId($request->id)->delete();
+        }
+        $factor = ProductSimpel::latest('id')->where('factor_id' , null)->get();
+        $product_count = ProductSimpel::where('factor_id' , null)->count();
+        return ['first' => null , 'factor' => $factor, 'total_number'=> $factor->sum('total_number'), 'total_price'=> $factor->sum('total_price') , 'number'=>$product_count];
+
+    }
+
+    public function products()
+    {
+        $data = Product::latest('id')->paginate(20);
+        return view('cashier.products' , compact('data'));
+    }
+
+    public function new_products(Request $request)
+    {
+        $count = Product::whereBarcode($request->code)->count();
+        if($count == 0)
+        {
+            Product::create([
+                'name' => null,
+                'price' => null,
+                'barcode' => $request->code,
+                'image' => null,
+            ]);
+            return 'ok';
+        }else{
+            return 'no';
+        }
+
+    }
+
+    public function u_new_products(NewProduct $request)
+    {
+        Product::latest('id')->first()->update(['name'=>$request->name,'price'=>$request->price]);
+        return back()->with('msg' , 'محصول جدید اضافه شد');
+    }
+
+    public function search_product(Request $request)
+    {
+        $count = Product::whereBarcode($request->code)->count();
+        $data =($count ==1) ? Product::whereBarcode($request->code)->first() : 'none';
+
+        return $data;
     }
 }

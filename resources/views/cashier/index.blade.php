@@ -25,15 +25,23 @@
         <div v-if="factor_product != null" dir="rtl" class="w-100  px-2" style="overflow-y: scroll;height: 300px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
             <div v-for="(item , index) in factor_product" @key="index" class="d-flex justify-content-between align-items-center p-2 border-bottom" style="height: 75px;">
                 <img :src="item.image" width="65" height="65" alt="">
-                <span class="my-font-IYL my-f-11 my-color-b-800">نام: @{{item.name}}</span>
-                <span class="my-font-IYL my-f-11 my-color-b-800">تعداد: @{{item.total_number}}</span>
-                <span class="my-font-IYL my-f-11 my-color-b-800">قیمت تک: @{{item.price}}</span>
-                <span class="my-font-IYL my-f-11 my-color-b-800">قیمت کل: @{{item.total_price}}</span>
+                <span class="my-font-IYL my-f-12 my-color-b-800">نام: @{{item.name}}</span>
+                <span class="my-font-IYL my-f-12 my-color-b-800">تعداد: @{{item.total_number}} <input style="width: 20px" class="text-center" @keyup.enter="edit_product(item.id)" type="text" v-model="number_edit"></span>
+                <span class="my-font-IYL my-f-12 my-color-b-800">قیمت تک: @{{item.price}}</span>
+                <span class="my-font-IYL my-f-12 my-color-b-800">قیمت کل: @{{item.total_price}}</span>
             </div>
         </div>
 
-        <div v-else dir="rtl" class="w-100  px-2 d-flex justify-content-center align-items-center" style="overflow-y: scroll;height: 300px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
-            <span class="my-font-IYL my-f-11 my-color-b-800">محصولی یافت نشده</span>
+        <div v-else dir="rtl" class="w-100  px-2" style="overflow-y: scroll;height: 300px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
+            @foreach ($data as $item)
+                <div class="d-flex justify-content-between align-items-center p-2 border-bottom" style="height: 75px;">
+                    <img src="{{$item->image}}" width="65" height="65" alt="">
+                    <span class="my-font-IYL my-f-12 my-color-b-800">نام: {{$item->name}}</span>
+                    <span class="my-font-IYL my-f-12 my-color-b-800">تعداد: {{$item->total_number}} <input style="width: 20px" class="text-center" @keyup.enter="edit_product(item.id)" type="text" v-model="number_edit"></span>
+                    <span class="my-font-IYL my-f-12 my-color-b-800">قیمت تک: {{$item->price}}</span>
+                    <span class="my-font-IYL my-f-12 my-color-b-800">قیمت کل: {{$item->total_price}}</span>
+                </div>
+            @endforeach
         </div>
         <div dir="rtl" class="d-flex my-font-IYM my-f-15 justify-content-between align-items-center p-2 mt-2 shadow-sm" style="height: 30px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
             <span >قیمت کل:@{{(total_price != null) ? total_price : 0}}</span>

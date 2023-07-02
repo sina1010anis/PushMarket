@@ -450,4 +450,20 @@ input:focus{
 .my-h-25-i{
     height: 25%!important;
 }
+.page-hiden{
+    display: none;
+}
+.page-new-product{
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: none;
+    border-radius: 5px;
+    background-color: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 3;
+}
 
