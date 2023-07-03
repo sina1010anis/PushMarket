@@ -15,4 +15,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductSimpel::class , 'factor_id' , 'id');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
 }

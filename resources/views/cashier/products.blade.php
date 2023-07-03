@@ -23,8 +23,8 @@
             <img :src="'/'+data_search_product.image" width="90" height="90" alt="">
             <span class="my-font-IYL my-f-11 my-color-b-800">نام: @{{data_search_product.name}}</span>
             <span class="my-font-IYL my-f-11 my-color-b-800">قیمت تک: @{{data_search_product.price}}</span>
-            <a class="btn btn-danger my-font-IYB my-f-8 mx-1 btn-sm" href="">حذف</a>
-            <a class="btn btn-info my-font-IYB my-f-8 mx-1 btn-sm" href="">ویرایش</a>
+            <a class="btn btn-danger my-font-IYB my-f-8 mx-1 btn-sm" :href="'/cashier/delete/product/'+data_search_product.id">حذف</a>
+            <a class="btn btn-info my-font-IYB my-f-8 mx-1 btn-sm" :href="'/cashier/edit/product/'+data_search_product.name">ویرایش</a>
         </div>
     </div>
     <div v-else>
@@ -33,8 +33,14 @@
         </div>
     </div>
 </div>
+
 <div class="d-flex justify-content-center align-items-center my-3">
     <div class="w-75">
+        <form action="{{route('cashier.delete.products')}}" method="post">
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-danger my-font-IYL my-f-10-i btn-sm">حذف محصولات</button>
+        </div>
+
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -48,22 +54,31 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $item)
-                    <tr>
-                        <th scope="row">{{$loop->index+1}}</th>
-                        <td class="my-font-ISL my-f-12 my-color-b-600"><img src="/{{$item->image}}" width="60" height="60" alt=""></td>
-                        <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->barcode}}</td>
-                        <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->name}}</td>
-                        <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->price}}</td>
-                        <td class="my-font-ISL my-f-12 my-color-b-600">{{jdate($item->price)->format('%A, %d %B %y')}}</td>
-                        <td class="my-font-ISL my-f-12 my-color-b-600">
-                            <a class="btn btn-danger my-font-IYB my-f-8 mx-1 btn-sm" href="">حذف</a>
-                            <a class="btn btn-info my-font-IYB my-f-8 mx-1 btn-sm" href="">ویرایش</a>
-                        </td>
-                    </tr>
-                @endforeach
+
+                    @csrf
+                    @foreach ($data as $item)
+                        <tr>
+                            <th scope="row">{{$loop->index+1}}</th>
+                            <td class="my-font-ISL my-f-12 my-color-b-600"><img src="/{{$item->image}}" width="60" height="60" alt=""></td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->barcode}}</td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->name}}</td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->price}}</td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{jdate($item->price)->format('%A, %d %B %y')}}</td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="check_delete[]" value="{{$item->id}}" id="flexCheckDefault{{$item->id}}">
+                                    <label class="form-check-label" for="flexCheckDefault{{$item->id}}">
+                                    حذف
+                                    </label>
+                                </div>
+                                <a class="btn btn-info my-f-8-i mx-1 btn-sm" href="{{route('cashier.edit.product' , ['name' => $item->name])}}">ویرایش</a>
+                            </td>
+                        </tr>
+                    @endforeach
             </tbody>
         </table>
+    </form>
+
         {{$data->links()}}
     </div>
 </div>
@@ -71,7 +86,7 @@
 <div class="page-new-product p-3">
     <p class="text-center my-font-IYM my-f-12 my-color-b-600">@{{barcode_new_product}}</p>
     <hr>
-    <form action="{{route('cashier.u_new.products')}}" method="post">
+    <form action="{{route('cashier.u_new.products')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">نام</span>
@@ -82,7 +97,7 @@
             <input type="text" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="قیمت محصول به ریال می باشد..." name="price">
         </div>
         <div class="mb-3 input-group-sm">
-            <input class="form-control my-font-IYL my-f-11-i" name="image" type="file" placeholder="اپلود عکس برای محصول" id="formFile">
+            <input class="form-control my-font-IYL my-f-11-i" name="image" type="file" id="formFile">
         </div>
         <div class="col-auto d-flex justify-content-center align-items-center">
             <button type="submit" class="btn btn-success btn-sm my-font-IYL my-f-11-i mb-3">ثبت محصول جدید</button>

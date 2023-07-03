@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EditNumber;
+use App\Http\Requests\EditProductRequest;
 use App\Http\Requests\NewProduct;
 use App\Models\Factors;
 use App\Models\Product;
 use App\Models\ProductSimpel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CashierContoller extends Controller
 {
@@ -93,12 +95,13 @@ class CashierContoller extends Controller
         }else{
             return 'no';
         }
-
     }
 
     public function u_new_products(NewProduct $request)
     {
-        Product::latest('id')->first()->update(['name'=>$request->name,'price'=>$request->price]);
+        $file = $request->file('image');
+        Storage::put("/public/images/{$file->getClientOriginalName()}" , file_get_contents($file->getRealPath()));
+        Product::latest('id')->first()->update(['name'=>$request->name,'price'=>$request->price , 'image'=> 'storage/images/'.$file->getClientOriginalName()]);
         return back()->with('msg' , 'محصول جدید اضافه شد');
     }
 
@@ -108,5 +111,31 @@ class CashierContoller extends Controller
         $data =($count ==1) ? Product::whereBarcode($request->code)->first() : 'none';
 
         return $data;
+    }
+
+    public function delete_product($id)
+    {
+        $data = Product::find($id);
+        $barcode = $data->barcode;
+        $data->delete();
+        return back()->with('msg' , "محصولی با بارکد {$barcode} حذف شد");
+    }
+
+    public function delete_products(Request $request)
+    {
+        Product::whereIn('id' , $request->check_delete)->delete();
+        return back()->with('msg' , 'محصولات مورد نظر حذف شد');
+    }
+
+    public function edit_product(Product $name)
+    {
+        return view('cashier.edit_product' , ['data'=>$name]);
+    }
+
+    public function edit_product_p(EditProductRequest $request , $name)
+    {
+
+        Product::whereName($name)->update(['name' => $request->name , 'price' => $request->price , 'barcode' => $request->barcode]);;
+        return redirect()->route('cashier.products')->with('msg' , 'محصول با موفقیت ویرایش شد');
     }
 }

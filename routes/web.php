@@ -25,4 +25,8 @@ Route::controller(CashierContoller::class)->prefix('cashier')->as('cashier.')->g
     Route::post('/save/product', 'save_product')->name('save.product');
     Route::get('/save/factor', 'save_factor')->name('save.factor');
     Route::post('/edit/number', 'edit_number')->name('edit.number');
+    Route::get('/delete/product/{id}', 'delete_product')->name('delete.product');
+    Route::get('/edit/product/{name}', 'edit_product')->name('edit.product');
+    Route::post('/edit/product/{name}', 'edit_product_p')->name('edit.product.p');
+    Route::post('/delete/products', 'delete_products')->name('delete.products');
 });

@@ -26,7 +26,7 @@
             <div v-for="(item , index) in factor_product" @key="index" class="d-flex justify-content-between align-items-center p-2 border-bottom" style="height: 75px;">
                 <img :src="item.image" width="65" height="65" alt="">
                 <span class="my-font-IYL my-f-12 my-color-b-800">نام: @{{item.name}}</span>
-                <span class="my-font-IYL my-f-12 my-color-b-800">تعداد: @{{item.total_number}} <input style="width: 20px" class="text-center" @keyup.enter="edit_product(item.id)" type="text" v-model="number_edit"></span>
+                <span class="my-font-IYL my-f-12 my-color-b-800">تعداد: @{{item.total_number}} <input style="width: 20px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit"></span>
                 <span class="my-font-IYL my-f-12 my-color-b-800">قیمت تک: @{{item.price}}</span>
                 <span class="my-font-IYL my-f-12 my-color-b-800">قیمت کل: @{{item.total_price}}</span>
             </div>
@@ -37,7 +37,7 @@
                 <div class="d-flex justify-content-between align-items-center p-2 border-bottom" style="height: 75px;">
                     <img src="{{$item->image}}" width="65" height="65" alt="">
                     <span class="my-font-IYL my-f-12 my-color-b-800">نام: {{$item->name}}</span>
-                    <span class="my-font-IYL my-f-12 my-color-b-800">تعداد: {{$item->total_number}} <input style="width: 20px" class="text-center" @keyup.enter="edit_product(item.id)" type="text" v-model="number_edit"></span>
+                    <span class="my-font-IYL my-f-12 my-color-b-800">تعداد: {{$item->total_number}} <input style="width: 20px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit"></span>
                     <span class="my-font-IYL my-f-12 my-color-b-800">قیمت تک: {{$item->price}}</span>
                     <span class="my-font-IYL my-f-12 my-color-b-800">قیمت کل: {{$item->total_price}}</span>
                 </div>
