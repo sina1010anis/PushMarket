@@ -5,7 +5,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import  Version from './components/Version'
 import axios from 'axios';
 import $ from 'jquery'
-
+import moment from 'jalali-moment';
 
 const app = createApp({
     data:()=>({
@@ -19,7 +19,9 @@ const app = createApp({
         number_edit:null,
         barcode_new_product:null,
         text_search_product:null,
-        data_search_product:null
+        data_search_product:null,
+        data_search_creditor:null,
+        name_creditor:null
 
     }),
     components:{
@@ -72,6 +74,15 @@ const app = createApp({
         search_product(){
             axios.post('/cashier/search/product' , {code:this.text_search_product}).then((res)=>{
                 this.data_search_product = res.data
+                console.log(res.data);
+            }).catch((res)=>{
+                console.error(res.data)
+            })
+        },
+        search_name_creditor()
+        {
+            axios.post('/cashier/creditor/search/name' , {name:this.name_creditor}).then((res)=>{
+                this.data_search_creditor = res.data
                 console.log(res.data);
             }).catch((res)=>{
                 console.error(res.data)

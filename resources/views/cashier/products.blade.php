@@ -41,16 +41,16 @@
             <button class="btn btn-danger my-font-IYL my-f-10-i btn-sm">حذف محصولات</button>
         </div>
 
-        <table class="table table-striped table-hover">
+        <table dir="rtl" class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th scope="col">ردیف</th>
-                    <th scope="col">تصویر</th>
-                    <th scope="col">بارکد</th>
-                    <th scope="col">نام</th>
-                    <th scope="col">قیمت</th>
-                    <th scope="col">تاریخ ثبت</th>
-                    <th scope="col">عملیات ها</th>
+                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">ردیف</th>
+                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">تصویر</th>
+                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">بارکد</th>
+                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">نام</th>
+                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">قیمت</th>
+                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">تاریخ ثبت</th>
+                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">عملیات ها</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,8 +62,8 @@
                             <td class="my-font-ISL my-f-12 my-color-b-600"><img src="/{{$item->image}}" width="60" height="60" alt=""></td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->barcode}}</td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->name}}</td>
-                            <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->price}}</td>
-                            <td class="my-font-ISL my-f-12 my-color-b-600">{{jdate($item->price)->format('%A, %d %B %y')}}</td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{jdate($item->created_at)->format('%A, %d %B %y')}}</td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="check_delete[]" value="{{$item->id}}" id="flexCheckDefault{{$item->id}}">
@@ -71,7 +71,7 @@
                                     حذف
                                     </label>
                                 </div>
-                                <a class="btn btn-info my-f-8-i mx-1 btn-sm" href="{{route('cashier.edit.product' , ['name' => $item->name])}}">ویرایش</a>
+                                <a class="btn btn-info my-f-8-i mx-1 btn-sm" href="{{route('cashier.edit.product' , ['name' => ($item->name != null) ?$item->name : 'none'])}}">ویرایش</a>
                             </td>
                         </tr>
                     @endforeach

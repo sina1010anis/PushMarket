@@ -16,7 +16,7 @@
         <div v-if="first_product != null" dir="rtl" class="d-flex justify-content-between align-items-center p-2 mb-2 border" style="height: 100px;">
             <img :src="first_product.image" width="90" height="90" alt="">
             <span class="my-font-IYL my-f-11 my-color-b-800">نام: @{{first_product.name}}</span>
-            <span class="my-font-IYL my-f-11 my-color-b-800">قیمت تک: @{{first_product.price}}</span>
+            <span class="my-font-IYL my-f-11 my-color-b-800">قیمت تک: @{{first_product.price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
         </div>
         <div v-else dir="rtl" class="d-flex justify-content-center align-items-center p-2 mb-2 border" style="height: 100px;">
 
@@ -26,9 +26,9 @@
             <div v-for="(item , index) in factor_product" @key="index" class="d-flex justify-content-between align-items-center p-2 border-bottom" style="height: 75px;">
                 <img :src="item.image" width="65" height="65" alt="">
                 <span class="my-font-IYL my-f-12 my-color-b-800">نام: @{{item.name}}</span>
-                <span class="my-font-IYL my-f-12 my-color-b-800">تعداد: @{{item.total_number}} <input style="width: 20px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit"></span>
-                <span class="my-font-IYL my-f-12 my-color-b-800">قیمت تک: @{{item.price}}</span>
-                <span class="my-font-IYL my-f-12 my-color-b-800">قیمت کل: @{{item.total_price}}</span>
+                <span class="my-font-IYL my-f-12 my-color-b-800">تعداد: @{{item.total_number}} <input style="width: 40px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit"></span>
+                <span class="my-font-IYL my-f-12 my-color-b-800">قیمت تک: @{{item.price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
+                <span class="my-font-IYL my-f-12 my-color-b-800">قیمت کل: @{{item.total_price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
             </div>
         </div>
 
@@ -37,14 +37,14 @@
                 <div class="d-flex justify-content-between align-items-center p-2 border-bottom" style="height: 75px;">
                     <img src="{{$item->image}}" width="65" height="65" alt="">
                     <span class="my-font-IYL my-f-12 my-color-b-800">نام: {{$item->name}}</span>
-                    <span class="my-font-IYL my-f-12 my-color-b-800">تعداد: {{$item->total_number}} <input style="width: 20px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit"></span>
-                    <span class="my-font-IYL my-f-12 my-color-b-800">قیمت تک: {{$item->price}}</span>
-                    <span class="my-font-IYL my-f-12 my-color-b-800">قیمت کل: {{$item->total_price}}</span>
+                    <span class="my-font-IYL my-f-12 my-color-b-800">تعداد: {{$item->total_number}} <input style="width: 40px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit"></span>
+                    <span class="my-font-IYL my-f-12 my-color-b-800">قیمت تک: {{$item->price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
+                    <span class="my-font-IYL my-f-12 my-color-b-800">قیمت کل: {{$item->total_price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
                 </div>
             @endforeach
         </div>
         <div dir="rtl" class="d-flex my-font-IYM my-f-15 justify-content-between align-items-center p-2 mt-2 shadow-sm" style="height: 30px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
-            <span >قیمت کل:@{{(total_price != null) ? total_price : 0}}</span>
+            <span >قیمت کل:@{{(total_price != null) ? total_price : 0}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
             <span >تعداد اقلام: @{{(number != null) ? number : 0}}</span>
             <span >تعداد کل: @{{(total_number != null) ? total_number : 0}}</span>
         </div>

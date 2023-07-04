@@ -10,6 +10,9 @@ class Factors extends Model
     use HasFactory;
 
     public $fillable = [ 'total_number' , 'total_price' ];
-
+    public function products()
+    {
+        return $this->hasMany(ProductSimpel::class , 'factor_id' , 'id');
+    }
 
 }

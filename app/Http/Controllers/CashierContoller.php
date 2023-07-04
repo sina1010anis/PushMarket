@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EditNumber;
 use App\Http\Requests\EditProductRequest;
 use App\Http\Requests\NewProduct;
+use App\Models\Creditor;
 use App\Models\Factors;
 use App\Models\Product;
 use App\Models\ProductSimpel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class CashierContoller extends Controller
@@ -137,5 +139,44 @@ class CashierContoller extends Controller
 
         Product::whereName($name)->update(['name' => $request->name , 'price' => $request->price , 'barcode' => $request->barcode]);;
         return redirect()->route('cashier.products')->with('msg' , 'محصول با موفقیت ویرایش شد');
+    }
+
+    public function report()
+    {
+        $factors = Factors::where('created_at' , '>=' , Carbon::today())->latest('id')->get();
+        return view('cashier.report' , compact('factors'));
+    }
+
+    public function reprot_products(Request $request)
+    {
+        if(isset($request->as_date) and isset($request->ta_date)){
+            $factors = Factors::where('created_at' , '>=' , $request->as_date)->where('created_at' , '<=' , $request->ta_date)->latest('id')->get();
+            $date = "از تاریخ ".jdate($request->as_date)->format('%B %d، %Y')." : تا تاریخ ".jdate($request->ta_date)->format('%B %d، %Y');
+        }else{
+            $factors = Factors::whereDate('created_at' , $request->date)->latest('id')->get();
+            $date = "تاریخ های ".jdate($request->date)->format('%B %d، %Y');
+        }
+        return view('cashier.report' , compact('factors' , 'date'));
+
+    }
+
+    public function creditor()
+    {
+        $creditors = Creditor::latest('id')->get();
+        return view('cashier.creditor' , compact('creditors'));
+    }
+
+    public function creditor_search(Request $request)
+    {
+        $data = collect(Creditor::where('name' , 'Like' , '%'.$request->name.'%')->get())->map(function ($item) {
+            return [
+                'name' => $item['name'] ,
+                    'price' => $item['price'],
+                    'des'=> $item['des'],
+                    'created_at'=>jdate($item['created_at'])->format('%A, %d %b %y'),
+                    'time'=>$item['created_at']->format('H:i:s')
+                ];
+        });
+        return $data;
     }
 }
