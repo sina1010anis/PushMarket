@@ -9,6 +9,7 @@ use App\Models\Creditor;
 use App\Models\Factors;
 use App\Models\Product;
 use App\Models\ProductSimpel;
+use App\Models\Receipt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -163,16 +164,32 @@ class CashierContoller extends Controller
     public function creditor()
     {
         $creditors = Creditor::latest('id')->get();
-        return view('cashier.creditor' , compact('creditors'));
+        $receipts = Receipt::latest('id')->get();
+        return view('cashier.creditor' , compact('creditors' , 'receipts'));
     }
 
     public function creditor_search(Request $request)
     {
         $data = collect(Creditor::where('name' , 'Like' , '%'.$request->name.'%')->get())->map(function ($item) {
             return [
-                'name' => $item['name'] ,
+                    'id' => $item['id'] ,
+                    'name' => $item['name'] ,
                     'price' => $item['price'],
                     'des'=> $item['des'],
+                    'created_at'=>jdate($item['created_at'])->format('%A, %d %b %y'),
+                    'time'=>$item['created_at']->format('H:i:s')
+                ];
+        });
+        return $data;
+    }
+
+    public function receipt_search(Request $request)
+    {
+        $data = collect(Receipt::where('name' , 'Like' , '%'.$request->name.'%')->get())->map(function ($item) {
+            return [
+                    'id' => $item['id'] ,
+                    'name' => $item['name'] ,
+                    'price' => $item['price'],
                     'created_at'=>jdate($item['created_at'])->format('%A, %d %b %y'),
                     'time'=>$item['created_at']->format('H:i:s')
                 ];

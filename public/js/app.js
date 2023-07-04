@@ -17496,7 +17496,9 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       text_search_product: null,
       data_search_product: null,
       data_search_creditor: null,
-      name_creditor: null
+      data_search_receipt: null,
+      name_creditor: null,
+      name_receipt: null
     };
   },
   components: {
@@ -17569,6 +17571,17 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
         name: this.name_creditor
       }).then(function (res) {
         _this4.data_search_creditor = res.data;
+        console.log(res.data);
+      })["catch"](function (res) {
+        console.error(res.data);
+      });
+    },
+    search_name_receipt: function search_name_receipt() {
+      var _this5 = this;
+      axios__WEBPACK_IMPORTED_MODULE_7__["default"].post('/cashier/receipt/search/name', {
+        name: this.name_receipt
+      }).then(function (res) {
+        _this5.data_search_receipt = res.data;
         console.log(res.data);
       })["catch"](function (res) {
         console.error(res.data);

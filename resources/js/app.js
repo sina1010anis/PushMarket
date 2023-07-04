@@ -21,7 +21,9 @@ const app = createApp({
         text_search_product:null,
         data_search_product:null,
         data_search_creditor:null,
-        name_creditor:null
+        data_search_receipt:null,
+        name_creditor:null,
+        name_receipt:null
 
     }),
     components:{
@@ -83,6 +85,15 @@ const app = createApp({
         {
             axios.post('/cashier/creditor/search/name' , {name:this.name_creditor}).then((res)=>{
                 this.data_search_creditor = res.data
+                console.log(res.data);
+            }).catch((res)=>{
+                console.error(res.data)
+            })
+        },
+        search_name_receipt()
+        {
+            axios.post('/cashier/receipt/search/name' , {name:this.name_receipt}).then((res)=>{
+                this.data_search_receipt = res.data
                 console.log(res.data);
             }).catch((res)=>{
                 console.error(res.data)

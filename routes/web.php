@@ -41,4 +41,5 @@ Route::controller(CashierContoller::class)->prefix('cashier')->as('cashier.')->g
 
     Route::get('/creditor' , 'creditor')->name('creditor');
     Route::post('/creditor/search/name' , 'creditor_search')->name('creditor.search');
+    Route::post('/receipt/search/name' , 'receipt_search')->name('receipt.search');
 });
