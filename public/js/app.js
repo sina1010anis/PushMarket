@@ -17498,7 +17498,10 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       data_search_creditor: null,
       data_search_receipt: null,
       name_creditor: null,
-      name_receipt: null
+      name_receipt: null,
+      status_menu: true,
+      status_menu_2: true,
+      search_number: null
     };
   },
   components: {
@@ -17586,6 +17589,45 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       })["catch"](function (res) {
         console.error(res.data);
       });
+    },
+    cls_page_creditor: function cls_page_creditor() {
+      if (this.status_menu) {
+        this.status_menu = false;
+        jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-creditor').stop().animate({
+          height: '30px'
+        });
+      } else {
+        this.status_menu = true;
+        jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-creditor').stop().animate({
+          height: '400px'
+        });
+      }
+    },
+    cls_page_price: function cls_page_price() {
+      if (this.status_menu_2) {
+        this.status_menu_2 = false;
+        jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-price').stop().animate({
+          height: '400px'
+        });
+      } else {
+        this.status_menu_2 = true;
+        jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-price').stop().animate({
+          height: '30px'
+        });
+      }
+    },
+    open_page_new_creditor: function open_page_new_creditor() {
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeIn();
+    },
+    cls_page: function cls_page() {
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeOut();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeOut();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').fadeOut();
+    },
+    open_page_new_receipt: function open_page_new_receipt() {
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').fadeIn();
     }
   }
 });

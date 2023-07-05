@@ -51,7 +51,36 @@
         <div dir="rtl" class="d-flex my-font-IYM my-f-13 justify-content-center align-items-center p-2 mt-2" style="height: 30px">
             <a href="{{route('cashier.save.factor')}}" class="btn btn-success btn my-font-IYL my-f-9 mt-2">ثبت فاکتور</a>
         </div>
+    </div>
+</div>
+<div class="page-creditor border shadow-sm rounded-2 p-1 overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center">
+        <i class="bi bi-caret-down my-pointer" @click="cls_page_creditor"></i>
+        <span class="my-font-IYL my-f-10 my-color-b-500">لیست بدهکار ها</span>
+    </div>
+    <div class="overflow-y-scroll" style="max-height: 350px;height: 100%">
+        @foreach ($creditors as $creditor)
+            <div class="w-100 my-3 border-bottom border-top p-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="my-f-10 my-font-IYL my-color-b-700">{{jdate($creditor->created_at)->format('%A, %d %B %y')}}</span>
+                    <span class="my-f-10 my-font-IYL my-color-b-700">{{$creditor->price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
+                    <span class="my-f-10 my-font-IYL my-color-b-700">{{$creditor->name}}</span>
+                </div>
+                <div class="w-100 d-flex justify-content-center align-items-center my-f-10 my-font-IYL my-color-b-700">
+                    {{$creditor->des}}
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>
 
+<div class="page-price border shadow-sm rounded-2 p-1 overflow-hidden">
+    <div class="d-flex justify-content-between align-items-center">
+        <i class="bi bi-caret-down my-pointer" @click="cls_page_price"></i>
+        <span class="my-font-IYL my-f-10 my-color-b-500">استعلام قیمت</span>
+    </div>
+    <div style="max-height: 350px;height: 100%">
+        <input type="text" v-model="search_number" @keyup.enter="search_price" class="w-100 text-center mt-3 my-font-IYL my-f-11" placeholder="برای استعلام قیمت لطفا این بخش را انتخاب کنید" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
     </div>
 </div>
 @endsection

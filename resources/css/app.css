@@ -453,7 +453,7 @@ input:focus{
 .page-hiden{
     display: none;
 }
-.page-new-product{
+.page-new-product , .page-new-product-2{
     width: 100%;
     max-width: 400px;
     height: auto;
@@ -465,4 +465,17 @@ input:focus{
     left: 50%;
     transform: translate(-50%,-50%);
     z-index: 3;
+}
+.page-creditor , .page-price{
+    width: 300px;
+    height: 400px;
+    position: fixed;
+    background-color: rgb(255, 255, 231);
+    top: 10px;
+    left: 10px;
+}
+.page-price{
+    left: 320px;
+    height: 30px;
+    background-color: rgb(239, 231, 255);
 }

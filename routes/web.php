@@ -41,5 +41,12 @@ Route::controller(CashierContoller::class)->prefix('cashier')->as('cashier.')->g
 
     Route::get('/creditor' , 'creditor')->name('creditor');
     Route::post('/creditor/search/name' , 'creditor_search')->name('creditor.search');
+    Route::post('/creditor/edit/{id}' , 'creditor_edit_post')->name('creditor.edit.post');
+    Route::get('/creditor/edit/{data}' , 'creditor_edit')->name('creditor.edit');
     Route::post('/receipt/search/name' , 'receipt_search')->name('receipt.search');
+    Route::get('/receipt/edit/{data}' , 'receipt_edit')->name('receipt.edit');
+    Route::post('/receipt/edit/{id}' , 'receipt_edit_post')->name('receipt.edit.post');
+    Route::post('/creditor/delete/{model}' , 'creditor_delete')->name('creditor.delete');
+    Route::post('/creditor/new' , 'creditor_new')->name('creditor.new');
+    Route::post('/receipt/new' , 'receipt_new')->name('receipt.new');
 });

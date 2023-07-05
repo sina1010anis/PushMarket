@@ -23,7 +23,10 @@ const app = createApp({
         data_search_creditor:null,
         data_search_receipt:null,
         name_creditor:null,
-        name_receipt:null
+        name_receipt:null,
+        status_menu:true,
+        status_menu_2:true,
+        search_number:null,
 
     }),
     components:{
@@ -99,6 +102,47 @@ const app = createApp({
                 console.error(res.data)
             })
         },
+        cls_page_creditor()
+        {
+            if(this.status_menu)
+            {
+                this.status_menu = false;
+                $('.page-creditor').stop().animate({height: '30px',})
+            }else{
+                this.status_menu = true;
+                $('.page-creditor').stop().animate({height: '400px',})
+            }
+
+        },
+        cls_page_price()
+        {
+            if(this.status_menu_2)
+            {
+                this.status_menu_2 = false;
+                $('.page-price').stop().animate({height: '400px',})
+            }else{
+                this.status_menu_2 = true;
+                $('.page-price').stop().animate({height: '30px',})
+            }
+
+        },
+        open_page_new_creditor()
+        {
+            $('.page-hiden').fadeIn();
+            $('.page-new-product').fadeIn();
+        },
+        cls_page()
+        {
+            $('.page-hiden').fadeOut();
+            $('.page-new-product').fadeOut();
+            $('.page-new-product-2').fadeOut();
+        },
+        open_page_new_receipt()
+        {
+            $('.page-hiden').fadeIn();
+            $('.page-new-product-2').fadeIn();
+        }
+
     }
 })
 

@@ -2,24 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EditNumber;
-use App\Http\Requests\EditProductRequest;
-use App\Http\Requests\NewProduct;
-use App\Models\Creditor;
 use App\Models\Factors;
 use App\Models\Product;
-use App\Models\ProductSimpel;
 use App\Models\Receipt;
+use App\Models\Creditor;
 use Illuminate\Http\Request;
+use App\Models\ProductSimpel;
 use Illuminate\Support\Carbon;
+use App\Http\Requests\EditNumber;
+use App\Http\Requests\NewProduct;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ReceiptNewRequest;
+use App\Http\Requests\CreditorNewRequest;
+use App\Http\Requests\EditCraditorRequest;
+use App\Http\Requests\EditProductRequest;
+use App\Http\Requests\EditReceptRequest;
 
 class CashierContoller extends Controller
 {
     public function index()
     {
         $data = ProductSimpel::where('factor_id' , null)->get();
-        return view('cashier.index' , compact('data'));
+        $creditors = Creditor::latest('id')->get();
+        return view('cashier.index' , compact('data' ,'creditors'));
     }
 
     public function save_factor()
@@ -195,5 +200,54 @@ class CashierContoller extends Controller
                 ];
         });
         return $data;
+    }
+
+    public function creditor_delete(Request $request , $model)
+    {
+        ($model == 'creditor') ?Creditor::whereIn('id' , $request->check_delete)->delete() : Receipt::whereIn('id' , $request->check_delete_2)->delete();
+        return back()->with('msg' , 'ایتم  های مورد نظر با موفقیت حذف شد.');
+    }
+
+    public function creditor_new(CreditorNewRequest $request)
+    {
+        Creditor::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'des' => $request->des,
+        ]);
+        return back()->with('msg' , 'بدهکار جدید اضافه شد.');
+
+    }
+
+    public function receipt_new(ReceiptNewRequest $request)
+    {
+        Receipt::create([
+            'name' => $request->name,
+            'price' => $request->price,
+        ]);
+        return back()->with('msg' , 'دریافتی جدید اضافه شد.');
+    }
+
+    public function creditor_edit(Creditor $data)
+    {
+        return view('cashier.edit_craditor' ,compact('data'));
+    }
+
+    public function creditor_edit_post(EditCraditorRequest $request , $id)
+    {
+        Creditor::find($id)->update(['name' => $request->name , 'price' => $request->price , 'des' => $request->des]);
+        return back()->with('msg' , 'ویرایش های لازم انجام شد.');
+    }
+
+    public function receipt_edit(Receipt $data)
+    {
+        return view('cashier.edit_receipt' ,compact('data'));
+
+    }
+
+    public function receipt_edit_post(EditReceptRequest $request , $id)
+    {
+        Receipt::find($id)->update(['name' => $request->name , 'price' => $request->price ]);
+        return back()->with('msg' , 'ویرایش های لازم انجام شد.');
     }
 }
