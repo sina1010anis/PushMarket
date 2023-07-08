@@ -98,6 +98,7 @@ class CashierContoller extends Controller
                 'price' => null,
                 'barcode' => $request->code,
                 'image' => null,
+                'stuats' => null,
             ]);
             return 'ok';
         }else{
@@ -109,7 +110,7 @@ class CashierContoller extends Controller
     {
         $file = $request->file('image');
         Storage::put("/public/images/{$file->getClientOriginalName()}" , file_get_contents($file->getRealPath()));
-        Product::latest('id')->first()->update(['name'=>$request->name,'price'=>$request->price , 'image'=> 'storage/images/'.$file->getClientOriginalName()]);
+        Product::latest('id')->first()->update(['name'=>$request->name,'price'=>$request->price , 'image'=> 'storage/images/'.$file->getClientOriginalName() , 'stuats' => $request->status]);
         return back()->with('msg' , 'محصول جدید اضافه شد');
     }
 
@@ -249,5 +250,11 @@ class CashierContoller extends Controller
     {
         Receipt::find($id)->update(['name' => $request->name , 'price' => $request->price ]);
         return back()->with('msg' , 'ویرایش های لازم انجام شد.');
+    }
+
+    public function search_price(Request $request)
+    {
+        $data = Product::whereBarcode($request->code)->first();
+        return $data;
     }
 }

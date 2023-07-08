@@ -25,6 +25,7 @@ Route::controller(CashierContoller::class)->prefix('cashier')->as('cashier.')->g
     Route::post('/u_new/products', 'u_new_products')->name('u_new.products');
 
     Route::post('/search/product', 'search_product')->name('search.product');
+    Route::post('/search/price', 'search_price')->name('search.price');
 
     Route::post('/save/product', 'save_product')->name('save.product');
     Route::get('/save/factor', 'save_factor')->name('save.factor');

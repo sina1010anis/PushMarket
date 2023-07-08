@@ -79,8 +79,13 @@
         <i class="bi bi-caret-down my-pointer" @click="cls_page_price"></i>
         <span class="my-font-IYL my-f-10 my-color-b-500">استعلام قیمت</span>
     </div>
-    <div style="max-height: 350px;height: 100%">
+    <div style="height: 100%">
         <input type="text" v-model="search_number" @keyup.enter="search_price" class="w-100 text-center mt-3 my-font-IYL my-f-11" placeholder="برای استعلام قیمت لطفا این بخش را انتخاب کنید" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
+        <div v-if="price_product != null" class="w-100 d-flex align-items-center flex-column ">
+            <img :src="price_product.image" width="100" class="my-3" height="100" alt="">
+            <p class="my-f-12 my-color-b-600 my-font-IYM">@{{price_product.name}}</p>
+            <p class="my-f-12 my-color-b-600 my-font-IYL">@{{price_product.price}}</p>
+        </div>
     </div>
 </div>
 @endsection

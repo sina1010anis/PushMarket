@@ -40,11 +40,24 @@ const app = createApp({
                 this.first_product = res.data.first
                 this.factor_product = res.data.factor
                 this.total_number = res.data.total_number
-                this.total_price = res.data.total_price
+                //this.total_price = res.data.total_price
+                this.total_price = this.ToRial(res.data.total_price)
                 this.number = res.data.number
             }).catch((res)=>{
                 this.first_product = null
                 this.factor_product = null
+                console.error(res.data)
+            })
+        },
+        search_price(){
+            axios.post('/cashier/search/price' , {code:this.search_number}).then((res)=>{
+                //return console.log(res.data)
+                this.search_number = null
+                this.price_product = res.data
+            }).catch((res)=>{
+                this.first_product = null
+                this.factor_product = null
+                this.search_number = null
                 console.error(res.data)
             })
         },
@@ -54,7 +67,9 @@ const app = createApp({
                 this.first_product = res.data.first
                 this.factor_product = res.data.factor
                 this.total_number = res.data.total_number
-                this.total_price = res.data.total_price
+                //this.total_price = res.data.total_price
+                this.total_price = this.ToRial(res.data.total_price)
+
             }).catch((res)=>{
                 this.first_product = null
                 this.factor_product = null
@@ -141,7 +156,13 @@ const app = createApp({
         {
             $('.page-hiden').fadeIn();
             $('.page-new-product-2').fadeIn();
+        },
+        ToRial(str) {
+            return str.toLocaleString("en");;
         }
+
+    },
+    mounted:()=>{
 
     }
 })

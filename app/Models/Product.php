@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    public $fillable = ['name' , 'barcode' , 'image' ,  'price'];
+    public $fillable = ['name' , 'barcode' , 'image' ,  'price' , 'status'];
 
     public function product_simpels()
     {

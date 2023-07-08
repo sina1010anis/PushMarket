@@ -22,7 +22,7 @@
         <div  dir="rtl" class="d-flex justify-content-between align-items-center p-2 mb-2 border" style="height: 100px;">
             <img :src="'/'+data_search_product.image" width="90" height="90" alt="">
             <span class="my-font-IYL my-f-11 my-color-b-800">نام: @{{data_search_product.name}}</span>
-            <span class="my-font-IYL my-f-11 my-color-b-800">قیمت تک: @{{data_search_product.price}}</span>
+            <span class="my-font-IYL my-f-11 my-color-b-800 price-one" >قیمت تک: @{{data_search_product.price}}</span>
             <a class="btn btn-danger my-font-IYB my-f-8 mx-1 btn-sm" :href="'/cashier/delete/product/'+data_search_product.id">حذف</a>
             <a class="btn btn-info my-font-IYB my-f-8 mx-1 btn-sm" :href="'/cashier/edit/product/'+data_search_product.name">ویرایش</a>
         </div>
@@ -49,6 +49,7 @@
                     <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">بارکد</th>
                     <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">نام</th>
                     <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">قیمت</th>
+                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">واحد</th>
                     <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">تاریخ ثبت</th>
                     <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">عملیات ها</th>
                 </tr>
@@ -63,6 +64,13 @@
                             <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->barcode}}</td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->name}}</td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">
+                                @if ($item->status == 1)
+                                    تعدادی
+                                @else
+                                    کیلویی
+                                @endif
+                            </td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">{{jdate($item->created_at)->format('%A, %d %B %y')}}</td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">
                                 <div class="form-check">
@@ -99,6 +107,11 @@
         <div class="mb-3 input-group-sm">
             <input class="form-control my-font-IYL my-f-11-i" name="image" type="file" id="formFile">
         </div>
+
+        <select name="status" class="form-select form-select-sm my-f-11-i my-font-IYL my-color-b-700 my-3" aria-label=".form-select-sm example">
+            <option value="1" selected>تعدادی</option>
+            <option value="0">کیلویی</option>
+        </select>
         <div class="col-auto d-flex justify-content-center align-items-center">
             <button type="submit" class="btn btn-success btn-sm my-font-IYL my-f-11-i mb-3">ثبت محصول جدید</button>
         </div>

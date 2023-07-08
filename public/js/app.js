@@ -17518,7 +17518,8 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
         _this.first_product = res.data.first;
         _this.factor_product = res.data.factor;
         _this.total_number = res.data.total_number;
-        _this.total_price = res.data.total_price;
+        //this.total_price = res.data.total_price
+        _this.total_price = _this.ToRial(res.data.total_price);
         _this.number = res.data.number;
       })["catch"](function (res) {
         _this.first_product = null;
@@ -17526,20 +17527,36 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
         console.error(res.data);
       });
     },
-    edit_product: function edit_product(id) {
+    search_price: function search_price() {
       var _this2 = this;
+      axios__WEBPACK_IMPORTED_MODULE_7__["default"].post('/cashier/search/price', {
+        code: this.search_number
+      }).then(function (res) {
+        //return console.log(res.data)
+        _this2.search_number = null;
+        _this2.price_product = res.data;
+      })["catch"](function (res) {
+        _this2.first_product = null;
+        _this2.factor_product = null;
+        _this2.search_number = null;
+        console.error(res.data);
+      });
+    },
+    edit_product: function edit_product(id) {
+      var _this3 = this;
       axios__WEBPACK_IMPORTED_MODULE_7__["default"].post('/cashier/edit/number', {
         id: id,
         number: this.number_edit
       }).then(function (res) {
-        _this2.number_edit = null;
-        _this2.first_product = res.data.first;
-        _this2.factor_product = res.data.factor;
-        _this2.total_number = res.data.total_number;
-        _this2.total_price = res.data.total_price;
+        _this3.number_edit = null;
+        _this3.first_product = res.data.first;
+        _this3.factor_product = res.data.factor;
+        _this3.total_number = res.data.total_number;
+        //this.total_price = res.data.total_price
+        _this3.total_price = _this3.ToRial(res.data.total_price);
       })["catch"](function (res) {
-        _this2.first_product = null;
-        _this2.factor_product = null;
+        _this3.first_product = null;
+        _this3.factor_product = null;
         console.error(res.data);
       });
     },
@@ -17558,33 +17575,33 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       });
     },
     search_product: function search_product() {
-      var _this3 = this;
+      var _this4 = this;
       axios__WEBPACK_IMPORTED_MODULE_7__["default"].post('/cashier/search/product', {
         code: this.text_search_product
       }).then(function (res) {
-        _this3.data_search_product = res.data;
+        _this4.data_search_product = res.data;
         console.log(res.data);
       })["catch"](function (res) {
         console.error(res.data);
       });
     },
     search_name_creditor: function search_name_creditor() {
-      var _this4 = this;
+      var _this5 = this;
       axios__WEBPACK_IMPORTED_MODULE_7__["default"].post('/cashier/creditor/search/name', {
         name: this.name_creditor
       }).then(function (res) {
-        _this4.data_search_creditor = res.data;
+        _this5.data_search_creditor = res.data;
         console.log(res.data);
       })["catch"](function (res) {
         console.error(res.data);
       });
     },
     search_name_receipt: function search_name_receipt() {
-      var _this5 = this;
+      var _this6 = this;
       axios__WEBPACK_IMPORTED_MODULE_7__["default"].post('/cashier/receipt/search/name', {
         name: this.name_receipt
       }).then(function (res) {
-        _this5.data_search_receipt = res.data;
+        _this6.data_search_receipt = res.data;
         console.log(res.data);
       })["catch"](function (res) {
         console.error(res.data);
@@ -17628,8 +17645,13 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
     open_page_new_receipt: function open_page_new_receipt() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').fadeIn();
+    },
+    ToRial: function ToRial(str) {
+      return str.toLocaleString("en");
+      ;
     }
-  }
+  },
+  mounted: function mounted() {}
 });
 app.mount('#app');
 
