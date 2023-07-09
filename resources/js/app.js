@@ -163,7 +163,10 @@ const app = createApp({
 
     },
     mounted:()=>{
-
+        var inputElem = document.getElementById("input_send");
+        window.addEventListener('load', function(e) {
+            inputElem.focus();
+        })
     }
 })
 

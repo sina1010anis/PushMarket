@@ -17651,7 +17651,12 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       ;
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    var inputElem = document.getElementById("input_send");
+    window.addEventListener('load', function (e) {
+      inputElem.focus();
+    });
+  }
 });
 app.mount('#app');
 
