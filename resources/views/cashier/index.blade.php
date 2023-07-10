@@ -1,13 +1,6 @@
 @extends('cashier.page')
 
 @section('index')
-@if (session('msg'))
-<div class="d-flex justify-content-center align-items-center my-3">
-    <div class="w-75">
-        <div class="alert alert-success text-center my-f-13 my-font-IYM">{{session('msg')}}</div>
-    </div>
-</div>
-@endif
 <div class="row">
     <div class="col-8" style="background-color: rgb(250, 255, 250)">
         <div dir="rtl" class="row" style="background-color: rgb(255, 255, 247)">
@@ -109,8 +102,8 @@
                                 <td><img src="{{$item->image}}" width="30" height="30" alt=""></td>
                                 <td><span class="my-font-IYL my-f-12 my-color-b-800">{{$item->name}}</span></td>
                                 <td><span class="my-font-IYL my-f-12 my-color-b-800"> {{$item->total_number}} <input style="width: 40px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit"></span></td>
-                                <td><span class="my-font-IYL my-f-12 my-color-b-800">{{$item->price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span></td>
-                                <td><span class="my-font-IYL my-f-12 my-color-b-800"> {{$item->total_price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span></td>
+                                <td><span class="my-font-IYL my-f-12 my-color-b-800">{{number_format($item->price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span></td>
+                                <td><span class="my-font-IYL my-f-12 my-color-b-800"> {{number_format($item->total_price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span></td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -123,7 +116,7 @@
                     <span >تعداد کل: @{{(total_number != null) ? total_number : 0}}</span>
                 </div>
                 <div v-if="total_price != null && total_price != 0" dir="rtl" class="d-flex my-font-IYM my-f-13 justify-content-center align-items-center p-2 mt-2" style="height: 30px">
-                    <a href="{{route('cashier.save.factor')}}" class="btn btn-success btn my-font-IYL my-f-9 mt-2">ثبت فاکتور</a>
+                    <a href="{{route('cashier.save.factor')}}" class="btn btn-g btn my-font-IYL my-f-9 mt-2">ثبت فاکتور</a>
                 </div>
             </div>
         </div>
@@ -138,8 +131,8 @@
                     <div class="w-100 my-3 border-bottom border-top p-2">
                         <div class="d-flex justify-content-between align-items-center">
                             <span class="my-f-10 my-font-IYL my-color-b-700">{{jdate($creditor->created_at)->format('%A, %d %B %y')}}</span>
-                            <span class="my-f-10 my-font-IYL my-color-b-700">{{$creditor->price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
-                            <span class="my-f-10 my-font-IYL my-color-b-700">{{$creditor->name}}</span>
+                            <span class="my-f-10 my-font-IYL my-color-b-700">{{number_format($creditor->price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
+                            <span class="my-f-10 my-font-IYL my-color-b-700">{{$creditor->name }}</span>
                         </div>
                         <div class="w-100 d-flex justify-content-center align-items-center my-f-10 my-font-IYL my-color-b-700">
                             {{$creditor->des}}
@@ -148,19 +141,50 @@
                 @endforeach
             </div>
         </div>
-        <div style="background-color: rgb(241, 241, 255)" class="h-50 w-100 p-3 pt-4">
+        <div style="background-color: rgb(241, 241, 255)" class="h-25 w-100 p-3 pt-2">
             <div dir="rtl" class="d-flex justify-content-between align-items-center">
                 <span class="my-font-ISL my-f-11 my-color-b-700">استعلام قیمت</span>
             </div>
-            <div style="height: 100%">
-                <input type="text" v-model="search_number" @keyup.enter="search_price" class="w-100 text-center mt-3 my-font-IYL my-f-11" placeholder="برای استعلام قیمت لطفا این بخش را انتخاب کنید" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
-                <div v-if="price_product != null" class="w-100 d-flex align-items-center flex-column ">
-                    <img :src="price_product.image" width="100" class="my-3" height="100" alt="">
-                    <p class="my-f-12 my-color-b-600 my-font-IYM">@{{price_product.name}}</p>
-                    <p dir="rtl" class="my-f-12 my-color-b-600 my-font-IYL">@{{ToRial(price_product.price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></p>
+            <div>
+                <div class="row">
+                    <div class="col-6 p-1">
+                        <input type="text" v-model="search_number" @keyup.enter="search_price" class="w-100 text-center mt-3 my-font-IYL my-f-11" placeholder="استعلام با بارکد محصول" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
+                    </div>
+                    <div class="col-6 p-1">
+                        <input type="text" v-model="search_name" @keyup.enter="search_price_by_name" class="w-100 text-center mt-3 my-font-IYL my-f-11" placeholder="استعلام با نام محصول" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
+                    </div>
                 </div>
+                <div v-if="price_product != null"  style="overflow-y: scroll;max-height: 90px!important;min-height: 90px!important;height: 90px!imporatn;">
+                    <div v-for="(item , index) in price_product" @key="index" class="w-100 d-flex justify-content-between align-items-center ">
+                        <img :src="item.image" width="30" class="my-3" height="30" alt="">
+                        <p class="my-f-12 my-color-b-600 my-font-IYM">@{{item.name}}</p>
+                        <p dir="rtl" class="my-f-12 my-color-b-600 my-font-IYL">@{{ToRial(item.price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: rgb(255, 241, 251)" class="h-25 w-100 p-3 pt-2">
+            <div dir="rtl" class="d-flex justify-content-between align-items-center">
+                <span class="my-font-ISL my-f-11 my-color-b-700">جدیدترین اخبار </span>
+            </div>
+            <div style="overflow-y: scroll;max-height: 135px!important;min-height: 135px!important;height: 135px!imporatn;">
+                @foreach ($news as $new)
+                    <div class="w-100 my-3 border-bottom border-top p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="my-f-10 my-font-IYL my-color-b-700">{{number_format( $new->body, 0 , '.' , ',')}}</span>
+                            <span class="my-f-10 my-font-IYL my-color-b-700">{{$new->title}}</span>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
 </div>
+@if (session('msg'))
+<div class="d-flex justify-content-center align-items-center my-3">
+    <div class="w-75">
+        <div class="alert alert-success text-center my-f-13 my-font-IYM">{{session('msg')}}</div>
+    </div>
+</div>
+@endif
 @endsection

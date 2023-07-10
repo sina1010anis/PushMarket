@@ -20,8 +20,8 @@
         <form action="{{route('cashier.creditor.delete' , ['model'=> 'creditor'])}}" method="POST">
         @csrf
         <div class="d-flex justify-content-center">
-            <button type="button" @click="open_page_new_creditor" class="btn btn-success mx-3 my-font-IYL my-f-10-i btn-sm"> اضافه نمودن</button>
-            <button type="submit" class="btn btn-danger mx-3 my-font-IYL my-f-10-i btn-sm">حذف</button>
+            <button type="button" @click="open_page_new_creditor" class="btn btn-g mx-3 my-font-IYL my-f-12-i"> اضافه نمودن</button>
+            <button type="submit" class="btn btn-r mx-3 my-font-IYL my-f-12-i ">حذف</button>
         </div>
         <br>
         <table dir="rtl" class="table table-striped table-hover">
@@ -42,7 +42,7 @@
                         <th scope="row">{{$loop->index+1}}</th>
                         <td class="my-font-ISL my-f-12 my-color-b-600">{{$creditor->name}}</td>
                         <td class="my-font-ISL my-f-12 my-color-b-600">{{$creditor->des}}</td>
-                        <td class="my-font-ISL my-f-12 my-color-b-600">{{$creditor->price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
+                        <td class="my-font-ISL my-f-12 my-color-b-600">{{ number_format($creditor->price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
                         <td class="my-font-ISL my-f-12 my-color-b-600">{{jdate($creditor->created_at)->format('%A, %d %B %y')}}</td>
                         <td class="my-font-ISL my-f-12 my-color-b-600">{{$creditor->created_at->format('H:i:s')}}</td>
                         <td class="my-font-ISL my-f-12 my-color-b-600">
@@ -53,7 +53,7 @@
                                 </label>
                             </div>
                             @if($creditors)
-                                <a class="btn btn-info my-f-8-i mx-1 btn-sm" href="{{route('cashier.creditor.edit' , ['data' =>$creditor->id])}}">ویرایش</a>
+                                <a class="btn btn-b my-f-8-i mx-1 btn-sm" href="{{route('cashier.creditor.edit' , ['data' =>$creditor->id])}}">ویرایش</a>
                             @endif
                         </td>
                     </tr>
@@ -74,7 +74,7 @@
                     <th scope="row">--</th>
                     <td class="my-font-ISL my-f-12 my-color-b-600">@{{creditor.name}}</td>
                     <td class="my-font-ISL my-f-12 my-color-b-600">@{{creditor.des}}</td>
-                    <td class="my-font-ISL my-f-12 my-color-b-600">@{{creditor.price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
+                    <td class="my-font-ISL my-f-12 my-color-b-600">@{{ToRial(creditor.price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
                     <td class="my-font-ISL my-f-12 my-color-b-600">@{{creditor.created_at}}</td>
                     <td class="my-font-ISL my-f-12 my-color-b-600">@{{creditor.time}}</td>
                     <td class="my-font-ISL my-f-12 my-color-b-600">
@@ -84,7 +84,7 @@
                             حذف
                             </label>
                         </div>
-                        <a v-if="creditor" class="btn btn-info my-f-8-i mx-1 btn-sm" :href="'/cashier/creditor/edit/'+creditor.id">ویرایش</a>
+                        <a v-if="creditor" class="btn btn-b my-f-8-i mx-1 btn-sm" :href="'/cashier/creditor/edit/'+creditor.id">ویرایش</a>
                     </td>
                 </tr>
             </tbody>
@@ -101,8 +101,8 @@
         <form action="{{route('cashier.creditor.delete' , ['model'=> 'receipt'])}}" method="POST">
             @csrf
         <div class="d-flex justify-content-center">
-            <button type="button" @click="open_page_new_receipt" class="btn btn-success mx-3 my-font-IYL my-f-10-i btn-sm"> اضافه نمودن</button>
-            <button type="submit" class="btn btn-danger mx-3 my-font-IYL my-f-10-i btn-sm">حذف</button>
+            <button type="button" @click="open_page_new_receipt" class="btn btn-g mx-3 my-font-IYL my-f-12-i"> اضافه نمودن</button>
+            <button type="submit" class="btn btn-r mx-3 my-font-IYL my-f-12-i">حذف</button>
         </div>
         <br>
         <table dir="rtl" class="table table-striped table-hover">
@@ -121,7 +121,7 @@
                     <tr>
                         <th scope="row">{{$loop->index+1}}</th>
                         <td class="my-font-ISL my-f-12 my-color-b-600">{{$receipt->name}}</td>
-                        <td class="my-font-ISL my-f-12 my-color-b-600">{{$receipt->price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
+                        <td class="my-font-ISL my-f-12 my-color-b-600">{{ number_format($receipt->price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
                         <td class="my-font-ISL my-f-12 my-color-b-600">{{jdate($receipt->created_at)->format('%A, %d %B %y')}}</td>
                         <td class="my-font-ISL my-f-12 my-color-b-600">{{$receipt->created_at->format('H:i:s')}}</td>
                         <td class="my-font-ISL my-f-12 my-color-b-600">
@@ -131,7 +131,7 @@
                                 حذف
                                 </label>
                             </div>
-                            <a class="btn btn-info my-f-8-i mx-1 btn-sm" href="{{route('cashier.receipt.edit' , ['data' => $receipt->id])}}">ویرایش</a>
+                            <a class="btn btn-b my-f-8-i mx-1 btn-sm" href="{{route('cashier.receipt.edit' , ['data' => $receipt->id])}}">ویرایش</a>
                         </td>
                     </tr>
                     @empty
@@ -150,7 +150,7 @@
                 <tr v-for="(receipt , index) in data_search_receipt" @key="index">
                     <th scope="row">--</th>
                     <td class="my-font-ISL my-f-12 my-color-b-600">@{{receipt.name}}</td>
-                    <td class="my-font-ISL my-f-12 my-color-b-600">@{{receipt.price}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
+                    <td class="my-font-ISL my-f-12 my-color-b-600">@{{ToRial(receipt.price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
                     <td class="my-font-ISL my-f-12 my-color-b-600">@{{receipt.created_at}}</td>
                     <td class="my-font-ISL my-f-12 my-color-b-600">@{{receipt.time}}</td>
                     <td class="my-font-ISL my-f-12 my-color-b-600">
@@ -160,7 +160,7 @@
                             حذف
                             </label>
                         </div>
-                        <a class="btn btn-info my-f-8-i mx-1 btn-sm" :href="'/cashier/receipt/edit/'+receipt.id">ویرایش</a>
+                        <a class="btn btn-b my-f-8-i mx-1 btn-sm" :href="'/cashier/receipt/edit/'+receipt.id">ویرایش</a>
                     </td>
                 </tr>
             </tbody>

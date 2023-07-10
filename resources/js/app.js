@@ -27,6 +27,8 @@ const app = createApp({
         status_menu:true,
         status_menu_2:true,
         search_number:null,
+        search_name:null,
+        price_product:null
 
     }),
     components:{
@@ -50,7 +52,7 @@ const app = createApp({
             })
         },
         search_price(){
-            axios.post('/cashier/search/price' , {code:this.search_number}).then((res)=>{
+            axios.post('/cashier/search/price' , {code:this.search_number , model:'price'}).then((res)=>{
                 //return console.log(res.data)
                 this.search_number = null
                 this.price_product = res.data
@@ -159,6 +161,19 @@ const app = createApp({
         },
         ToRial(str) {
             return str.toLocaleString("en");;
+        },
+        search_price_by_name()
+        {
+            axios.post('/cashier/search/price' , {name:this.search_name , model:'name'}).then((res)=>{
+                //return console.log(res.data)
+                this.search_name = null
+                this.price_product = res.data
+            }).catch((res)=>{
+                this.first_product = null
+                this.factor_product = null
+                this.search_number = null
+                console.error(res.data)
+            })
         }
 
     },

@@ -54,7 +54,7 @@
                 </div>
                 <br>
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-info my-font-IYL my-f-10-i btn-sm">اعمال تغییرات</button>
+                    <button type="submit" class="btn btn-b my-font-IYM my-f-12-i">اعمال تغییرات</button>
                 </div>
             </form>
         </div>

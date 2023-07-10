@@ -17,6 +17,7 @@ use App\Http\Requests\CreditorNewRequest;
 use App\Http\Requests\EditCraditorRequest;
 use App\Http\Requests\EditProductRequest;
 use App\Http\Requests\EditReceptRequest;
+use App\Models\New_P;
 
 class CashierContoller extends Controller
 {
@@ -24,7 +25,9 @@ class CashierContoller extends Controller
     {
         $data = ProductSimpel::where('factor_id' , null)->get();
         $creditors = Creditor::latest('id')->get();
-        return view('cashier.index' , compact('data' ,'creditors'));
+        $menu = 'index';
+        $news = New_P::latest('id')->get();
+        return view('cashier.index' , compact('data' ,'creditors' , 'menu' , 'news'));
     }
 
     public function save_factor()
@@ -84,8 +87,10 @@ class CashierContoller extends Controller
 
     public function products()
     {
-        $data = Product::latest('id')->paginate(20);
-        return view('cashier.products' , compact('data'));
+        $data = Product::latest('id')->paginate(7);
+        $menu = 'products';
+
+        return view('cashier.products' , compact('data' , 'menu'));
     }
 
     public function new_products(Request $request)
@@ -138,7 +143,7 @@ class CashierContoller extends Controller
 
     public function edit_product(Product $name)
     {
-        return view('cashier.edit_product' , ['data'=>$name]);
+        return view('cashier.edit_product' , ['data'=>$name , 'menu' => 'products']);
     }
 
     public function edit_product_p(EditProductRequest $request , $name)
@@ -150,17 +155,19 @@ class CashierContoller extends Controller
 
     public function report()
     {
-        $factors = Factors::where('created_at' , '>=' , Carbon::today())->latest('id')->get();
-        return view('cashier.report' , compact('factors'));
+        $factors = Factors::where('created_at' , '>=' , Carbon::today())->latest('id')->paginate(20);
+        $menu = 'report';
+
+        return view('cashier.report' , compact('factors' , 'menu'));
     }
 
     public function reprot_products(Request $request)
     {
         if(isset($request->as_date) and isset($request->ta_date)){
-            $factors = Factors::where('created_at' , '>=' , $request->as_date)->where('created_at' , '<=' , $request->ta_date)->latest('id')->get();
+            $factors = Factors::where('created_at' , '>=' , $request->as_date)->where('created_at' , '<=' , $request->ta_date)->latest('id')->paginate(20);
             $date = "از تاریخ ".jdate($request->as_date)->format('%B %d، %Y')." : تا تاریخ ".jdate($request->ta_date)->format('%B %d، %Y');
         }else{
-            $factors = Factors::whereDate('created_at' , $request->date)->latest('id')->get();
+            $factors = Factors::whereDate('created_at' , $request->date)->latest('id')->paginate(20);
             $date = "تاریخ های ".jdate($request->date)->format('%B %d، %Y');
         }
         return view('cashier.report' , compact('factors' , 'date'));
@@ -171,7 +178,8 @@ class CashierContoller extends Controller
     {
         $creditors = Creditor::latest('id')->get();
         $receipts = Receipt::latest('id')->get();
-        return view('cashier.creditor' , compact('creditors' , 'receipts'));
+        $menu = 'creditor';
+        return view('cashier.creditor' , compact('creditors' , 'receipts' , 'menu'));
     }
 
     public function creditor_search(Request $request)
@@ -231,7 +239,8 @@ class CashierContoller extends Controller
 
     public function creditor_edit(Creditor $data)
     {
-        return view('cashier.edit_craditor' ,compact('data'));
+        $menu = 'creditor';
+        return view('cashier.edit_craditor' ,compact('data' , 'menu'));
     }
 
     public function creditor_edit_post(EditCraditorRequest $request , $id)
@@ -242,7 +251,8 @@ class CashierContoller extends Controller
 
     public function receipt_edit(Receipt $data)
     {
-        return view('cashier.edit_receipt' ,compact('data'));
+        $menu = 'creditor';
+        return view('cashier.edit_receipt' ,compact('data' , 'menu'));
 
     }
 
@@ -254,7 +264,7 @@ class CashierContoller extends Controller
 
     public function search_price(Request $request)
     {
-        $data = Product::whereBarcode($request->code)->first();
+        $data = ($request->model == 'price') ? Product::whereBarcode($request->code)->get() : Product::where('name','LIKE','%'.$request->name.'%')->get();
         return $data;
     }
 }

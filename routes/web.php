@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\CashierContoller;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
@@ -50,4 +51,7 @@ Route::controller(CashierContoller::class)->prefix('cashier')->as('cashier.')->g
     Route::post('/creditor/delete/{model}' , 'creditor_delete')->name('creditor.delete');
     Route::post('/creditor/new' , 'creditor_new')->name('creditor.new');
     Route::post('/receipt/new' , 'receipt_new')->name('receipt.new');
+});
+Route::controller(AccountingController::class)->prefix('acco')->as('acco.')->group(function(){
+    Route::get('/', 'index')->name('index');
 });

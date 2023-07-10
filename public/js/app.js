@@ -17501,7 +17501,9 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       name_receipt: null,
       status_menu: true,
       status_menu_2: true,
-      search_number: null
+      search_number: null,
+      search_name: null,
+      price_product: null
     };
   },
   components: {
@@ -17530,7 +17532,8 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
     search_price: function search_price() {
       var _this2 = this;
       axios__WEBPACK_IMPORTED_MODULE_7__["default"].post('/cashier/search/price', {
-        code: this.search_number
+        code: this.search_number,
+        model: 'price'
       }).then(function (res) {
         //return console.log(res.data)
         _this2.search_number = null;
@@ -17649,6 +17652,22 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
     ToRial: function ToRial(str) {
       return str.toLocaleString("en");
       ;
+    },
+    search_price_by_name: function search_price_by_name() {
+      var _this7 = this;
+      axios__WEBPACK_IMPORTED_MODULE_7__["default"].post('/cashier/search/price', {
+        name: this.search_name,
+        model: 'name'
+      }).then(function (res) {
+        //return console.log(res.data)
+        _this7.search_name = null;
+        _this7.price_product = res.data;
+      })["catch"](function (res) {
+        _this7.first_product = null;
+        _this7.factor_product = null;
+        _this7.search_number = null;
+        console.error(res.data);
+      });
     }
   },
   mounted: function mounted() {
