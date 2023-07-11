@@ -54,4 +54,15 @@ Route::controller(CashierContoller::class)->prefix('cashier')->as('cashier.')->g
 });
 Route::controller(AccountingController::class)->prefix('acco')->as('acco.')->group(function(){
     Route::get('/', 'index')->name('index');
+
+    Route::post('/new/account', 'new_acco')->name('new.acco');
+    Route::post('/new/cash', 'new_cash')->name('new.cash');
+    Route::post('/new/bank', 'new_bank')->name('new.bank');
+
+    Route::post('/edit/status/cash' , 'edit_stauts_cash')->name('edit.cash');
+
+    Route::get('/account/edit/{DataAcco}', 'edit_acco')->name('edit.acco');
+    Route::post('/account/edit/{id}', 'edit_acco_post')->name('edit.acco.post');
+
+    Route::get('/report', 'report')->name('report');
 });

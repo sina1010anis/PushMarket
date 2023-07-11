@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AccountCash extends Model
 {
     use HasFactory;
-    public $fillable = ['total' , 'des' , 'stuats'] ;
+    public $fillable = ['total' , 'des' , 'stauts'] ;
+
 
 }

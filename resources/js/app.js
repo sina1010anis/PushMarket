@@ -6,6 +6,7 @@ import  Version from './components/Version'
 import axios from 'axios';
 import $ from 'jquery'
 import moment from 'jalali-moment';
+import Log from 'laravel-mix/src/Log';
 
 const app = createApp({
     data:()=>({
@@ -153,6 +154,7 @@ const app = createApp({
             $('.page-hiden').fadeOut();
             $('.page-new-product').fadeOut();
             $('.page-new-product-2').fadeOut();
+            $('.page-new').fadeOut();
         },
         open_page_new_receipt()
         {
@@ -173,6 +175,32 @@ const app = createApp({
                 this.factor_product = null
                 this.search_number = null
                 console.error(res.data)
+            })
+        },
+        new_acco()
+        {
+            $('.page-hiden').fadeIn();
+            $('.page-new-product-2').fadeIn();
+        },
+        new_cash()
+        {
+            $('.page-hiden').fadeIn();
+            $('.page-new-product-3').fadeIn();
+        },
+        new_bank()
+        {
+            $('.page-hiden').fadeIn();
+            $('.page-new-product-4').fadeIn();
+        },
+        edit_status_cash(status_n , id , type)
+        {
+            //return console.log(status_n+' '+id+' '+type);
+            var status = (status_n == 1) ? 0 : 1;
+            axios.post('/acco/edit/status/cash' , {status:status , id:id , type:type}).then((res)=>{
+                //console.log(res.data)
+                location.reload()
+            }).catch((res)=>{
+                console.error(res)
             })
         }
 

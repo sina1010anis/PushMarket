@@ -6,6 +6,9 @@
 .my-font-IYM {
     font-family: IYM;
 }
+.my-font-IYM-i {
+    font-family: IYM!important;
+}
 a{
     text-decoration: none!important;
 }
@@ -18,7 +21,9 @@ a{
 .my-font-IS {
     font-family: IS;
 }
-
+.my-font-IS-i {
+    font-family: IS!important;
+}
 @font-face {
     font-family: ISL;
     src: url(/fonts/IRANSansWeb_Light.ttf?00ee5b29c5221d5e5f902aa222b882a1);
@@ -27,7 +32,9 @@ a{
 .my-font-ISL {
     font-family: ISL;
 }
-
+.my-font-ISL-i {
+    font-family: ISL!important;
+}
 @font-face {
     font-family: IYL;
     src: url(/fonts/IRANYekanLight.ttf?b206776de8f325cfc3e2a867b72920b6);
@@ -36,7 +43,9 @@ a{
 .my-font-IYL {
     font-family: IYL;
 }
-
+.my-font-IYL-i {
+    font-family: IYL!important;
+}
 @font-face {
     font-family: IYB;
     src: url(/fonts/IRANYekanBold.ttf?8d30b4f4ff85a40484fdce72cae4cbf3);
@@ -45,7 +54,9 @@ a{
 .my-font-IYB {
     font-family: IYB;
 }
-
+.my-font-IYB-i {
+    font-family: IYB!important;
+}
 .my-obj-center {
     position: absolute;
     top: 50%;
@@ -454,13 +465,13 @@ input:focus{
     display: none;
     opacity: 0.5!important;
 }
-.page-new-product , .page-new-product-2{
+.page-new-product  , .page-new-product-2{
     width: 100%;
     height: auto;
     display: none;
     border-radius: 5px;
 }
-.page-new-product-2{
+.page-new-product-2 , .page-new{
     width: 100%;
     max-width: 400px;
     height: auto;

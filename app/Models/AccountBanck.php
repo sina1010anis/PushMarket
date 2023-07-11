@@ -9,6 +9,6 @@ class AccountBanck extends Model
 {
     use HasFactory;
 
-    public $fillable = ['total' , 'des' , 'stuats'] ;
+    public $fillable = ['total' , 'des' , 'stauts'] ;
 
 }
