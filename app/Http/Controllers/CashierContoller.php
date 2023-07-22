@@ -163,6 +163,7 @@ class CashierContoller extends Controller
 
     public function reprot_products(Request $request)
     {
+        $menu = 'report';
         if(isset($request->as_date) and isset($request->ta_date)){
             $factors = Factors::where('created_at' , '>=' , $request->as_date)->where('created_at' , '<=' , $request->ta_date)->latest('id')->paginate(20);
             $date = "از تاریخ ".jdate($request->as_date)->format('%B %d، %Y')." : تا تاریخ ".jdate($request->ta_date)->format('%B %d، %Y');
@@ -170,7 +171,7 @@ class CashierContoller extends Controller
             $factors = Factors::whereDate('created_at' , $request->date)->latest('id')->paginate(20);
             $date = "تاریخ های ".jdate($request->date)->format('%B %d، %Y');
         }
-        return view('cashier.report' , compact('factors' , 'date'));
+        return view('cashier.report' , compact('factors' , 'date' , 'menu'));
 
     }
 

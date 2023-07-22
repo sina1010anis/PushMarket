@@ -62,6 +62,21 @@ class AccountingController extends Controller
     public function report()
     {
         $menu = 'report';
-        return view('acco.report' , compact('menu'));
+        $accounts = Account::latest('id')->get();
+        return view('acco.report' , compact('menu' , 'accounts'));
+    }
+
+    public function report_acco(Request $request)
+    {
+        $menu = 'report';
+        if(isset($request->as_date) and isset($request->ta_date)){
+            $accounts = Account::where('created_at' , '>=' , $request->as_date)->where('created_at' , '<=' , $request->ta_date)->latest('id')->get();
+            $date = "از تاریخ ".jdate($request->as_date)->format('%B %d، %Y')." : تا تاریخ ".jdate($request->ta_date)->format('%B %d، %Y');
+        }else{
+            $accounts = Account::whereDate('created_at' , $request->date)->latest('id')->get();
+            $date = "تاریخ های ".jdate($request->date)->format('%B %d، %Y');
+        }
+        return view('acco.report' , compact('accounts' , 'date' , 'menu'));
+
     }
 }

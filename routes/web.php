@@ -65,4 +65,5 @@ Route::controller(AccountingController::class)->prefix('acco')->as('acco.')->gro
     Route::post('/account/edit/{id}', 'edit_acco_post')->name('edit.acco.post');
 
     Route::get('/report', 'report')->name('report');
+    Route::post('/report/acco', 'report_acco')->name('report.acco');
 });
