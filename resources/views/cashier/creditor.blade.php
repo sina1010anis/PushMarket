@@ -2,11 +2,9 @@
 
 @section('index')
 @if (session('msg'))
-<div class="d-flex justify-content-center align-items-center my-3">
-    <div class="w-75">
-        <div dir="rtl" class="alert alert-success text-center my-f-11 my-font-IYM">{{session('msg')}}</div>
+    <div class="page-msg-session px-4 py-2 my-font-IYM my-f-12 rounded-3 shadow text-center" dir="rtl">
+        {{session('msg')}}
     </div>
-</div>
 @endif
 
 <div class="d-flex justify-content-center my-3">

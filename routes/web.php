@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\CashierContoller;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,4 +67,14 @@ Route::controller(AccountingController::class)->prefix('acco')->as('acco.')->gro
 
     Route::get('/report', 'report')->name('report');
     Route::post('/report/acco', 'report_acco')->name('report.acco');
+});
+Route::controller(StoreController::class)->prefix('store')->as('store.')->group(function(){
+    Route::get('/', 'index')->name('index');
+
+    Route::get('/store/edit/product/{data}', 'edit_product')->name('edit.product');
+    Route::post('/store/edit/product/{id}', 'edit_product_post')->name('edit.product.post');
+
+    Route::post('/store/delete', 'delete_store')->name('delete.store');
+
+    Route::post('/store/new', 'new_store')->name('new.store');
 });

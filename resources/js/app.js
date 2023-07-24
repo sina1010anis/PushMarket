@@ -182,6 +182,11 @@ const app = createApp({
             $('.page-hiden').fadeIn();
             $('.page-new-product-2').fadeIn();
         },
+        new_store()
+        {
+            $('.page-hiden').fadeIn();
+            $('.page-new-product').fadeIn();
+        },
         new_cash()
         {
             $('.page-hiden').fadeIn();
@@ -210,6 +215,12 @@ const app = createApp({
         window.addEventListener('load', function(e) {
             inputElem.focus();
         })
+        setTimeout(()=>{
+            $('.page-msg-session').animate({
+                right: '-500px'
+            });
+        } , 4500)
+
     }
 })
 

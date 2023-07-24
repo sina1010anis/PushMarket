@@ -17852,6 +17852,10 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').fadeIn();
     },
+    new_store: function new_store() {
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeIn();
+    },
     new_cash: function new_cash() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-3').fadeIn();
@@ -17880,6 +17884,11 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
     window.addEventListener('load', function (e) {
       inputElem.focus();
     });
+    setTimeout(function () {
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-msg-session').animate({
+        right: '-500px'
+      });
+    }, 4500);
   }
 });
 app.mount('#app');

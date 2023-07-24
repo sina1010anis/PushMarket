@@ -72,9 +72,9 @@
                             <td>@{{index+1}}</td>
                             <td><img :src="item.image" width="30" height="30" alt=""></td>
                             <td><span class="my-font-IYL my-f-12 my-color-b-800">نام: @{{item.name}}</span></td>
-                            <td><span class="my-font-IYL my-f-12 my-color-b-800">تعداد: @{{item.total_number}} <input style="width: 40px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit"></span></td>
-                            <td><span class="my-font-IYL my-f-12 my-color-b-800">قیمت تک: @{{ToRial(item.price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span></td>
-                            <td><span class="my-font-IYL my-f-12 my-color-b-800">قیمت کل: @{{ToRial(item.total_price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span></td>
+                            <td><button class="btn-r border-0 rounded-2 mx-2" @click="number_edit--">-</button><span class="my-font-IYL my-f-12 my-color-b-800"> @{{item.total_number}} <input style="width: 40px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit"></span><button class="btn-g border-0 rounded-2 mx-2" @click="number_edit++">+</button></td>
+                            <td><span class="my-font-IYL my-f-12 my-color-b-800"> @{{ToRial(item.price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span></td>
+                            <td><span class="my-font-IYL my-f-12 my-color-b-800"> @{{ToRial(item.total_price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span></td>
                         </tr>
                     </tbody>
 
@@ -181,10 +181,8 @@
     </div>
 </div>
 @if (session('msg'))
-<div class="d-flex justify-content-center align-items-center my-3">
-    <div class="w-75">
-        <div class="alert alert-success text-center my-f-13 my-font-IYM">{{session('msg')}}</div>
+    <div class="page-msg-session px-4 py-2 my-font-IYM my-f-12 rounded-3 shadow text-center" dir="rtl">
+        {{session('msg')}}
     </div>
-</div>
 @endif
 @endsection

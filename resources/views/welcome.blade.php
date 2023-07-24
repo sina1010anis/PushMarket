@@ -16,7 +16,7 @@
                     <div class="col-12" style="height: 87vh;">
                         @yield('index')
                     </div>
-                    <div class="col-12 d-flex justify-content-center align-items-center my-f-14 my-font-IYM text-secondary p-3" dir="rtl" style="height: 5%;background-color: #efefef">نسخه اجرایی 0.2.5</div>
+                    <div class="col-12 d-flex justify-content-center align-items-center my-f-14 my-font-IYM text-secondary p-3" dir="rtl" style="height: 5%;background-color: #efefef">نسخه اجرایی 0.5.5</div>
                 </div>
             </div>
         </div>

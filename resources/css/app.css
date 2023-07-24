@@ -511,6 +511,7 @@ input:focus{
 .btn-g{
     background-color: rgb(191, 255, 191)!important;color:rgb(0, 136, 0)!important
 }
+
 .my-color-r{
     color: rgb(252 65 65)!important;
 }
@@ -522,4 +523,36 @@ input:focus{
 }
 .my-color-g{
     color:rgb(0, 136, 0)!important
+}
+.page-msg-session{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    max-width: 450px;
+    min-width: 450px;
+    line-height: 25px;
+    box-shadow: 1px 1px 5px rgb(68, 68, 68);
+    background-color: red;
+    background-color: rgb(222, 255, 222)!important;color:rgb(0, 136, 0)!important;border: 1px solid rgb(0, 136, 0);
+    animation: edit_shadow linear infinite 0.8s;
+}
+@keyframes edit_shadow {
+    0%{
+        box-shadow: 1px 1px 5px  rgb(68, 68, 68);
+    }
+    25%{
+        box-shadow: 1px 1px 10px  rgb(68, 68, 68);
+
+    }
+    50%{
+        box-shadow: 1px 1px 15px  rgb(68, 68, 68);
+
+    }
+    75%{
+        box-shadow: 1px 1px 10px  rgb(68, 68, 68);
+    }
+    100%{
+        box-shadow: 1px 1px 5px rgb(68, 68, 68);
+
+    }
 }

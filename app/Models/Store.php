@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Store extends Model
 {
     use HasFactory;
-    protected $guardad = [];
-
+    protected $fillable = [
+        'name',
+        'price',
+        'location',
+        'total_number',
+        'box',
+    ];
 }
