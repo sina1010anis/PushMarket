@@ -524,6 +524,10 @@ input:focus{
 .my-color-g{
     color:rgb(0, 136, 0)!important
 }
+.my-select-none{
+    user-select: none;
+
+}
 .page-msg-session{
     position: fixed;
     top: 20px;
@@ -556,3 +560,4 @@ input:focus{
 
     }
 }
+
