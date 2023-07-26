@@ -65,13 +65,13 @@
                         <tr>
                             <th scope="row">{{$loop->index+1}}</th>
                             <td class="my-font-ISL my-f-12 my-color-b-600">{{$factor->id}}</td>
-                            <td class="my-font-ISL my-f-12 my-color-b-600">{{ number_format($factor->total_price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{ number_format($factor->total_price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">{{$factor->total_number}}</td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">
                                 @foreach ($factor->products as $product)
                                     <div class="w-100  my-1 d-flex justify-content-between align-items-center border-bottom" >
                                         <img src="/{{$product->image}}" width="35" height="35" alt="">
-                                        <p class="my-f-9 my-font-ISL my-color-b-600">{{$product->total_number . ' - ' .  number_format($product->total_price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></p>
+                                        <p class="my-f-9 my-font-ISL my-color-b-600">{{$product->total_number . ' - ' .  number_format($product->total_price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></p>
                                     </div>
                                 @endforeach
                             </td>

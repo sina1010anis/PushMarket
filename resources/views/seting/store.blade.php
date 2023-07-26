@@ -9,7 +9,7 @@
     <hr>
     <div>
         <div class="form-check form-switch d-flex justify-content-between align-items-center my-4">
-            <input class="form-check-input my-pointer" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+            <input class="form-check-input my-pointer" type="checkbox" role="switch" id="flexSwitchCheckChecked" {{($seting->find(7)->status == 1) ? 'checked' : ''}} @click="edit_setting(7)">
             <label class="form-check-label my-pointer my-select-none my-f-12 my-font-IYL my-color-b-800" for="flexSwitchCheckChecked"><span class="my-f-11-i my-color-b-500">(با فعال بودن این گزینه منو انبارداری قابل استفاده است)</span>  نمایش منو</label>
         </div>
     </div>

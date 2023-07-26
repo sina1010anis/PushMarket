@@ -45,6 +45,10 @@
                                         <span class="my-font-IYM my-f-12 my-color-b-600"> قفلگذاری</span>
                                         <i class="bi bi-key my-color-bl" style="font-size: 25px"></i>
                                     </a>
+                                    <a href="{{route('index.page')}}" class="w-100 d-flex justify-content-between align-items-center px-5 mt-3 my-pointer">
+                                        <span class="my-font-IYM my-f-12 my-color-b-600"> صفحه اصلی</span>
+                                        <i class="bi bi-house-door my-color-bl" style="font-size: 21px"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>

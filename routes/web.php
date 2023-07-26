@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', [IndexController::class , 'index'])->name('index.page');
 Route::controller(CashierContoller::class)->prefix('cashier')->as('cashier.')->group(function(){
     Route::get('/', 'index')->name('index');
@@ -79,7 +78,7 @@ Route::controller(StoreController::class)->prefix('store')->as('store.')->group(
 
     Route::post('/store/new', 'new_store')->name('new.store');
 });
-Route::controller(SetingController::class)->prefix('seting')->as('seting.')->group(function(){
+Route::controller(SetingController::class)->prefix('setting')->as('seting.')->group(function(){
     Route::get('/cashire' , 'index')->name('index');
 
     Route::get('/store' , 'store')->name('store');
@@ -89,4 +88,19 @@ Route::controller(SetingController::class)->prefix('seting')->as('seting.')->gro
     Route::get('/admin' , 'admin')->name('admin');
 
     Route::get('/lock' , 'lock')->name('lock');
+
+    Route::post('/edit/setting' , 'edit_setting')->name('edit.setting');
+    Route::post('/edit/acco' , 'edit_acco')->name('edit.acco');
+    Route::post('/edit_unit' , 'edit_unit')->name('edit_unit');
+
+    Route::post('/delete' , 'delete')->name('delete');
+
+    Route::post('/new/acco' , 'new_acco')->name('new.acco');
+    Route::post('/new/cashire' , 'new_cashire')->name('new.cashire');
+
+    Route::post('/delete/cashire/{id}' , 'delete_cashire')->name('delete.cashire');
+
+    Route::post('/check/cashire' , 'check_cashire')->name('check.cashire');
+
+    Route::get('/exit/cashire' , 'exit_cashire')->name('exit.cashire');
 });

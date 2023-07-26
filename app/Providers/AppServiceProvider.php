@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\View\View;
 use App\Models\Product;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
@@ -21,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //Product::whereName(null)->delete();
+        resolve(View::class)->handle();
         Paginator::useBootstrap();
     }
 }

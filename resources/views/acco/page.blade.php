@@ -13,8 +13,8 @@
             <div class="container-xxl">
                 <div dir="rtl" class="w-100 d-flex align-items-center my-f-11 my-color-b-900 my-font-IS p-2" style="height: 50px;background-color: #efefef">
                     <a href="/" class="me-4 pb-2" style="text-decoration: none!important;color:#323232;">صفحه اصلی</a>
-                    <a href="{{route('acco.index')}}" class="me-4 pb-2  @if($menu == 'index') border-bottom @endif" style="text-decoration: none!important;color:#323232;">مدریت حساب ها </a>
-                    <a href="{{route('acco.report')}}" class="me-4 pb-2  @if($menu == 'report') border-bottom @endif" style="text-decoration: none!important;color:#323232;">گزارش کار   </a>
+                     @if($seting->find(8)->status == 1)<a href="{{route('acco.index')}}" class="me-4 pb-2  @if($menu == 'index') border-bottom @endif" style="text-decoration: none!important;color:#323232;">مدریت حساب ها </a>@endif
+                     @if($seting->find(9)->status == 1)<a href="{{route('acco.report')}}" class="me-4 pb-2  @if($menu == 'report') border-bottom @endif" style="text-decoration: none!important;color:#323232;">گزارش کار   </a>@endif
                     <span dir="rtl" class="me-auto">{{jdate()->now()}}</span>
                 </div>
                 @yield('index')

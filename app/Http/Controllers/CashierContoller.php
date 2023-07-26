@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\New_P;
+use App\Models\Seting;
 use App\Models\Factors;
 use App\Models\Product;
 use App\Models\Receipt;
@@ -12,12 +14,11 @@ use Illuminate\Support\Carbon;
 use App\Http\Requests\EditNumber;
 use App\Http\Requests\NewProduct;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\EditReceptRequest;
 use App\Http\Requests\ReceiptNewRequest;
 use App\Http\Requests\CreditorNewRequest;
-use App\Http\Requests\EditCraditorRequest;
 use App\Http\Requests\EditProductRequest;
-use App\Http\Requests\EditReceptRequest;
-use App\Models\New_P;
+use App\Http\Requests\EditCraditorRequest;
 
 class CashierContoller extends Controller
 {
@@ -27,7 +28,13 @@ class CashierContoller extends Controller
         $creditors = Creditor::latest('id')->get();
         $menu = 'index';
         $news = New_P::latest('id')->get();
-        return view('cashier.index' , compact('data' ,'creditors' , 'menu' , 'news'));
+        $setting = Seting::find(11);
+        if($setting->status == 0)
+        {
+            return view('cashier.index' , compact('data' ,'creditors' , 'menu' , 'news'));
+        }else{
+            return view('cashier.mult_cashire');
+        }
     }
 
     public function save_factor()

@@ -38,7 +38,7 @@
                             <td class="my-font-ISL my-f-12 my-color-b-600"><img src="/{{$item->image}}" width="60" height="60" alt=""></td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->barcode}}</td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">{{$item->name}}</td>
-                            <td class="my-font-ISL my-f-12 my-color-b-600">{{ number_format($item->price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{ number_format($item->price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">
                                 @if ($item->status == 1)
                                     تعدادی

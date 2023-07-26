@@ -9,22 +9,32 @@ use App\Http\Requests\NewRequestRequest;
 use App\Models\Account;
 use App\Models\AccountBanck;
 use App\Models\AccountCash;
+use App\Models\AllAccount;
+use App\Models\Seting;
 use Illuminate\Http\Request;
 
 class AccountingController extends Controller
 {
     public function index()
     {
-        $accounts = Account::latest('id')->get();
+        $def_acco = Seting::where('type' , 'def_acco')->first();
+        $acco = AllAccount::find($def_acco->status);
+        $accounts = Account::where('acco_id' , $def_acco->status)->latest('id')->get();
         $account_cashs = AccountCash::latest('id')->get();
         $account_bancks = AccountBanck::latest('id')->get();
         $menu = 'index';
-        return view('acco.index' , compact('accounts' , 'account_cashs' , 'account_bancks' , 'menu'));
+        return view('acco.index' , compact('accounts' , 'account_cashs' , 'account_bancks' , 'menu' , 'acco'));
     }
 
     public function new_acco(NewAccoRequest $request)
     {
-        Account::create($request->all());
+        Account::create([
+            'total' => $request->total,
+            'indebted' => $request->indebted,
+            'creditor' => $request->creditor,
+            'des' => $request->des,
+            'acco_id' => (Seting::where('type' , 'def_acco')->first())->status,
+        ]);
         return back()->with('msg' , 'یک داده جدید اضافه شد');
     }
 

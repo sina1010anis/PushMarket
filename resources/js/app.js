@@ -29,6 +29,7 @@ const app = createApp({
         status_menu_2:true,
         search_number:null,
         search_name:null,
+        id_acco:null,
         price_product:null
 
     }),
@@ -207,7 +208,45 @@ const app = createApp({
             }).catch((res)=>{
                 console.error(res)
             })
-        }
+        },
+        edit_setting(id)
+        {
+            axios.post('/setting/edit/setting' , {id:id}).then((res)=>{
+                //console.log(res.data)
+                location.reload()
+            }).catch((res)=>{
+                console.error(res)
+            })
+        },
+        edit_unit()
+        {
+            axios.post('/setting/edit_unit').then((res)=>{
+                //console.log(res.data)
+                location.reload()
+            }).catch((res)=>{
+                console.error(res)
+            })
+        },
+        delete_all(model){
+            axios.post('/setting/delete' , {model:model}).then((res)=>{
+                //console.log(res.data)
+                location.reload()
+            }).catch((res)=>{
+                console.error(res)
+            })
+        },
+        test(){
+            console.log(this.id_acco);
+        },
+        edit_def_acco()
+        {
+            axios.post('/setting/edit/acco' , {id:this.id_acco}).then((res)=>{
+                //console.log(res.data)
+                location.reload()
+            }).catch((res)=>{
+                console.error(res)
+            })
+        },
 
     },
     mounted:()=>{

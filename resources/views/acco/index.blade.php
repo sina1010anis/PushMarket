@@ -12,7 +12,10 @@
                 <button @click="new_acco" class="btn btn-g my-font-IYM-i my-f-9 my-2 btn-sm">
                     اضافه نمودن
                 </button>
-                <p class="my-font-IYM my-f-15 my-color-b-700 text-center p-0 m-0">مدریت حساب اصلی</p>
+                <p class="my-font-IYM my-f-15 my-color-b-700 text-center p-0 m-0 my-select-none">
+                    <span class="my-f-12 my-color-b-500 ">({{$acco->name}} : {{$acco->number}})</span>
+                    مدریت حساب اصلی
+                </p>
             </div>
             <hr>
 
@@ -33,9 +36,9 @@
                     @foreach ($accounts as $account)
                         <tr dir="rtl" class="my-font-IYL my-f-13 my-color-b-700">
                             <th scope="row">{{$loop->index+1}}</th>
-                            <td>{{number_format($account->total , 0 , '.' , ',') }} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
-                            <td>{{number_format($account->indebted , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
-                            <td>{{number_format($account->creditor , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
+                            <td>{{number_format($account->total , 0 , '.' , ',') }} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></td>
+                            <td>{{number_format($account->indebted , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></td>
+                            <td>{{number_format($account->creditor , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></td>
                             <td>{{jdate($account->created_at)->format('%A, %d %B %y')}}</td>
                             <td>{{($account->des !=Null) ? $account->des : '--'}}</td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">
@@ -64,14 +67,14 @@
                                     <div style="background-color: rgb(255, 233, 233)" class="d-flex justify-content-between align-items-center my-pointer" @click="edit_status_cash({{$account_cash->stauts}} , {{$account_cash->id}} , 'cash')">
                                         <span class="my-f-10 my-font-IYM my-color-b-900">{{jdate($account_cash->created_at)->format('%A, %d %B %y')}}</span>
                                         <span class="my-f-10 my-font-IYM my-color-b-900">{{$account_cash->des }}</span>
-                                        <span class="my-f-10 my-font-IYM my-color-b-900">{{number_format($account_cash->total , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
+                                        <span class="my-f-10 my-font-IYM my-color-b-900">{{number_format($account_cash->total , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></span>
                                     </div>
                                 </del>
                             @else
                                 <div class="d-flex justify-content-between align-items-center my-pointer" @click="edit_status_cash({{$account_cash->stauts}} , {{$account_cash->id}} , 'cash')">
                                     <span class="my-f-10 my-font-IYM my-color-b-900">{{jdate($account_cash->created_at)->format('%A, %d %B %y')}}</span>
                                     <span class="my-f-10 my-font-IYM my-color-b-900">{{$account_cash->des }}</span>
-                                    <span class="my-f-10 my-font-IYM my-color-b-900">{{number_format($account_cash->total , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
+                                    <span class="my-f-10 my-font-IYM my-color-b-900">{{number_format($account_cash->total , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></span>
                                 </div>
                             @endif
                         </div>
@@ -97,14 +100,14 @@
                             <div style="background-color: rgb(255, 233, 233)" class="d-flex justify-content-between align-items-center" @click="edit_status_cash({{$account_banck->stauts}} , {{$account_banck->id}} , 'bank')">
                                 <span class="my-f-10 my-font-IYM my-color-b-900">{{jdate($account_banck->created_at)->format('%A, %d %B %y')}}</span>
                                 <span class="my-f-10 my-font-IYM my-color-b-900">{{$account_banck->des }}</span>
-                                <span class="my-f-10 my-font-IYM my-color-b-900">{{number_format($account_banck->total , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
+                                <span class="my-f-10 my-font-IYM my-color-b-900">{{number_format($account_banck->total , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></span>
                             </div>
                         </del>
                     @else
                         <div class="d-flex justify-content-between align-items-center" @click="edit_status_cash({{$account_banck->stauts}} , {{$account_banck->id}} , 'bank')">
                             <span class="my-f-10 my-font-IYM my-color-b-900">{{jdate($account_banck->created_at)->format('%A, %d %B %y')}}</span>
                             <span class="my-f-10 my-font-IYM my-color-b-900">{{$account_banck->des }}</span>
-                            <span class="my-f-10 my-font-IYM my-color-b-900">{{number_format($account_banck->total , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></span>
+                            <span class="my-f-10 my-font-IYM my-color-b-900">{{number_format($account_banck->total , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></span>
                         </div>
                     @endif
                 </div>

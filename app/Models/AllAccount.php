@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model
+class AllAccount extends Model
 {
     use HasFactory;
 
-    public $fillable = ['total' , 'indebted' , 'creditor' , 'des' , 'acco_id'];
+    public $fillable = ['name' , 'number'] ;
 
 }

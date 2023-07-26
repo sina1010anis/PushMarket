@@ -228,7 +228,9 @@ a{
 .my-pointer {
     cursor: pointer;
 }
-
+.my-not {
+    cursor: not-allowed;
+}
 .box {
     max-width: 1366px!important;
 }
@@ -471,7 +473,7 @@ input:focus{
     display: none;
     border-radius: 5px;
 }
-.page-new-product-2 , .page-new{
+.page-new-product-2 , .page-new , .page-new-product{
     width: 100%;
     max-width: 400px;
     height: auto;
@@ -560,4 +562,11 @@ input:focus{
 
     }
 }
+.btn-menu-as{
+    transition: 0.2s;
+}
 
+.btn-menu-as:hover{
+    transform: scale(1.1);    transition: 0.2s;
+
+}

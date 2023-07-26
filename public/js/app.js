@@ -17681,6 +17681,7 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       status_menu_2: true,
       search_number: null,
       search_name: null,
+      id_acco: null,
       price_product: null
     };
   },
@@ -17871,6 +17872,47 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
         status: status,
         id: id,
         type: type
+      }).then(function (res) {
+        //console.log(res.data)
+        location.reload();
+      })["catch"](function (res) {
+        console.error(res);
+      });
+    },
+    edit_setting: function edit_setting(id) {
+      axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/setting/edit/setting', {
+        id: id
+      }).then(function (res) {
+        //console.log(res.data)
+        location.reload();
+      })["catch"](function (res) {
+        console.error(res);
+      });
+    },
+    edit_unit: function edit_unit() {
+      axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/setting/edit_unit').then(function (res) {
+        //console.log(res.data)
+        location.reload();
+      })["catch"](function (res) {
+        console.error(res);
+      });
+    },
+    delete_all: function delete_all(model) {
+      axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/setting/delete', {
+        model: model
+      }).then(function (res) {
+        //console.log(res.data)
+        location.reload();
+      })["catch"](function (res) {
+        console.error(res);
+      });
+    },
+    test: function test() {
+      console.log(this.id_acco);
+    },
+    edit_def_acco: function edit_def_acco() {
+      axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/setting/edit/acco', {
+        id: this.id_acco
       }).then(function (res) {
         //console.log(res.data)
         location.reload();

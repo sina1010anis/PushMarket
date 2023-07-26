@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('setings', function (Blueprint $table) {
-            $table->id();
-            $table->string('type');
-            $table->string('status');
-            $table->timestamps();
+        Schema::table('accounts', function (Blueprint $table) {
+            $table->integer('acco_id')->after('des');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('setings');
+        Schema::table('accounts', function (Blueprint $table) {
+            //
+        });
     }
 };

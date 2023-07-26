@@ -79,9 +79,9 @@
                         <tr>
                             <th scope="row">{{$loop->index+1}}</th>
                             <td class="my-font-ISL my-f-12 my-color-b-600">{{$account->id}}</td>
-                            <td class="my-font-ISL my-f-12 my-color-b-600">{{ number_format($account->total , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
-                            <td class="my-font-ISL my-f-12 my-color-b-600">{{ number_format($account->indebted , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
-                            <td class="my-font-ISL my-f-12 my-color-b-600">{{ number_format($account->creditor , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">(تومان)</span></td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{ number_format($account->total , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{ number_format($account->indebted , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{ number_format($account->creditor , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">({{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}})</span></td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">{{jdate($account->created_at)->format('%A, %d %B %y')}}</td>
                         </tr>
                     @endforeach
