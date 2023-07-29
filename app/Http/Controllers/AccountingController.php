@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EditAccountRequest;
+use App\Http\Requests\EditLockRequest;
 use App\Http\Requests\NewAccoRequest;
 use App\Http\Requests\NewAccountBankRequest;
 use App\Http\Requests\NewRequestRequest;
@@ -15,6 +16,20 @@ use Illuminate\Http\Request;
 
 class AccountingController extends Controller
 {
+    public function check_acco_lock(EditLockRequest $request){
+        $count = Seting::where(['username'=> $request->username , 'password'=> $request->password , 'type' => 'lock_acco'])->count();
+        if($count == 1){
+            return redirect()->route('cashier.index');
+        }
+    }
+    public function lock()
+    {
+        if(session()->has('lock_acco')){
+            return view('acco.lock');
+        }else{
+            return $this->index();
+        }
+    }
     public function index()
     {
         $def_acco = Seting::where('type' , 'def_acco')->first();

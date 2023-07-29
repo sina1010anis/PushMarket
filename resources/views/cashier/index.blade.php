@@ -45,7 +45,7 @@
         <div class="my-3">
             <div class="w-100">
                 <div v-if="first_product != null" dir="rtl" class="d-flex justify-content-between align-items-center p-2 mb-2 border" style="height: 100px;">
-                    <img :src="first_product.image" width="90" height="90" alt="">
+                    <img :src="'/'+first_product.image" width="90" height="90" alt="">
                     <span class="my-font-ISM my-f-12 my-color-b-800">@{{first_product.name}}</span>
                     <span class="my-font-ISM my-f-12 my-color-b-800">قیمت تک: @{{ToRial(first_product.price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">{{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}}</span></span>
                 </div>
@@ -70,7 +70,7 @@
                     <tbody>
                         <tr v-for="(item , index) in factor_product" @key="index">
                             <td>@{{index+1}}</td>
-                            <td><img :src="item.image" width="30" height="30" alt=""></td>
+                            <td><img :src="'/'+item.image" width="30" height="30" alt=""></td>
                             <td><span class="my-font-IYL my-f-12 my-color-b-800">نام: @{{item.name}}</span></td>
                             <td><button class="btn-r border-0 rounded-2 mx-2" @click="number_edit--">-</button><span class="my-font-IYL my-f-12 my-color-b-800"> @{{item.total_number}} <input style="width: 40px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit"></span><button class="btn-g border-0 rounded-2 mx-2" @click="number_edit++">+</button></td>
                             <td><span class="my-font-IYL my-f-12 my-color-b-800"> @{{ToRial(item.price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">{{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}}</span></span></td>
@@ -99,7 +99,7 @@
                         @foreach ($data as $item)
                             <tr>
                                 <th scope="row" class="my-font-IYL my-f-12 my-color-b-800">{{$loop->index+1}}</th>
-                                <td><img src="{{$item->image}}" width="30" height="30" alt=""></td>
+                                <td><img src="/{{$item->image}}" width="30" height="30" alt=""></td>
                                 <td><span class="my-font-IYL my-f-12 my-color-b-800">{{$item->name}}</span></td>
                                 <td><span class="my-font-IYL my-f-12 my-color-b-800"> {{$item->total_number}} <input style="width: 40px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit"></span></td>
                                 <td><span class="my-font-IYL my-f-12 my-color-b-800">{{number_format($item->price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">{{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}}</span></span></td>
@@ -157,7 +157,7 @@
                     </div>
                     <div v-if="price_product != null"  style="overflow-y: scroll;max-height: 90px!important;min-height: 90px!important;height: 90px!imporatn;">
                         <div v-for="(item , index) in price_product" @key="index" class="w-100 d-flex justify-content-between align-items-center ">
-                            <img :src="item.image" width="30" class="my-3" height="30" alt="">
+                            <img :src="'/'+item.image" width="30" class="my-3" height="30" alt="">
                             <p class="my-f-12 my-color-b-600 my-font-IYM">@{{item.name}}</p>
                             <p dir="rtl" class="my-f-12 my-color-b-600 my-font-IYL">@{{ToRial(item.price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">{{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}}</span></p>
                         </div>

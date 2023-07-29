@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\NewCasireRequest;
 use App\Http\Requests\NewAccountRequest;
 use App\Http\Requests\CheckCashireRequest;
+use App\Http\Requests\EditLockRequest;
 
 class SetingController extends Controller
 {
@@ -119,5 +120,11 @@ class SetingController extends Controller
     {
         Cashire::whereId(session()->get('login'))->update(['stuats' => 0]);
         return redirect()->to('/');
+    }
+
+    public function edit_lock(EditLockRequest $request , $type)
+    {
+        Seting::where('type' , $type)->update(['username' => $request->username ,'password' => $request->password ]);
+        return back()->with('msg' , 'بخش مورد نظر شما به روز رسانی شد.');
     }
 }

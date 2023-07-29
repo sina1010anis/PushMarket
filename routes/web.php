@@ -18,8 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [IndexController::class , 'index'])->name('index.page');
-Route::controller(CashierContoller::class)->prefix('cashier')->as('cashier.')->group(function(){
+
+
+Route::controller(CashierContoller::class)->prefix('cashier')->middleware('lock_cashire')->as('cashier.')->group(function(){
     Route::get('/', 'index')->name('index');
+
 
     Route::get('/products', 'products')->name('products');
 
@@ -53,7 +56,7 @@ Route::controller(CashierContoller::class)->prefix('cashier')->as('cashier.')->g
     Route::post('/creditor/new' , 'creditor_new')->name('creditor.new');
     Route::post('/receipt/new' , 'receipt_new')->name('receipt.new');
 });
-Route::controller(AccountingController::class)->prefix('acco')->as('acco.')->group(function(){
+Route::controller(AccountingController::class)->prefix('acco')->as('acco.')->middleware('lock_acco')->group(function(){
     Route::get('/', 'index')->name('index');
 
     Route::post('/new/account', 'new_acco')->name('new.acco');
@@ -78,6 +81,8 @@ Route::controller(StoreController::class)->prefix('store')->as('store.')->group(
 
     Route::post('/store/new', 'new_store')->name('new.store');
 });
+
+
 Route::controller(SetingController::class)->prefix('setting')->as('seting.')->group(function(){
     Route::get('/cashire' , 'index')->name('index');
 
@@ -92,6 +97,7 @@ Route::controller(SetingController::class)->prefix('setting')->as('seting.')->gr
     Route::post('/edit/setting' , 'edit_setting')->name('edit.setting');
     Route::post('/edit/acco' , 'edit_acco')->name('edit.acco');
     Route::post('/edit_unit' , 'edit_unit')->name('edit_unit');
+    Route::post('/edit/lock/{type}' , 'edit_lock')->name('edit.lock');
 
     Route::post('/delete' , 'delete')->name('delete');
 
@@ -104,3 +110,9 @@ Route::controller(SetingController::class)->prefix('setting')->as('seting.')->gr
 
     Route::get('/exit/cashire' , 'exit_cashire')->name('exit.cashire');
 });
+
+Route::get('/cashire/lock' , [CashierContoller::class , 'lock'])->name('cashier.lock');
+Route::post('check/cashire/lock' , [CashierContoller::class , 'check_cashire_lock'])->name('check.cashire.lock');
+
+Route::get('/acco/lock' , [AccountingController::class , 'lock'])->name('acco.lock');
+Route::post('/check/acco/lock' , [AccountingController::class , 'check_acco_lock'])->name('check.acco.lock');

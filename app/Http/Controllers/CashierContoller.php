@@ -13,6 +13,7 @@ use App\Models\ProductSimpel;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\EditNumber;
 use App\Http\Requests\NewProduct;
+use App\Http\Requests\EditLockRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\EditReceptRequest;
 use App\Http\Requests\ReceiptNewRequest;
@@ -22,6 +23,14 @@ use App\Http\Requests\EditCraditorRequest;
 
 class CashierContoller extends Controller
 {
+
+    public function check_cashire_lock(EditLockRequest $request)
+    {
+        $count = Seting::where(['username'=> $request->username , 'password'=> $request->password , 'type' , 'lock_cashire'])->count();
+        if($count == 1){
+            return redirect()->route('cashier.index');
+        }
+    }
     public function index()
     {
         $data = ProductSimpel::where('factor_id' , null)->get();
@@ -36,7 +45,16 @@ class CashierContoller extends Controller
             return view('cashier.mult_cashire');
         }
     }
+    public function lock()
+    {
+        //session()->forget('lock_login');
+        if(session()->has('lock_cashire')){
+            return view('cashier.lock');
+        }else{
+            return $this->index();
+        }
 
+    }
     public function save_factor()
     {
         $products = ProductSimpel::where('factor_id' ,null)->get();
