@@ -3,11 +3,11 @@
 @section('index')
 
 <div class="row" >
-    <div class="col-12">
+    <div class="col-12 my-2">
         @if(!isset($date))
-            <p dir="rtl" class="text-center border-bottom my-f-20 my-font-IYM my-color-b-800">فاکتور های تاریخ {{jdate()->now()}}</p>
+            <p dir="rtl" class="text-center pb-2 border-bottom my-f-20 my-font-IYM my-color-b-800">فاکتور های تاریخ : <span class="my-f-18 my-font-IYM my-color-b-500">{{jdate()->format('%B %d، %Y')}}</span></p>
         @else
-            <p dir="rtl" class="text-center border-bottom my-f-20 my-font-IYM my-color-b-800">{{$date}}</p>
+            <p dir="rtl" class="text-center pb-2 border-bottom my-f-20 my-font-IYM my-color-b-800">{{$date}}</p>
         @endif
     </div>
     <div class="col-6" >

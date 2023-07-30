@@ -26,7 +26,7 @@ class CashierContoller extends Controller
 
     public function check_cashire_lock(EditLockRequest $request)
     {
-        $count = Seting::where(['username'=> $request->username , 'password'=> $request->password , 'type' , 'lock_cashire'])->count();
+        $count = Seting::where(['username'=> $request->username , 'password'=> $request->password , 'type' => 'lock_cashire'])->count();
         if($count == 1){
             return redirect()->route('cashier.index');
         }
@@ -216,13 +216,20 @@ class CashierContoller extends Controller
                     'name' => $item['name'] ,
                     'price' => $item['price'],
                     'des'=> $item['des'],
-                    'created_at'=>jdate($item['created_at'])->format('%A, %d %b %y'),
-                    'time'=>$item['created_at']->format('H:i:s')
+                    'time'=> (Seting::where('type' , 'time')->first()->status == 1)
+                        ? $this->setCarbon($item['created_at'])->addHours(3)->addMinutes(30)->format('H:i:s')
+                        :$this->setCarbon($item['created_at'])->format('H:i:s') ,
+                    'created_at'=>jdate($item['created_at'])->format('%A, %d %b %y')
                 ];
         });
         return $data;
     }
+    public function setCarbon($val)
+    {
+        $date = new Carbon($val);
 
+        return $date;
+    }
     public function receipt_search(Request $request)
     {
         $data = collect(Receipt::where('name' , 'Like' , '%'.$request->name.'%')->get())->map(function ($item) {
@@ -230,8 +237,10 @@ class CashierContoller extends Controller
                     'id' => $item['id'] ,
                     'name' => $item['name'] ,
                     'price' => $item['price'],
-                    'created_at'=>jdate($item['created_at'])->format('%A, %d %b %y'),
-                    'time'=>$item['created_at']->format('H:i:s')
+                    'time'=> (Seting::where('type' , 'time')->first()->status == 1)
+                        ? $this->setCarbon($item['created_at'])->addHours(3)->addMinutes(30)->format('H:i:s')
+                        :$this->setCarbon($item['created_at'])->format('H:i:s') ,
+                    'created_at'=>jdate($item['created_at'])->format('%A, %d %b %y')
                 ];
         });
         return $data;

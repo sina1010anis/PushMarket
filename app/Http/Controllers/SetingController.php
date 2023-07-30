@@ -45,6 +45,11 @@ class SetingController extends Controller
     {
         return view('seting.lock');
     }
+
+    public function about()
+    {
+        return view('seting.about');
+    }
     public function edit_seting($id)
     {
         $data = Seting::find($id);

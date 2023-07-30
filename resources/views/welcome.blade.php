@@ -12,11 +12,20 @@
         <div id="app">
             <div class="container-xxl">
                 <div class="row">
-                    <div class="col-12 d-flex justify-content-center align-items-center my-f-13 my-font-IYM text-secondary p-3" dir="rtl" style="height: 5%;background-color: #f7f7f7">نرم افزار مدریتی PushMarket</div>
-                    <div class="col-12 back-page-as" style="height: 87.5vh;">
+                    <div class="col-12 d-flex justify-content-center align-items-center my-pos-rel" dir="rtl" style="height: 4.5%;background-color: #ffffff">
+                        {{-- <span class="my-f-13 my-font-IYM my-color-b-700 my-select-none">نرم افزار مدریتی PushMarket</span> --}}
+                        <div class="box-view-logo" dir="rtl" style="height:150px">
+                            <a href="/"><img src="/{{'storage/images/logo.png'}}" width="30" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-12 back-page-as" style="height: 91.5vh;">
                         @yield('index')
                     </div>
-                    <div class="col-12 d-flex justify-content-center align-items-center my-f-12 my-font-IYM text-secondary p-3" dir="rtl" style="height: 5%;background-color: #f7f7f7">نسخه اجرایی 0.5.8</div>
+                    <div class="col-12 d-flex justify-content-center align-items-center my-pos-rel" style="height: 69px!important;overflow: hidden">
+                        <div class="  box-view-version my-f-17 my-font-IYM my-select-none text-center pt-4 text-secondary" dir="rtl" style="height:150px">
+                            {{$seting->where('type' , 'version')->first()->status}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

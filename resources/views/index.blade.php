@@ -1,7 +1,7 @@
 @extends('welcome')
 
 @section('index')
-    <div class="w-100 d-flex justify-content-center align-items-center my-font-IYM" style="height: 80%;">
+    <div class="w-100 d-flex justify-content-center align-items-center my-font-IYM" style="height: 100%;">
         <a href="{{route('seting.index')}}"  class="btn btn-bl btn-lg m-3 px-5 shadow d-flex btn-menu-as flex-column">
             <i class="bi bi-gear" style="font-size: 65px"></i>
             <span class="my-f-15">تنظیمات</span>

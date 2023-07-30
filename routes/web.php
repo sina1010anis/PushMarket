@@ -94,6 +94,8 @@ Route::controller(SetingController::class)->prefix('setting')->as('seting.')->gr
 
     Route::get('/lock' , 'lock')->name('lock');
 
+    Route::get('/about' , 'about')->name('about');
+
     Route::post('/edit/setting' , 'edit_setting')->name('edit.setting');
     Route::post('/edit/acco' , 'edit_acco')->name('edit.acco');
     Route::post('/edit_unit' , 'edit_unit')->name('edit_unit');

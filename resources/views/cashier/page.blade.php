@@ -18,7 +18,11 @@
                     @if($seting->find(5)->status == 1) <a href="{{route('cashier.products')}}" class="me-4 pb-2 my-f-11 @if($menu == 'products') border-bottom @endif" style="text-decoration: none!important;color:#323232">مدریت محصولات</a>@endif
                     @if($seting->find(6)->status == 1) <a href="{{route('cashier.creditor')}}" class="me-4 pb-2 my-f-11 @if($menu == 'creditor') border-bottom @endif" style="text-decoration: none!important;color:#323232">لیست بستانکارها</a>@endif
                     @if($seting->find(11)->status == 1) <a href="{{route('seting.exit.cashire')}}" class="me-4 pb-2 my-f-11 @if($menu == 'creditor') border-bottom @endif" style="text-decoration: none!important;color:#ff7777">خروج از محیط</a>@endif
-                    <span dir="rtl" class="me-auto">{{jdate()->now()}}</span>
+                    @if($seting->where('type' , 'time')->first()->status == 1)
+                        <span dir="rtl" class="me-auto">{{jdate(Carbon\Carbon::now()->addHours(3)->addMinutes(30))}}</span>
+                    @else
+                        <span dir="rtl" class="me-auto">{{jdate()->now()}}</span>
+                    @endif
                 </div>
                 @yield('index')
             </div>

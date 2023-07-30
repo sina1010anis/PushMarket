@@ -12,10 +12,17 @@
         <div id="app">
             <div class="container-xxl">
                 <div class="row">
-                    <div class="col-12 d-flex justify-content-center align-items-center my-f-15 my-font-IYM text-secondary p-3" dir="rtl" style="height: 5%;background-color: #efefef">نرم افزار مدریتی PushMarket</div>
-                    <div class="col-12" style="height: 87vh;">
+
+                    <div class="col-12 d-flex justify-content-center align-items-center my-pos-rel" dir="rtl" style="height: 4.5%;background-color: #ffffff">
+                        {{-- <span class="my-f-13 my-font-IYM my-color-b-700 my-select-none">نرم افزار مدریتی PushMarket</span> --}}
+                        <div class="box-view-logo" dir="rtl" style="height:150px">
+                            <a href="/"><img src="/{{'storage/images/logo.png'}}" width="30" alt="logo"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 back-page-as" style="height: 91.5vh;">
                         <div class="row my-4"  style="height: 670px;">
-                            <div class="col-10 offset-1 row">
+                            <div class="col-10 offset-1 row mt-5">
                                 <div class="col-8 p-2" style="background-color: rgb(249, 249, 249)">
                                     @yield('index')
                                 </div>
@@ -45,6 +52,10 @@
                                         <span class="my-font-IYM my-f-12 my-color-b-600"> قفلگذاری</span>
                                         <i class="bi bi-key my-color-bl" style="font-size: 25px"></i>
                                     </a>
+                                    <a href="{{route('seting.about')}}" class="w-100 d-flex justify-content-between align-items-center px-5 mt-3 my-pointer">
+                                        <span class="my-font-IYM my-f-12 my-color-b-600"> درباره نرم افزار </span>
+                                        <i class="bi bi-clipboard my-color-bl" style="font-size: 21px"></i>
+                                    </a>
                                     <a href="{{route('index.page')}}" class="w-100 d-flex justify-content-between align-items-center px-5 mt-3 my-pointer">
                                         <span class="my-font-IYM my-f-12 my-color-b-600"> صفحه اصلی</span>
                                         <i class="bi bi-house-door my-color-bl" style="font-size: 21px"></i>
@@ -53,7 +64,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 d-flex justify-content-center align-items-center my-f-14 my-font-IYM text-secondary p-3" dir="rtl" style="height: 5%;background-color: #efefef">نسخه اجرایی 0.5.5</div>
+                    <div class="col-12 d-flex justify-content-center align-items-center my-pos-rel" style="height: 69px!important;overflow: hidden">
+                        <div class="  box-view-version my-f-17 my-font-IYM my-select-none text-center pt-4 text-secondary" dir="rtl" style="height:150px">
+                            {{$seting->where('type' , 'version')->first()->status}}
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2023 at 04:23 PM
+-- Generation Time: Jul 27, 2023 at 09:19 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -49,7 +49,11 @@ INSERT INTO `setings` (`id`, `type`, `status`, `created_at`, `updated_at`) VALUE
 (7, 'menu_store', '1', '2020-10-03 20:30:00', '2023-07-26 03:32:31'),
 (8, 'menu_acco_1', '1', '2020-10-03 20:30:00', '2023-07-26 04:03:18'),
 (9, 'menu_acco_2', '1', '2020-10-30 20:30:00', '2023-07-26 04:03:10'),
-(10, 'def_acco', '1', '2020-10-03 20:30:00', '2023-07-26 10:52:47');
+(10, 'def_acco', '1', '2020-10-03 20:30:00', '2023-07-26 10:52:47'),
+(11, 'mult', '0', '2020-10-03 20:30:00', '2023-07-26 12:30:37'),
+(12, 'lock_cashire', '0', '2020-10-03 20:30:00', '2021-10-05 20:03:38'),
+(13, 'lock_acco', '0', '2020-10-30 20:30:00', '2022-05-10 18:45:39'),
+(14, 'lock_store', '0', '2020-10-03 20:30:00', '2020-10-03 20:30:00');
 
 --
 -- Indexes for dumped tables
@@ -69,7 +73,7 @@ ALTER TABLE `setings`
 -- AUTO_INCREMENT for table `setings`
 --
 ALTER TABLE `setings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
