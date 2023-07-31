@@ -65,21 +65,7 @@ const app = createApp({
                 console.error(res.data)
             })
         },
-        edit_product(id){
-            axios.post('/cashier/edit/number' , {id:id,number:this.number_edit}).then((res)=>{
-                this.number_edit = null
-                this.first_product = res.data.first
-                this.factor_product = res.data.factor
-                this.total_number = res.data.total_number
-                //this.total_price = res.data.total_price
-                this.total_price = this.ToRial(res.data.total_price)
 
-            }).catch((res)=>{
-                this.first_product = null
-                this.factor_product = null
-                console.error(res.data)
-            })
-        },
         new_products()
         {
             axios.post('/cashier/new/products' , {code:this.barcode_new_product}).then((res)=>{
@@ -245,6 +231,34 @@ const app = createApp({
                 location.reload()
             }).catch((res)=>{
                 console.error(res)
+            })
+        },
+        edit_number(id , mode){
+            axios.post('/cashier/edit/total/number' , {id:id , mode:mode}).then((res)=>{
+                //console.log(res.data)
+                this.number_edit = null
+                this.first_product = res.data.first
+                this.factor_product = res.data.factor
+                this.total_number = res.data.total_number
+                //this.total_price = res.data.total_price
+                this.total_price = this.ToRial(res.data.total_price)
+            }).catch((res)=>{
+                console.error(res)
+            })
+        },
+        edit_product(id){
+            axios.post('/cashier/edit/number' , {id:id,number:this.number_edit}).then((res)=>{
+                this.number_edit = null
+                this.first_product = res.data.first
+                this.factor_product = res.data.factor
+                this.total_number = res.data.total_number
+                //this.total_price = res.data.total_price
+                this.total_price = this.ToRial(res.data.total_price)
+
+            }).catch((res)=>{
+                this.first_product = null
+                this.factor_product = null
+                console.error(res.data)
             })
         },
 

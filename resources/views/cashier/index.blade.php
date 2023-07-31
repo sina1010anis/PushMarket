@@ -1,6 +1,7 @@
 @extends('cashier.page')
 
 @section('index')
+
 <div class="row">
     <div class="{{($seting->find(1)->status == 1) ? 'col-8' : 'col-12'}}" style="background-color: rgb(250, 255, 250)">
         <div dir="rtl" class="row" style="background-color: rgb(255, 255, 247)">
@@ -72,7 +73,12 @@
                             <td>@{{index+1}}</td>
                             <td><img :src="'/'+item.image" width="30" height="30" alt=""></td>
                             <td><span class="my-font-IYL my-f-12 my-color-b-800">نام: @{{item.name}}</span></td>
-                            <td><button class="btn-r border-0 rounded-2 mx-2" @click="number_edit--">-</button><span class="my-font-IYL my-f-12 my-color-b-800"> @{{item.total_number}} <input style="width: 40px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit"></span><button class="btn-g border-0 rounded-2 mx-2" @click="number_edit++">+</button></td>
+                            <td>
+                                <button class="btn-r border-0 rounded-2 mx-2" @click="edit_number(item.id,'down')">-</button>
+                                <span class="my-font-IYL my-f-12 my-color-b-800"> @{{item.total_number}}
+                                     <input style="width: 40px" class="text-center" @keyup.enter="edit_product(item.id)" type="number" v-model="number_edit">
+                                </span>
+                                <button class="btn-g border-0 rounded-2 mx-2" @click="edit_number(item.id,'up')">+</button></td>
                             <td><span class="my-font-IYL my-f-12 my-color-b-800"> @{{ToRial(item.price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">{{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}}</span></span></td>
                             <td><span class="my-font-IYL my-f-12 my-color-b-800"> @{{ToRial(item.total_price)}} <span class="my-f-10 my-color-b-500 my-font-IYL">{{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}}</span></span></td>
                         </tr>
@@ -126,6 +132,7 @@
             <div style="background-color: rgb(250, 250, 255)" class="h-50 w-100 p-3">
                 <div dir="rtl" class="d-flex justify-content-between align-items-center">
                     <span class="my-font-ISL my-f-11 my-color-b-700">لیست بدهکار ها</span>
+                    <a href="{{route('cashier.creditor')}}"><button class="btn btn-r btn-sm my-font-IYM-i my-f-9-i">لیست</button></a>
                 </div>
                 <div class="overflow-y-scroll" style="max-height: 350px;height: 100%">
                     @foreach ($creditors as $creditor)
@@ -145,6 +152,8 @@
             <div style="background-color: rgb(241, 241, 255)" class="h-25 w-100 p-3 pt-2">
                 <div dir="rtl" class="d-flex justify-content-between align-items-center">
                     <span class="my-font-ISL my-f-11 my-color-b-700">استعلام قیمت</span>
+                    <a href="{{route('cashier.products')}}"><button class="btn btn-r btn-sm my-font-IYM-i my-f-9-i">صفحه اصلی</button></a>
+
                 </div>
                 <div>
                     <div class="row">

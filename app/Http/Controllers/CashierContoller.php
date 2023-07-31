@@ -65,7 +65,22 @@ class CashierContoller extends Controller
         ProductSimpel::where('factor_id' ,null)->update(['factor_id' => $new_factor->id]);
         return back()->with('msg' , 'فاکتور ساخته شد');
     }
-
+    public function edit_total_number(Request $request)
+    {
+        $data = ProductSimpel::find($request->id);
+        if($request->mode == 'down'){
+            if($data->total_number > 1){
+                ProductSimpel::whereId($request->id)->decrement('total_number');
+            }else{
+                ProductSimpel::whereId($request->id)->delete();
+            }
+        }else{
+            ProductSimpel::whereId($request->id)->increment('total_number');
+        }
+        $factor = ProductSimpel::latest('id')->where('factor_id' , null)->get();
+        $product_count = ProductSimpel::where('factor_id' , null)->count();
+        return ['first' => null , 'factor' => $factor, 'total_number'=> $factor->sum('total_number'), 'total_price'=> $factor->sum('total_price') , 'number'=>$product_count];
+    }
     public function save_product(Request $request)
     {
         $count_data = Product::whereBarcode($request->code)->count();

@@ -36,6 +36,7 @@ Route::controller(CashierContoller::class)->prefix('cashier')->middleware('lock_
     Route::get('/save/factor', 'save_factor')->name('save.factor');
 
     Route::post('/edit/number', 'edit_number')->name('edit.number');
+    Route::post('/edit/total/number', 'edit_total_number')->name('edit.total.number');
     Route::get('/edit/product/{name}', 'edit_product')->name('edit.product');
     Route::post('/edit/product/{name}', 'edit_product_p')->name('edit.product.p');
 

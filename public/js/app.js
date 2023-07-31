@@ -17724,24 +17724,6 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
         console.error(res.data);
       });
     },
-    edit_product: function edit_product(id) {
-      var _this3 = this;
-      axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/cashier/edit/number', {
-        id: id,
-        number: this.number_edit
-      }).then(function (res) {
-        _this3.number_edit = null;
-        _this3.first_product = res.data.first;
-        _this3.factor_product = res.data.factor;
-        _this3.total_number = res.data.total_number;
-        //this.total_price = res.data.total_price
-        _this3.total_price = _this3.ToRial(res.data.total_price);
-      })["catch"](function (res) {
-        _this3.first_product = null;
-        _this3.factor_product = null;
-        console.error(res.data);
-      });
-    },
     new_products: function new_products() {
       axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/cashier/new/products', {
         code: this.barcode_new_product
@@ -17757,33 +17739,33 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       });
     },
     search_product: function search_product() {
-      var _this4 = this;
+      var _this3 = this;
       axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/cashier/search/product', {
         code: this.text_search_product
       }).then(function (res) {
-        _this4.data_search_product = res.data;
+        _this3.data_search_product = res.data;
         console.log(res.data);
       })["catch"](function (res) {
         console.error(res.data);
       });
     },
     search_name_creditor: function search_name_creditor() {
-      var _this5 = this;
+      var _this4 = this;
       axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/cashier/creditor/search/name', {
         name: this.name_creditor
       }).then(function (res) {
-        _this5.data_search_creditor = res.data;
+        _this4.data_search_creditor = res.data;
         console.log(res.data);
       })["catch"](function (res) {
         console.error(res.data);
       });
     },
     search_name_receipt: function search_name_receipt() {
-      var _this6 = this;
+      var _this5 = this;
       axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/cashier/receipt/search/name', {
         name: this.name_receipt
       }).then(function (res) {
-        _this6.data_search_receipt = res.data;
+        _this5.data_search_receipt = res.data;
         console.log(res.data);
       })["catch"](function (res) {
         console.error(res.data);
@@ -17834,18 +17816,18 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       ;
     },
     search_price_by_name: function search_price_by_name() {
-      var _this7 = this;
+      var _this6 = this;
       axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/cashier/search/price', {
         name: this.search_name,
         model: 'name'
       }).then(function (res) {
         //return console.log(res.data)
-        _this7.search_name = null;
-        _this7.price_product = res.data;
+        _this6.search_name = null;
+        _this6.price_product = res.data;
       })["catch"](function (res) {
-        _this7.first_product = null;
-        _this7.factor_product = null;
-        _this7.search_number = null;
+        _this6.first_product = null;
+        _this6.factor_product = null;
+        _this6.search_number = null;
         console.error(res.data);
       });
     },
@@ -17918,6 +17900,41 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
         location.reload();
       })["catch"](function (res) {
         console.error(res);
+      });
+    },
+    edit_number: function edit_number(id, mode) {
+      var _this7 = this;
+      axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/cashier/edit/total/number', {
+        id: id,
+        mode: mode
+      }).then(function (res) {
+        //console.log(res.data)
+        _this7.number_edit = null;
+        _this7.first_product = res.data.first;
+        _this7.factor_product = res.data.factor;
+        _this7.total_number = res.data.total_number;
+        //this.total_price = res.data.total_price
+        _this7.total_price = _this7.ToRial(res.data.total_price);
+      })["catch"](function (res) {
+        console.error(res);
+      });
+    },
+    edit_product: function edit_product(id) {
+      var _this8 = this;
+      axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/cashier/edit/number', {
+        id: id,
+        number: this.number_edit
+      }).then(function (res) {
+        _this8.number_edit = null;
+        _this8.first_product = res.data.first;
+        _this8.factor_product = res.data.factor;
+        _this8.total_number = res.data.total_number;
+        //this.total_price = res.data.total_price
+        _this8.total_price = _this8.ToRial(res.data.total_price);
+      })["catch"](function (res) {
+        _this8.first_product = null;
+        _this8.factor_product = null;
+        console.error(res.data);
       });
     }
   },
