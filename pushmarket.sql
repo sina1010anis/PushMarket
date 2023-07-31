@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2023 at 09:38 AM
+-- Generation Time: Jul 31, 2023 at 03:56 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -77,6 +77,13 @@ CREATE TABLE `account_cashes` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `account_cashes`
+--
+
+INSERT INTO `account_cashes` (`id`, `total`, `des`, `stauts`, `created_at`, `updated_at`) VALUES
+(20, 78978, 'ewe', 1, '2023-07-29 13:12:24', '2023-07-29 13:12:24');
+
 -- --------------------------------------------------------
 
 --
@@ -116,6 +123,13 @@ CREATE TABLE `cashires` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `cashires`
+--
+
+INSERT INTO `cashires` (`id`, `name`, `username`, `password`, `stuats`, `created_at`, `updated_at`) VALUES
+(9, 'test', 'test', 'test', 0, '2023-07-30 16:51:52', '2023-07-30 16:52:40');
+
 -- --------------------------------------------------------
 
 --
@@ -130,6 +144,15 @@ CREATE TABLE `creditors` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `creditors`
+--
+
+INSERT INTO `creditors` (`id`, `name`, `price`, `des`, `created_at`, `updated_at`) VALUES
+(36, 'صندوقدار اول', 3442343, 'qwqwqw', '2023-07-29 12:18:51', '2023-07-29 12:18:51'),
+(37, 'test 2', 897987, 'test', '2023-07-29 12:56:21', '2023-07-29 12:56:21'),
+(38, 'احمد', 897987, 'est', '2023-07-29 12:56:34', '2023-07-29 12:56:34');
 
 -- --------------------------------------------------------
 
@@ -176,7 +199,8 @@ INSERT INTO `factors` (`id`, `total_price`, `total_number`, `created_at`, `updat
 (31, 9000, 1, '2023-07-24 11:21:11', '2023-07-24 11:21:11'),
 (32, 9000, 1, '2023-07-24 11:21:27', '2023-07-24 11:21:27'),
 (33, 9000, 1, '2023-07-24 11:21:49', '2023-07-24 11:21:49'),
-(34, 45000, 5, '2023-07-26 03:10:54', '2023-07-26 03:10:54');
+(34, 45000, 5, '2023-07-26 03:10:54', '2023-07-26 03:10:54'),
+(35, 27000, 3, '2023-07-29 12:18:02', '2023-07-29 12:18:02');
 
 -- --------------------------------------------------------
 
@@ -383,7 +407,10 @@ INSERT INTO `product_simpels` (`id`, `product_id`, `total_number`, `total_price`
 (90, 51, 1, 9000, 'شکلات تک تک بزرگ', 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, 32),
 (91, 51, 1, 9000, 'شکلات تک تک بزرگ', 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, 33),
 (92, 51, 5, 45000, 'شکلات تک تک بزرگ', 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, 34),
-(93, 51, 3, 27000, 'شکلات تک تک بزرگ', 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, NULL);
+(93, 51, 3, 27000, 'شکلات تک تک بزرگ', 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, 35),
+(94, 51, 19, 189000, 'شکلات تک تک بزرگ', 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, NULL),
+(95, 47, 2, 115000, 'چای دبش 500 گرمی', 'storage/images/debsh jayeze 500.jpg', 115000, NULL),
+(97, 35, 4, 25000, 'نوشابه خانواده 1.5', 'storage/images/P5.jpg', 25000, NULL);
 
 -- --------------------------------------------------------
 
@@ -398,6 +425,13 @@ CREATE TABLE `receipts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `receipts`
+--
+
+INSERT INTO `receipts` (`id`, `name`, `price`, `created_at`, `updated_at`) VALUES
+(6, 'test', 878978, '2023-07-29 12:55:38', '2023-07-29 12:55:38');
 
 -- --------------------------------------------------------
 
@@ -420,20 +454,27 @@ CREATE TABLE `setings` (
 --
 
 INSERT INTO `setings` (`id`, `type`, `status`, `username`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'win_cashire', '0', NULL, NULL, '2020-10-03 20:30:00', '2023-07-29 04:07:58'),
-(2, 'unit', '1', NULL, NULL, '2020-10-03 20:30:00', '2023-07-26 03:22:25'),
+(1, 'win_cashire', '1', NULL, NULL, '2020-10-03 20:30:00', '2023-07-29 04:19:58'),
+(2, 'unit', '0', NULL, NULL, '2020-10-03 20:30:00', '2023-07-31 10:03:12'),
 (3, 'menu_cashire_1', '1', NULL, NULL, '2020-10-03 20:30:00', '2023-07-26 03:24:58'),
 (4, 'menu_cashire_2', '1', NULL, NULL, '2020-10-30 20:30:00', '2023-07-26 03:24:56'),
 (5, 'menu_cashire_3', '1', NULL, NULL, '2020-10-03 20:30:00', '2023-07-26 03:24:53'),
 (6, 'menu_cashire_4', '1', NULL, NULL, '2020-10-03 20:30:00', '2023-07-26 03:24:51'),
-(7, 'menu_store', '0', NULL, NULL, '2020-10-03 20:30:00', '2023-07-29 04:08:07'),
+(7, 'menu_store', '1', NULL, NULL, '2020-10-03 20:30:00', '2023-07-29 04:10:48'),
 (8, 'menu_acco_1', '1', NULL, NULL, '2020-10-03 20:30:00', '2023-07-26 04:03:18'),
-(9, 'menu_acco_2', '1', NULL, NULL, '2020-10-30 20:30:00', '2023-07-26 04:03:10'),
+(9, 'menu_acco_2', '1', NULL, NULL, '2020-10-30 20:30:00', '2023-07-29 12:43:27'),
 (10, 'def_acco', '1', NULL, NULL, '2020-10-03 20:30:00', '2023-07-26 10:52:47'),
-(11, 'mult', '0', NULL, NULL, '2020-10-03 20:30:00', '2023-07-27 04:39:18'),
-(12, 'lock_cashire', '1', 'test_2', 'sina1010', '2020-10-03 20:30:00', '2023-07-27 05:08:26'),
+(11, 'mult', '0', NULL, NULL, '2020-10-03 20:30:00', '2023-07-30 16:52:55'),
+(12, 'lock_cashire', '0', 'test', 'test', '2020-10-03 20:30:00', '2023-07-30 16:52:48'),
 (13, 'lock_acco', '0', 'test', '123', '2020-10-30 20:30:00', '2023-07-27 05:08:20'),
-(14, 'lock_store', '0', 'test', '123', '2020-10-03 20:30:00', '2023-07-27 03:51:02');
+(14, 'lock_store', '0', 'test', '123', '2020-10-03 20:30:00', '2023-07-27 03:51:02'),
+(15, 'version', '1.0.0', NULL, NULL, NULL, NULL),
+(16, 'name', 'Push Market', NULL, NULL, NULL, NULL),
+(17, 'key', 'wnsN1[>3:|6Wx6NTH0>z\r\n', NULL, NULL, NULL, NULL),
+(18, 'devloper', 'Sina Nayebzade', NULL, NULL, NULL, NULL),
+(19, 'time', '1', NULL, NULL, NULL, '2023-07-30 11:29:33'),
+(20, 'Git Hub', 'https://github.com/sina1010anis', NULL, NULL, NULL, NULL),
+(21, 'type', 'فروشگاهی مواد غذایی (پیشرفته)', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -451,6 +492,13 @@ CREATE TABLE `stores` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `stores`
+--
+
+INSERT INTO `stores` (`id`, `name`, `barcode`, `location`, `total_number`, `box`, `created_at`, `updated_at`) VALUES
+(14, 'werwer', NULL, 'wewe', 2323, '232323', '2023-07-29 13:12:50', '2023-07-29 13:12:50');
 
 -- --------------------------------------------------------
 
@@ -607,7 +655,7 @@ ALTER TABLE `account_bancks`
 -- AUTO_INCREMENT for table `account_cashes`
 --
 ALTER TABLE `account_cashes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `all_accounts`
@@ -619,19 +667,19 @@ ALTER TABLE `all_accounts`
 -- AUTO_INCREMENT for table `cashires`
 --
 ALTER TABLE `cashires`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `creditors`
 --
 ALTER TABLE `creditors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `factors`
 --
 ALTER TABLE `factors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -661,31 +709,31 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `product_simpels`
 --
 ALTER TABLE `product_simpels`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `setings`
 --
 ALTER TABLE `setings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `stores`
 --
 ALTER TABLE `stores`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
