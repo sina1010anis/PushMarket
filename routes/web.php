@@ -27,6 +27,7 @@ Route::controller(CashierContoller::class)->prefix('cashier')->middleware('lock_
     Route::get('/products', 'products')->name('products');
 
     Route::post('/new/products', 'new_products')->name('new.products');
+    Route::post('/new/news', 'new_news')->name('new.news');
     Route::post('/u_new/products', 'u_new_products')->name('u_new.products');
 
     Route::post('/search/product', 'search_product')->name('search.product');
@@ -42,6 +43,7 @@ Route::controller(CashierContoller::class)->prefix('cashier')->middleware('lock_
 
     Route::get('/delete/product/{id}', 'delete_product')->name('delete.product');
     Route::post('/delete/products', 'delete_products')->name('delete.products');
+    Route::post('/delete/news', 'delete_news')->name('delete.news');
 
     Route::get('/report' , 'report')->name('report');
     Route::post('/report/products' , 'reprot_products')->name('reprot.products');

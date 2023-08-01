@@ -1,6 +1,7 @@
 @extends('welcome')
 
 @section('index')
+
     <div class="row" style="height: 721px;">
         <div class="col-12  p-2" style="background-color: rgb(255, 240, 240)">
             <form action="{{route('store.delete.store')}}" method="post">
@@ -64,60 +65,25 @@
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">نام</span>
             <input type="text" value="{{old('name')}}" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="نام محصول برای نمایش ..." name="name">
         </div>
-        @error ('name')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">قیمت</span>
             <input type="text" value="{{old('price')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="قیمت محصول به ریال می باشد..." name="price">
         </div>
-        @error ('price')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">موقعیت در انبار</span>
             <input type="text" value="{{old('location')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="موضقعیت در انبار" name="location">
         </div>
-        @error ('location')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">تعداد کل (تک)</span>
             <input type="text" value="{{old('total_number')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="تعداد کل" name="total_number">
         </div>
-        @error ('total_number')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">تعداد کل جعبه ها</span>
             <input type="text" value="{{old('box')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="تعداد کل جعبه ها" name="box">
         </div>
-        @error ('box')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div class="col-auto d-flex justify-content-center align-items-center">
-            <button type="submit" class="btn btn-g btn-sm my-font-IYL my-f-11-i mb-3">ثبت محصول جدید</button>
-            <button @click="cls_page" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL my-f-11-i mb-3">بستن</button>
+            <button type="submit" class="btn btn-g btn-sm my-font-IYL-i my-f-11-i mb-3">ثبت محصول جدید</button>
+            <button @click="cls_page" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>
         </div>
     </form>
 </div>

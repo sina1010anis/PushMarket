@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2023 at 03:57 PM
+-- Generation Time: Jul 31, 2023 at 04:59 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -52,11 +52,11 @@ INSERT INTO `setings` (`id`, `type`, `status`, `username`, `password`, `created_
 (8, 'menu_acco_1', '1', NULL, NULL, '2020-10-03 20:30:00', '2023-07-26 04:03:18'),
 (9, 'menu_acco_2', '1', NULL, NULL, '2020-10-30 20:30:00', '2023-07-29 12:43:27'),
 (10, 'def_acco', '1', NULL, NULL, '2020-10-03 20:30:00', '2023-07-26 10:52:47'),
-(11, 'mult', '0', NULL, NULL, '2020-10-03 20:30:00', '2023-07-30 16:52:55'),
+(11, 'mult', '0', NULL, NULL, '2020-10-03 20:30:00', '2023-07-31 11:09:02'),
 (12, 'lock_cashire', '0', 'test', 'test', '2020-10-03 20:30:00', '2023-07-30 16:52:48'),
 (13, 'lock_acco', '0', 'test', '123', '2020-10-30 20:30:00', '2023-07-27 05:08:20'),
 (14, 'lock_store', '0', 'test', '123', '2020-10-03 20:30:00', '2023-07-27 03:51:02'),
-(15, 'version', '1.0.0', NULL, NULL, NULL, NULL),
+(15, 'version', '1.0.5', NULL, NULL, NULL, NULL),
 (16, 'name', 'Push Market', NULL, NULL, NULL, NULL),
 (17, 'key', 'wnsN1[>3:|6Wx6NTH0>z\r\n', NULL, NULL, NULL, NULL),
 (18, 'devloper', 'Sina Nayebzade', NULL, NULL, NULL, NULL),

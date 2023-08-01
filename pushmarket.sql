@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2023 at 03:56 PM
+-- Generation Time: Jul 31, 2023 at 05:00 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -152,7 +152,7 @@ CREATE TABLE `creditors` (
 INSERT INTO `creditors` (`id`, `name`, `price`, `des`, `created_at`, `updated_at`) VALUES
 (36, 'صندوقدار اول', 3442343, 'qwqwqw', '2023-07-29 12:18:51', '2023-07-29 12:18:51'),
 (37, 'test 2', 897987, 'test', '2023-07-29 12:56:21', '2023-07-29 12:56:21'),
-(38, 'احمد', 897987, 'est', '2023-07-29 12:56:34', '2023-07-29 12:56:34');
+(38, 'احمد اقا', 897987, 'est', '2023-07-29 12:56:34', '2023-07-31 11:19:01');
 
 -- --------------------------------------------------------
 
@@ -200,7 +200,8 @@ INSERT INTO `factors` (`id`, `total_price`, `total_number`, `created_at`, `updat
 (32, 9000, 1, '2023-07-24 11:21:27', '2023-07-24 11:21:27'),
 (33, 9000, 1, '2023-07-24 11:21:49', '2023-07-24 11:21:49'),
 (34, 45000, 5, '2023-07-26 03:10:54', '2023-07-26 03:10:54'),
-(35, 27000, 3, '2023-07-29 12:18:02', '2023-07-29 12:18:02');
+(35, 27000, 3, '2023-07-29 12:18:02', '2023-07-29 12:18:02'),
+(36, 149000, 3, '2023-07-31 10:32:37', '2023-07-31 10:32:37');
 
 -- --------------------------------------------------------
 
@@ -348,7 +349,8 @@ INSERT INTO `products` (`id`, `name`, `barcode`, `image`, `price`, `created_at`,
 (35, 'نوشابه خانواده 1.5', 55555, 'storage/images/P5.jpg', 25000, '2023-07-03 10:38:03', '2023-07-05 11:16:21', 1),
 (46, 'لپه', 66666, 'storage/images/download.jpg', 65000, '2023-07-05 11:18:39', '2023-07-05 11:19:59', NULL),
 (47, 'چای دبش 500 گرمی', 77777, 'storage/images/debsh jayeze 500.jpg', 115000, '2023-07-05 12:03:11', '2023-07-05 12:03:32', NULL),
-(51, 'شکلات تک تک بزرگ', 252525, 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, '2023-07-09 10:30:27', '2023-07-09 10:31:29', NULL);
+(51, 'شکلات تک تک بزرگ', 252525, 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, '2023-07-09 10:30:27', '2023-07-09 10:31:29', NULL),
+(67, NULL, 88888, NULL, NULL, '2023-07-31 11:23:31', '2023-07-31 11:23:31', NULL);
 
 -- --------------------------------------------------------
 
@@ -408,9 +410,9 @@ INSERT INTO `product_simpels` (`id`, `product_id`, `total_number`, `total_price`
 (91, 51, 1, 9000, 'شکلات تک تک بزرگ', 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, 33),
 (92, 51, 5, 45000, 'شکلات تک تک بزرگ', 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, 34),
 (93, 51, 3, 27000, 'شکلات تک تک بزرگ', 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, 35),
-(94, 51, 19, 189000, 'شکلات تک تک بزرگ', 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, NULL),
-(95, 47, 2, 115000, 'چای دبش 500 گرمی', 'storage/images/debsh jayeze 500.jpg', 115000, NULL),
-(97, 35, 4, 25000, 'نوشابه خانواده 1.5', 'storage/images/P5.jpg', 25000, NULL);
+(94, 51, 1, 9000, 'شکلات تک تک بزرگ', 'storage/images/015e46d5-c599-46b6-8a9d-f8184c1924ce.jpg', 9000, 36),
+(95, 47, 1, 115000, 'چای دبش 500 گرمی', 'storage/images/debsh jayeze 500.jpg', 115000, 36),
+(97, 35, 1, 25000, 'نوشابه خانواده 1.5', 'storage/images/P5.jpg', 25000, 36);
 
 -- --------------------------------------------------------
 
@@ -464,11 +466,11 @@ INSERT INTO `setings` (`id`, `type`, `status`, `username`, `password`, `created_
 (8, 'menu_acco_1', '1', NULL, NULL, '2020-10-03 20:30:00', '2023-07-26 04:03:18'),
 (9, 'menu_acco_2', '1', NULL, NULL, '2020-10-30 20:30:00', '2023-07-29 12:43:27'),
 (10, 'def_acco', '1', NULL, NULL, '2020-10-03 20:30:00', '2023-07-26 10:52:47'),
-(11, 'mult', '0', NULL, NULL, '2020-10-03 20:30:00', '2023-07-30 16:52:55'),
+(11, 'mult', '0', NULL, NULL, '2020-10-03 20:30:00', '2023-07-31 11:09:02'),
 (12, 'lock_cashire', '0', 'test', 'test', '2020-10-03 20:30:00', '2023-07-30 16:52:48'),
 (13, 'lock_acco', '0', 'test', '123', '2020-10-30 20:30:00', '2023-07-27 05:08:20'),
 (14, 'lock_store', '0', 'test', '123', '2020-10-03 20:30:00', '2023-07-27 03:51:02'),
-(15, 'version', '1.0.0', NULL, NULL, NULL, NULL),
+(15, 'version', '1.0.5', NULL, NULL, NULL, NULL),
 (16, 'name', 'Push Market', NULL, NULL, NULL, NULL),
 (17, 'key', 'wnsN1[>3:|6Wx6NTH0>z\r\n', NULL, NULL, NULL, NULL),
 (18, 'devloper', 'Sina Nayebzade', NULL, NULL, NULL, NULL),
@@ -498,7 +500,8 @@ CREATE TABLE `stores` (
 --
 
 INSERT INTO `stores` (`id`, `name`, `barcode`, `location`, `total_number`, `box`, `created_at`, `updated_at`) VALUES
-(14, 'werwer', NULL, 'wewe', 2323, '232323', '2023-07-29 13:12:50', '2023-07-29 13:12:50');
+(14, 'werwer', NULL, 'wewe', 2323, '232323', '2023-07-29 13:12:50', '2023-07-29 13:12:50'),
+(15, 'فثسف', NULL, 'rewer', 65465, '564654', '2023-07-31 11:28:41', '2023-07-31 11:28:41');
 
 -- --------------------------------------------------------
 
@@ -679,7 +682,7 @@ ALTER TABLE `creditors`
 -- AUTO_INCREMENT for table `factors`
 --
 ALTER TABLE `factors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -709,7 +712,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `product_simpels`
@@ -733,7 +736,7 @@ ALTER TABLE `setings`
 -- AUTO_INCREMENT for table `stores`
 --
 ALTER TABLE `stores`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`

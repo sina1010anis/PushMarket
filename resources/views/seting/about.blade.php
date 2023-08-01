@@ -1,11 +1,6 @@
 @extends('seting.page')
 
 @section('index')
-    @if (session('msg'))
-        <div class="page-msg-session px-4 py-2 my-font-IYM my-f-12 rounded-3 shadow text-center" dir="rtl">
-            {{session('msg')}}
-        </div>
-    @endif
     <div class='px-5'>
         <div class="d-flex justify-content-between align-items-center ">
             <span class="my-font-IYM my-f-18 my-color-b-600"> درباره نرم افزار</span>
@@ -22,7 +17,7 @@
                 <span class="my-font-IYM my-color-b-800 my-f-14">:نوع نرم افزار</span>
             </div>
             <div class="d-flex justify-content-between align-items-center my-4">
-                <span class="my-font-IYM my-color-b-400 my-f-14"> {{$seting->where('type' , 'version')->first()->status}}</span>
+                <span class="my-font-IYM my-color-b-400 my-f-14"> {{env('APP_VERSION')}} </span>
                 <span class="my-font-IYM my-color-b-800 my-f-14">:نسخه نرم افزار</span>
             </div>
             <div class="d-flex justify-content-between align-items-center my-4">

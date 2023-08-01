@@ -129,11 +129,5 @@
     </div>
 </div>
 
-@if (session('msg'))
-    <div class="page-msg-session px-4 py-2 my-font-IYM my-f-12 rounded-3 shadow text-center" dir="rtl">
-        {{session('msg')}}
-    </div>
-@endif
-
 
 @endsection

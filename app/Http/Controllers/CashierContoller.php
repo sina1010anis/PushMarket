@@ -13,6 +13,7 @@ use App\Models\ProductSimpel;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\EditNumber;
 use App\Http\Requests\NewProduct;
+use App\Http\Requests\NewsRequest;
 use App\Http\Requests\EditLockRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\EditReceptRequest;
@@ -20,6 +21,7 @@ use App\Http\Requests\ReceiptNewRequest;
 use App\Http\Requests\CreditorNewRequest;
 use App\Http\Requests\EditProductRequest;
 use App\Http\Requests\EditCraditorRequest;
+use App\Http\Requests\NewNewsRequest;
 
 class CashierContoller extends Controller
 {
@@ -193,6 +195,17 @@ class CashierContoller extends Controller
         return redirect()->route('cashier.products')->with('msg' , 'محصول با موفقیت ویرایش شد');
     }
 
+    public function delete_news(NewsRequest $request)
+    {
+        New_P::whereIn('id' , $request->news)->delete();
+        return back()->with('msg' , 'خبر های مورد نظر حذف شد');
+    }
+
+    public function new_news(NewNewsRequest $request)
+    {
+        New_P::create(['title' => $request->title , 'body' => $request->body]);
+        return back()->with('msg' , 'خبر مورد نظر اضافه شد.');
+    }
     public function report()
     {
         $factors = Factors::where('created_at' , '>=' , Carbon::today())->latest('id')->paginate(20);

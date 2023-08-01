@@ -1,11 +1,6 @@
 @extends('acco.page')
 
 @section('index')
-@if (session('msg'))
-    <div class="page-msg-session px-4 py-2 my-font-IYM my-f-12 rounded-3 shadow text-center" dir="rtl">
-        {{session('msg')}}
-    </div>
-@endif
     <div class="row h-100" >
         <div class="col-8 p-2" style="background-color: rgb(255, 240, 240)">
             <div class="col-12 d-flex justify-content-between align-items-center">
@@ -131,49 +126,21 @@
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">مانده حساب</span>
             <input type="number" value="{{old('total')}}" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="مانده حساب ..." name="total">
         </div>
-        @error ('total')
-            <div class="d-flex p-1 justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">بدهکاری</span>
             <input type="number" value="{{old('indebted')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="بدهکاری..." name="indebted">
         </div>
-        @error ('indebted')
-            <div class="d-flex p-1 justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">بستانکاری</span>
             <input type="number" value="{{old('creditor')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="بستانکاری ...." name="creditor">
         </div>
-        @error ('creditor')
-            <div class="d-flex p-1 justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">توضیحات</span>
             <input type="text" value="{{old('des')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="توضیحات ...." name="des">
         </div>
-        @error ('des')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div class="col-auto d-flex justify-content-center align-items-center">
-            <button type="submit" class="btn btn-g btn-sm my-font-IYL my-f-11-i mb-3">ثبت داده جدید</button>
-            <button @click="cls_page" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL my-f-11-i mb-3">بستن</button>
+            <button type="submit" class="btn btn-g btn-sm my-font-IYL-i my-f-11-i mb-3">ثبت داده جدید</button>
+            <button @click="cls_page" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>
         </div>
     </form>
 </div>
@@ -188,27 +155,13 @@
             <input type="number" value="{{old('total')}}" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="مقدار  ..." name="total">
 
         </div>
-        @error ('total')
-            <div class="d-flex p-1 justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">توضیحات</span>
             <input type="text" value="{{old('des')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="توضیحات ...." name="des">
         </div>
-        @error ('des')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div class="col-auto d-flex justify-content-center align-items-center">
-            <button type="submit" class="btn btn-g btn-sm my-font-IYL my-f-11-i mb-3">ثبت داده جدید</button>
-            <button @click="cls_page" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL my-f-11-i mb-3">بستن</button>
+            <button type="submit" class="btn btn-g btn-sm my-font-IYL-i my-f-11-i mb-3">ثبت داده جدید</button>
+            <button @click="cls_page" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>
         </div>
     </form>
 </div>
@@ -223,27 +176,13 @@
             <input type="number" value="{{old('total')}}" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="مقدار  ..." name="total">
 
         </div>
-        @error ('total')
-            <div class="d-flex p-1 justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">توضیحات</span>
             <input type="text" value="{{old('des')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="توضیحات ...." name="des">
         </div>
-        @error ('des')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div class="col-auto d-flex justify-content-center align-items-center">
-            <button type="submit" class="btn btn-g btn-sm my-font-IYL my-f-11-i mb-3">ثبت داده جدید</button>
-            <button @click="cls_page" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL my-f-11-i mb-3">بستن</button>
+            <button type="submit" class="btn btn-g btn-sm my-font-IYL-i my-f-11-i mb-3">ثبت داده جدید</button>
+            <button @click="cls_page" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>
         </div>
     </form>
 </div>

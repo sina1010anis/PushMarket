@@ -1,11 +1,6 @@
 @extends('seting.page')
 
 @section('index')
-@if (session('msg'))
-    <div class="page-msg-session px-4 py-2 my-font-IYM my-f-12 rounded-3 shadow text-center" dir="rtl">
-        {{session('msg')}}
-    </div>
-@endif
 <div class='px-5'>
     <div class="d-flex justify-content-between align-items-center ">
         <span class="my-font-IYM my-f-18 my-color-b-600"> حسابداری</span>
@@ -68,24 +63,10 @@
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">نام</span>
             <input type="text" value="{{old('name')}}" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="نام حساب بانکی ..." name="name">
         </div>
-        @error ('name')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">شماره کارت</span>
             <input type="text" value="{{old('number')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="شماره کار ..." name="number">
         </div>
-        @error ('number')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div class="col-auto d-flex justify-content-center align-items-center">
             <button type="submit" class="btn btn-g btn-sm my-font-IYL-i my-f-11-i mb-3">ثبت محصول جدید</button>
             <button @click="cls_page" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>

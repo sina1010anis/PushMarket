@@ -486,7 +486,20 @@ input:focus{
     transform: translate(-50%,-50%);
     z-index: 3;
 }
+.page-news{
+   max-width: 90%;
+   width: 90%;
+   height: 90%;
+   /* display: none; */
+   border-radius: 5px;
+   background-color: #fff;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%) scale(0);
+   z-index: 3;
 
+}
 .page-creditor , .page-price{
     width: 300px;
     height: 400px;
@@ -614,5 +627,17 @@ input:focus{
     top: 75%;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+.page-error{
+    background-color: rgb(255 186 186);
+    color: rgb(214 0 0);
+    border: 1px solid rgb(136 0 0);
+}
+.cls-msg{
+    width: 45px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 

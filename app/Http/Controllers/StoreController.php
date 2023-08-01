@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewStoreRequest;
 use App\Http\Requests\StoreRequest;
 use App\Models\Store;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class StoreController extends Controller
         return view('store.edit_product' , compact('data'));
     }
 
-    public function edit_product_post(Request $request , $id)
+    public function edit_product_post(NewStoreRequest $request , $id)
     {
         Store::whereId($id)->update(['name' => $request->name , 'barcode' => $request->barcode , 'location' => $request->location , 'box' => $request->box , 'total_number' => $request->total_number]);
         return redirect()->route('store.index');
@@ -31,7 +32,7 @@ class StoreController extends Controller
         return back()->with('msg' , 'محصولات مورد از انبار حذف شد');
     }
 
-    public function new_store(Request $request)
+    public function new_store(NewStoreRequest $request)
     {
         Store::create([
             'name' => $request->name,

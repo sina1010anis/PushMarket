@@ -17801,12 +17801,6 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeIn();
     },
-    cls_page: function cls_page() {
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeOut();
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeOut();
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').fadeOut();
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new').fadeOut();
-    },
     open_page_new_receipt: function open_page_new_receipt() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').fadeIn();
@@ -17834,6 +17828,26 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
     new_acco: function new_acco() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').fadeIn();
+    },
+    new_news: function new_news() {
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeIn();
+    },
+    win_news: function win_news() {
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()(".page-news").css({
+        "transform": "translate(-50%,-50%) scale(1)",
+        "transition": '0.2s'
+      });
+    },
+    cls_page: function cls_page() {
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeOut();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeOut();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').fadeOut();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new').fadeOut();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()(".page-news").css({
+        "transform": "translate(-50%,-50%) scale(0)",
+        "transition": '0.2s'
+      });
     },
     new_store: function new_store() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
@@ -17936,7 +17950,13 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
         _this8.factor_product = null;
         console.error(res.data);
       });
-    }
+    },
+    cls_msg: function cls_msg() {
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-msg-session').animate({
+        right: '-500px'
+      });
+    },
+    open_news: function open_news() {}
   },
   mounted: function mounted() {
     var inputElem = document.getElementById("input_send");

@@ -136,13 +136,7 @@ const app = createApp({
             $('.page-hiden').fadeIn();
             $('.page-new-product').fadeIn();
         },
-        cls_page()
-        {
-            $('.page-hiden').fadeOut();
-            $('.page-new-product').fadeOut();
-            $('.page-new-product-2').fadeOut();
-            $('.page-new').fadeOut();
-        },
+
         open_page_new_receipt()
         {
             $('.page-hiden').fadeIn();
@@ -168,6 +162,23 @@ const app = createApp({
         {
             $('.page-hiden').fadeIn();
             $('.page-new-product-2').fadeIn();
+        },
+        new_news()
+        {
+            $('.page-new-product').fadeIn();
+        },
+        win_news()
+        {
+            $('.page-hiden').fadeIn();
+            $(".page-news").css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
+        },
+        cls_page()
+        {
+            $('.page-hiden').fadeOut();
+            $('.page-new-product').fadeOut();
+            $('.page-new-product-2').fadeOut();
+            $('.page-new').fadeOut();
+            $(".page-news").css({"transform": "translate(-50%,-50%) scale(0)" , "transition" : '0.2s'});
         },
         new_store()
         {
@@ -261,7 +272,15 @@ const app = createApp({
                 console.error(res.data)
             })
         },
+        cls_msg(){
+            $('.page-msg-session').animate({
+                right: '-500px'
+            });
+        },
+        open_news()
+        {
 
+        },
     },
     mounted:()=>{
         var inputElem = document.getElementById("input_send");

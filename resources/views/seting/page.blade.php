@@ -24,6 +24,20 @@
                         <div class="row my-4"  style="height: 670px;">
                             <div class="col-10 offset-1 row mt-5">
                                 <div class="col-8 p-2" style="background-color: rgb(249, 249, 249)">
+                                    @if (session('msg'))
+                                    <div class="page-msg-session px-4 py-2 my-font-IYM my-f-12 rounded-3 shadow text-center" dir="rtl">
+                                        <div @click="cls_msg" class="cls-msg d-flex justify-content-center align-items-center"><i class="bi bi-arrow-bar-right my-f-22 my-pointer"></i></div>
+                                        {{session('msg')}}
+                                    </div>
+                                @endif
+                                @if ($errors->any())
+                                    <div class="page-msg-session page-error px-4 py-2  rounded-3 shadow text-center" style="z-index: 5;    background-color: rgb(255 222 222)!important;color: rgb(214 0 0)!important;border: 1px solid rgb(136 0 0)!important" dir="rtl">
+                                        <div @click="cls_msg" class="cls-msg d-flex justify-content-center align-items-center"><i class="bi bi-arrow-bar-right my-f-22 my-pointer"></i></div>
+                                        @foreach ($errors->all() as $error)
+                                            <div dir="rtl" class="my-font-IYM my-f-12 my-2">{{ $error}}</div>
+                                        @endforeach
+                                    </div>
+                                @endif
                                     @yield('index')
                                 </div>
                                 <div class="col-4 p-3" style="background-color: rgb(234, 234, 234)">
@@ -66,7 +80,7 @@
                     </div>
                     <div class="col-12 d-flex justify-content-center align-items-center my-pos-rel" style="height: 69px!important;overflow: hidden">
                         <div class="  box-view-version my-f-17 my-font-IYM my-select-none text-center pt-4 text-secondary" dir="rtl" style="height:150px">
-                            {{$seting->where('type' , 'version')->first()->status}}
+                            {{env('APP_VERSION')}}
                         </div>
                     </div>
 

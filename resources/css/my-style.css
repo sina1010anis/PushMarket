@@ -306,7 +306,9 @@
 .my-sc-0-1 {
     transform: scale(0.1);
 }
-
+.my-sc-0-0 {
+    transform: scale(0);
+}
 .my-h-50 {
     height: 50%;
 }

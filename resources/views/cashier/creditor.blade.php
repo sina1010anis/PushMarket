@@ -1,12 +1,6 @@
 @extends('cashier.page')
 
 @section('index')
-@if (session('msg'))
-    <div class="page-msg-session px-4 py-2 my-font-IYM my-f-12 rounded-3 shadow text-center" dir="rtl">
-        {{session('msg')}}
-    </div>
-@endif
-
 <div class="d-flex justify-content-center my-3">
     <div class="w-50 mx-2 border" style="max-height: 600px;overflow-y: scroll">
         <br>
@@ -176,38 +170,17 @@
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">نام</span>
             <input type="text" value="{{old('name')}}" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="نام محصول برای نمایش ..." name="name">
         </div>
-        @error ('name')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">قیمت</span>
             <input type="text" value="{{old('price')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="قیمت محصول به ریال می باشد..." name="price">
         </div>
-        @error ('price')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">توضیحات</span>
             <input type="text" value="{{old('des')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="محصولاتی که برده یا هر نوع توضیحاتی ...." name="des">
         </div>
-        @error ('des')
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="w-75">
-                    <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-                </div>
-            </div>
-        @endif
         <div class="col-auto d-flex justify-content-center align-items-center">
-            <button type="submit" class="btn btn-success btn-sm my-font-IYL my-f-11-i mb-3">ثبت محصول جدید</button>
-            <button @click="cls_page" type="button" class="btn btn-danger mx-2 btn-sm my-font-IYL my-f-11-i mb-3">بستن</button>
+            <button type="submit" class="btn btn-g btn-sm my-font-IYL-i my-f-11-i mb-3">ثبت محصول جدید</button>
+            <button @click="cls_page" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>
         </div>
     </form>
 </div>
@@ -221,27 +194,13 @@
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">نام</span>
             <input type="text" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="نام محصول برای نمایش ..." name="name">
         </div>
-        @error ('name')
-        <div class="d-flex justify-content-center align-items-center my-3">
-            <div class="w-75">
-                <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-            </div>
-        </div>
-    @endif
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">قیمت</span>
             <input type="text" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="قیمت محصول به ریال می باشد..." name="price">
         </div>
-        @error ('price')
-        <div class="d-flex justify-content-center align-items-center my-3">
-            <div class="w-75">
-                <div class="alert alert-danger text-center my-f-11-i my-font-IYM">{{$message}}</div>
-            </div>
-        </div>
-    @endif
         <div class="col-auto d-flex justify-content-center align-items-center">
-            <button type="submit" class="btn btn-success btn-sm my-font-IYL my-f-11-i mb-3">ثبت محصول جدید</button>
-            <button @click="cls_page" type="button" class="btn btn-danger mx-2 btn-sm my-font-IYL my-f-11-i mb-3">بستن</button>
+            <button type="submit" class="btn btn-g btn-sm my-font-IYL-i my-f-11-i mb-3">ثبت محصول جدید</button>
+            <button @click="cls_page" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>
         </div>
     </form>
 </div>

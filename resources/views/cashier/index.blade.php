@@ -175,13 +175,15 @@
             </div>
             <div style="background-color: rgb(255, 241, 251)" class="h-25 w-100 p-3 pt-2">
                 <div dir="rtl" class="d-flex justify-content-between align-items-center">
-                    <span class="my-font-ISL my-f-11 my-color-b-700">جدیدترین اخبار </span>
+                    <span class="my-font-ISL my-f-11 my-color-b-700 ms-auto">جدیدترین اخبار </span>
+                    <a @click="win_news"><button class="btn btn-g btn-sm my-font-IYM-i my-f-9-i mx-2"> همه خبر ها</button></a>
+                    <a @click="new_store"><button class="btn btn-b btn-sm my-font-IYM-i my-f-9-i"> خبر جدید</button></a>
                 </div>
                 <div style="overflow-y: scroll;max-height: 135px!important;min-height: 135px!important;height: 135px!imporatn;">
                     @foreach ($news as $new)
                         <div class="w-100 my-3 border-bottom border-top p-2">
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="my-f-10 my-font-IYL my-color-b-700">{{number_format( $new->body, 0 , '.' , ',')}}</span>
+                                <span class="my-f-10 my-font-IYL my-color-b-700">{{ToRilP( $new->body)}}</span>
                                 <span class="my-f-10 my-font-IYL my-color-b-700">{{$new->title}}</span>
                             </div>
                         </div>
@@ -191,9 +193,54 @@
         </div>
     @endif
 </div>
-@if (session('msg'))
-    <div class="page-msg-session px-4 py-2 my-font-IYM my-f-12 rounded-3 shadow text-center" dir="rtl">
-        {{session('msg')}}
+<div  class="w-100 page-hiden" style="height: 100vh;z-index:2;background-color: #3a3a3a;filter: blur(200px);position: fixed;top:0;left:0"></div>
+<div class="page-news p-3">
+    <div class="w-100 h-100 p-2" >
+        <p class="text-center  my-font-IYM my-f-12 my-color-b-600">جدیدترین اخبار ها</p>
+        <hr>
+        <form action="{{route('cashier.delete.news')}}" method="post" style="height: 85%;overflow-y:scroll ">
+            <div dir="rtl" class="w-100 d-flex justify-content-end align-items-center" style="height: 7%;">
+                <button type="submit" class="btn btn-r my-f-11-i my-font-IYM-i mx-2">حذف داده</button>
+            </div>
+            <div class="row p-0 m-0">
+                @csrf
+                @foreach ($news as $new)
+                    <span class="col-6 border rounded d-flex justify-content-between align-items-center p-3" style="height: 25px;">
+                        <span class="form-check ">
+                            <input class="form-check-input my-pointer" type="checkbox" name="news[]" value="{{$new->id}}" id="{{$new->id}}">
+                            <label class="form-check-label my-pointer my-select-none my-f-10-i my-font-IYL-i" for="{{$new->id}}">
+                            حذف
+                            </label>
+                        </span>
+                        <span class="my-f-12 my-font-IYM my-color-b-700">{{ToRilP( $new->body)}}</span>
+                        <span class="my-f-12 my-font-IYM my-color-b-700">{{$new->title}}</span>
+                    </span>
+                @endforeach
+            </div>
+        </form>
+        <div dir="rtl" class="w-100 d-flex justify-content-end align-items-center" style="height: 7%;">
+            <button @click="new_news" type="button" class="btn btn-g my-f-11-i my-font-IYM-i mx-2">داده جدید</button>
+            <button @click="cls_page" type="button" class="btn btn-bl my-f-11-i my-font-IYM-i mx-2 ms-auto">بستن پنچره</button>
+        </div>
     </div>
-@endif
+</div>
+<div class="page-new-product p-3 shadow">
+    <p class="text-center my-font-IYM my-f-12 my-color-b-600">ایجاد یک خبر جدید</p>
+    <hr>
+    <form action="{{route('cashier.new.news')}}" method="post">
+        @csrf
+        <div  class="input-group mb-3 w-100 ">
+            <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">موضوع خبر</span>
+            <input type="text" value="{{old('titel')}}" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="موضوع خبر ..." name="titel" value="{{old('title')}}">
+        </div>
+        <div  class="input-group mb-3 w-100 ">
+            <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">بدنه خبر</span>
+            <input type="text" value="{{old('body')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="بدنه خبر..." name="body" value="{{old('body')}}">
+        </div>
+        <div class="col-auto d-flex justify-content-center align-items-center">
+            <button type="submit" class="btn btn-g btn-sm my-font-IYL-i my-f-11-i mb-3">ثبت خبر جدید</button>
+            <button @click="cls_page" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>
+        </div>
+    </form>
+</div>
 @endsection
