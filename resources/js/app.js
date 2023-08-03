@@ -29,6 +29,7 @@ const app = createApp({
         status_menu_2:true,
         search_number:null,
         search_name:null,
+        status_loding:false,
         id_acco:null,
         price_product:null
 
@@ -245,6 +246,7 @@ const app = createApp({
             })
         },
         edit_number(id , mode){
+            this.status_loding = true
             axios.post('/cashier/edit/total/number' , {id:id , mode:mode}).then((res)=>{
                 //console.log(res.data)
                 this.number_edit = null
@@ -253,8 +255,10 @@ const app = createApp({
                 this.total_number = res.data.total_number
                 //this.total_price = res.data.total_price
                 this.total_price = this.ToRial(res.data.total_price)
+                this.status_loding = false
             }).catch((res)=>{
                 console.error(res)
+                this.status_loding = false
             })
         },
         edit_product(id){

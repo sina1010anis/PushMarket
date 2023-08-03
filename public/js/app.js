@@ -17681,6 +17681,7 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       status_menu_2: true,
       search_number: null,
       search_name: null,
+      status_loding: false,
       id_acco: null,
       price_product: null
     };
@@ -17918,6 +17919,7 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
     },
     edit_number: function edit_number(id, mode) {
       var _this7 = this;
+      this.status_loding = true;
       axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/cashier/edit/total/number', {
         id: id,
         mode: mode
@@ -17929,8 +17931,10 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
         _this7.total_number = res.data.total_number;
         //this.total_price = res.data.total_price
         _this7.total_price = _this7.ToRial(res.data.total_price);
+        _this7.status_loding = false;
       })["catch"](function (res) {
         console.error(res);
+        _this7.status_loding = false;
       });
     },
     edit_product: function edit_product(id) {

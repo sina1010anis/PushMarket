@@ -56,7 +56,7 @@
                 </div>
 
 
-                <div v-if="factor_product != null" dir="rtl" class="w-100  px-2" style="overflow-y: scroll;height: 300px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
+                <div v-if="factor_product != null" dir="rtl" class="w-100  px-2" style="position: relative;;overflow-y: scroll;height: 300px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
                     <table class="table table-striped">
                         <thead>
                       <tr>
@@ -85,6 +85,9 @@
                     </tbody>
 
                     </table>
+                    <div class="loading-number w-100 justify-content-center align-items-center h-100 bg-white" :style="(status_loding == true) ?     'z-index: 3;position: absolute;top:0;left:0;display: flex;' : 'z-index: 0;position: absolute;top:0;left:0;display: none;'">
+                        <img src="{{url('/storage/images/loding.gif')}}" style="transform: scale(0.7)" alt="loding">
+                    </div>
                 </div>
 
 

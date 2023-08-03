@@ -38,6 +38,10 @@
             <input  class="form-check-input my-pointer" type="checkbox" role="switch" id="flexSwitchCheckChecked5" {{($seting->find(19)->status == 1) ? 'checked' : ''}} @click="edit_setting(19)">
             <label dir="rtl" class="form-check-label my-select-none my-f-12 my-font-IYL my-color-b-800 my-pointer" dir="rtl" for="flexSwitchCheckChecked5">ساعت جهانی 3:30+ به وقت ایران</label>
         </div>
+        <div class="form-check form-switch d-flex justify-content-between align-items-center my-3 px-4">
+            <input  class="form-check-input my-pointer" type="checkbox" role="switch" id="flexSwitchCheckChecked6" {{($seting->find(22)->status == 1) ? 'checked' : ''}} @click="edit_setting(22)">
+            <label dir="rtl" class="form-check-label my-select-none my-f-12 my-font-IYL my-color-b-800 my-pointer" dir="rtl" for="flexSwitchCheckChecked6"> نمایش لودینگ</label>
+        </div>
     </div>
 
 @endsection

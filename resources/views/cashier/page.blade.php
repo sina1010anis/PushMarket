@@ -9,6 +9,41 @@
         <script src="{{mix('js/app.js')}}" defer></script>
     </head>
     <body class="antialiased">
+                    {{-- Loding Start --}}
+                    @if ($seting->where('type' , 'loding')->first()->status == 1)
+                    <div class="loding" id="loding_id" style="height: 100vh;z-index: 20;position:fixed;top:0;left:0;width: 100%;background-color: white">
+                        <img id="img_loding" src="/storage/images/logo.png" alt="logo" style="">
+                    </div>
+                    <style>
+                        #img_loding{
+                            transform: translate(-50%,-50%);position: absolute;top:50%;right: 50%;width: 75px;transition: 0.2s;
+                            animation: loding 3.5s linear forwards;
+                        }
+                        @keyframes loding{
+                            0%{
+                                transform: scale(1)
+                            }
+                            25%{
+                                transform: scale(0.75)
+                            }
+                            50%{
+                                transform: scale(0.50)
+                            }
+                            75%{
+                                transform: scale(0.25)
+                            }
+                            100%{
+                                transform: scale(0)
+                            }
+                        }
+                    </style>
+                    <script>
+                        setTimeout(()=>{
+                            document.getElementById("loding_id").style.display = "none";
+                        } , 1500)
+                    </script>
+                {{-- Loding End --}}
+                    @endif
         <div id="app">
             <div class="container-xxl">
                 <div dir="rtl" class="w-100 d-flex align-items-center my-f-11 my-color-b-900 my-font-IS p-2" style="height: 50px;background-color: #efefef">

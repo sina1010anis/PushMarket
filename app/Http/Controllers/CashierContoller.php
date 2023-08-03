@@ -79,6 +79,8 @@ class CashierContoller extends Controller
         }else{
             ProductSimpel::whereId($request->id)->increment('total_number');
         }
+        $number = ProductSimpel::find($request->id);
+        ProductSimpel::where('id',$data->id)->update(['total_price' => $number->total_number*$number->price]);
         $factor = ProductSimpel::latest('id')->where('factor_id' , null)->get();
         $product_count = ProductSimpel::where('factor_id' , null)->count();
         return ['first' => null , 'factor' => $factor, 'total_number'=> $factor->sum('total_number'), 'total_price'=> $factor->sum('total_price') , 'number'=>$product_count];
@@ -208,7 +210,7 @@ class CashierContoller extends Controller
     }
     public function report()
     {
-        $factors = Factors::where('created_at' , '>=' , Carbon::today())->latest('id')->paginate(20);
+        $factors = Factors::where('created_at' , '>=' , Carbon::today())->latest('id')->get();
         $menu = 'report';
 
         return view('cashier.report' , compact('factors' , 'menu'));
@@ -218,10 +220,10 @@ class CashierContoller extends Controller
     {
         $menu = 'report';
         if(isset($request->as_date) and isset($request->ta_date)){
-            $factors = Factors::where('created_at' , '>=' , $request->as_date)->where('created_at' , '<=' , $request->ta_date)->latest('id')->paginate(20);
+            $factors = Factors::where('created_at' , '>=' , $request->as_date)->where('created_at' , '<=' , $request->ta_date)->latest('id')->get();
             $date = "از تاریخ ".jdate($request->as_date)->format('%B %d، %Y')." : تا تاریخ ".jdate($request->ta_date)->format('%B %d، %Y');
         }else{
-            $factors = Factors::whereDate('created_at' , $request->date)->latest('id')->paginate(20);
+            $factors = Factors::whereDate('created_at' , $request->date)->latest('id')->get();
             $date = "تاریخ های ".jdate($request->date)->format('%B %d، %Y');
         }
         return view('cashier.report' , compact('factors' , 'date' , 'menu'));

@@ -81,9 +81,6 @@
             </tbody>
         </table>
     </div>
-    <div class="col-12 d-flex justify-content-center align-items-center">
-        {{$factors->links()}}
-    </div>
 </div>
 
 {{-- <div class="w-100 page-hiden" style="height: 100vh;z-index:2;background-color: #3a3a3a;filter: blur(200px);position: fixed;top:0;left:0"></div>
