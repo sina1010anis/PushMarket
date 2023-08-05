@@ -20,6 +20,7 @@ const app = createApp({
         number_edit:null,
         barcode_new_product:null,
         text_search_product:null,
+        text_search_product_name:null,
         data_search_product:null,
         data_search_creditor:null,
         data_search_receipt:null,
@@ -31,6 +32,7 @@ const app = createApp({
         search_name:null,
         status_loding:false,
         id_acco:null,
+        modele_delete:null,
         price_product:null
 
     }),
@@ -82,8 +84,8 @@ const app = createApp({
                 console.error(res.data)
             })
         },
-        search_product(){
-            axios.post('/cashier/search/product' , {code:this.text_search_product}).then((res)=>{
+        search_product(type){
+            axios.post('/cashier/search/product' , {code:this.text_search_product,name:this.text_search_product_name,type:type}).then((res)=>{
                 this.data_search_product = res.data
                 console.log(res.data);
             }).catch((res)=>{
@@ -181,6 +183,13 @@ const app = createApp({
             $('.page-new').fadeOut();
             $(".page-news").css({"transform": "translate(-50%,-50%) scale(0)" , "transition" : '0.2s'});
         },
+        open_win_delete(model)
+        {
+            this.modele_delete = model;
+            $(".page-news").css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
+            $('.page-hiden').fadeIn();
+
+        },
         new_store()
         {
             $('.page-hiden').fadeIn();
@@ -225,8 +234,8 @@ const app = createApp({
                 console.error(res)
             })
         },
-        delete_all(model){
-            axios.post('/setting/delete' , {model:model}).then((res)=>{
+        delete_all(){
+            axios.post('/setting/delete' , {model:this.modele_delete}).then((res)=>{
                 //console.log(res.data)
                 location.reload()
             }).catch((res)=>{
@@ -285,8 +294,13 @@ const app = createApp({
         {
 
         },
+        input_rile(mynumber)
+        {
+            return mynumber.toLocaleString("en");
+        }
     },
     mounted:()=>{
+
         var inputElem = document.getElementById("input_send");
         window.addEventListener('load', function(e) {
             inputElem.focus();

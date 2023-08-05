@@ -14,8 +14,8 @@
                     <input type="text" class="form-control text-center" name="name" id="exampleFormControlInput1" placeholder="نام محصول" value="{{$data->name}}">
                 </div>
                 <div class="mb-3 my-font-IYL my-f-11 my-color-b-600 text-center">
-                    <label for="exampleFormControlInput2" class="form-label">قیمت محصول</label>
-                    <input type="number" class="form-control text-center" name="price" id="exampleFormControlInput2"  placeholder="قیمت محصول" value="{{$data->price}}">
+                    <label for="edit_price_product" class="form-label">قیمت محصول</label>
+                    <input type="text" class="form-control text-center"  name="price" id="edit_price_product"  placeholder="قیمت محصول" :value="input_rile({{$data->price}})">
                 </div>
                 <div class="mb-3 my-font-IYL my-f-11 my-color-b-600 text-center">
                     <label for="exampleFormControlInput3" class="form-label">بارکد محصول</label>

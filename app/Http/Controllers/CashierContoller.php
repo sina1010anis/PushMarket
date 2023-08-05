@@ -165,8 +165,14 @@ class CashierContoller extends Controller
 
     public function search_product(Request $request)
     {
-        $count = Product::whereBarcode($request->code)->count();
-        $data =($count ==1) ? Product::whereBarcode($request->code)->first() : 'none';
+
+        if($request->type == 'barcode'){
+            $count =Product::whereBarcode($request->code)->count();
+            $data =($count ==1) ? Product::whereBarcode($request->code)->first() : 'none';
+        }else{
+            $count =Product::where('name' , 'LIKE' , '%'.$request->name.'%')->count();
+            $data =($count >= 1) ? Product::where('name' , 'LIKE' , '%'.$request->name.'%')->first() : 'none';
+        }
 
         return $data;
     }
@@ -192,6 +198,9 @@ class CashierContoller extends Controller
 
     public function edit_product_p(EditProductRequest $request , $name)
     {
+        $request->price =  str_replace(',','',$request->price);
+        return $request->price;
+
 
         Product::whereName($name)->update(['name' => $request->name , 'price' => $request->price , 'barcode' => $request->barcode]);;
         return redirect()->route('cashier.products')->with('msg' , 'محصول با موفقیت ویرایش شد');

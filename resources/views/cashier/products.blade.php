@@ -5,10 +5,10 @@
     <div class="col-9" style="background-color: #fff6f6">
         <div class="row my-3">
             <div class="col-6">
-                <input type="text" id="input_send" v-model="text_search_product" @keyup.enter="search_product" class="w-100 text-center my-font-IYL my-f-11" placeholder="جستوجو محصول با بارکد...!" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
+                <input type="text" id="input_send" v-model="text_search_product" @keyup.enter="search_product('barcode')" class="w-100 text-center my-font-IYL my-f-11" placeholder="جستوجو محصول با بارکد...!" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
             </div>
             <div class="col-6">
-                <input type="text" v-model="text_search_product" @keyup.enter="search_product" class="w-100 text-center my-font-IYL my-f-11" placeholder="جستوجو محصولات با نام...!" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
+                <input type="text" v-model="text_search_product_name" @keyup.enter="search_product('name')" class="w-100 text-center my-font-IYL my-f-11" placeholder="جستوجو محصولات با نام...!" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
             </div>
         </div>
 

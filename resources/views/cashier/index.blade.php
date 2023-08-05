@@ -234,7 +234,7 @@
         @csrf
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">موضوع خبر</span>
-            <input type="text" value="{{old('titel')}}" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="موضوع خبر ..." name="titel" value="{{old('title')}}">
+            <input type="text" value="{{old('titel')}}" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="موضوع خبر ..." name="title" value="{{old('title')}}">
         </div>
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">بدنه خبر</span>

@@ -17672,6 +17672,7 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       number_edit: null,
       barcode_new_product: null,
       text_search_product: null,
+      text_search_product_name: null,
       data_search_product: null,
       data_search_creditor: null,
       data_search_receipt: null,
@@ -17683,6 +17684,7 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       search_name: null,
       status_loding: false,
       id_acco: null,
+      modele_delete: null,
       price_product: null
     };
   },
@@ -17739,10 +17741,12 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
         console.error(res.data);
       });
     },
-    search_product: function search_product() {
+    search_product: function search_product(type) {
       var _this3 = this;
       axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/cashier/search/product', {
-        code: this.text_search_product
+        code: this.text_search_product,
+        name: this.text_search_product_name,
+        type: type
       }).then(function (res) {
         _this3.data_search_product = res.data;
         console.log(res.data);
@@ -17850,6 +17854,14 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
         "transition": '0.2s'
       });
     },
+    open_win_delete: function open_win_delete(model) {
+      this.modele_delete = model;
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()(".page-news").css({
+        "transform": "translate(-50%,-50%) scale(1)",
+        "transition": '0.2s'
+      });
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
+    },
     new_store: function new_store() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeIn();
@@ -17894,9 +17906,9 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
         console.error(res);
       });
     },
-    delete_all: function delete_all(model) {
+    delete_all: function delete_all() {
       axios__WEBPACK_IMPORTED_MODULE_8__["default"].post('/setting/delete', {
-        model: model
+        model: this.modele_delete
       }).then(function (res) {
         //console.log(res.data)
         location.reload();
@@ -17960,7 +17972,10 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
         right: '-500px'
       });
     },
-    open_news: function open_news() {}
+    open_news: function open_news() {},
+    input_rile: function input_rile(mynumber) {
+      return mynumber.toLocaleString("en");
+    }
   },
   mounted: function mounted() {
     var inputElem = document.getElementById("input_send");

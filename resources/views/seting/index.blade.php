@@ -17,15 +17,15 @@
             <label dir="rtl" class="form-check-label my-select-none my-pointer my-f-12 my-font-IYL my-color-b-800" for="flexSwitchCheckChecked1"> واحد نمایش قیمت ها <span class="my-f-10-i my-color-b-500">(با فعال بودن این گزینه به صورت ریال نمایش داده می شود غیر فعال بودن به صورت تومان نمایش داده می شود)</span></label>
         </div>
         <div class=" d-flex justify-content-between align-items-center my-4">
-            <button @click="delete_all('\\App\\Models\\Product')" class="btn btn-sm my-f-11-i my-font-IYM-i {{(\App\Models\Product::count() > 0) ? 'btn-r' : 'btn-bl' }}" {{(\App\Models\Product::count() > 0) ? '' : 'disabled' }}>حذف دیتا</button>
+            <button @click="open_win_delete('\\App\\Models\\Product')" class="btn btn-sm my-f-11-i my-font-IYM-i {{(\App\Models\Product::count() > 0) ? 'btn-r' : 'btn-bl' }}" {{(\App\Models\Product::count() > 0) ? '' : 'disabled' }}>حذف دیتا</button>
             <span dir="rtl" class="form-check-label my-select-none my-f-12 my-font-IYL my-color-b-800"> حذف تمام محصولات داخل دیتابیس <span class="my-f-10-i my-color-b-500">(با زدن دکم حذف همه دیتا های محصولات حذف شده و قابلیت برگشت ندارد)</span></span>
         </div>
         <div class=" d-flex justify-content-between align-items-center my-4">
-            <button @click="delete_all('\\App\\Models\\Creditor')" class="btn btn-sm my-f-11-i my-font-IYM-i {{(\App\Models\Creditor::count() > 0) ? 'btn-r' : 'btn-bl' }}" {{(\App\Models\Creditor::count() > 0) ? '' : 'disabled' }}>حذف دیتا</button>
+            <button @click="open_win_delete('\\App\\Models\\Creditor')" class="btn btn-sm my-f-11-i my-font-IYM-i {{(\App\Models\Creditor::count() > 0) ? 'btn-r' : 'btn-bl' }}" {{(\App\Models\Creditor::count() > 0) ? '' : 'disabled' }}>حذف دیتا</button>
             <span dir="rtl" class="form-check-label my-select-none my-f-12 my-font-IYL my-color-b-800" > حذف تمام دیتاهای   طلبکاری  از بخش صندوقداری <span class="my-f-10-i my-color-b-500">(قابلیت برگشت ندارد)</span></span>
         </div>
         <div class=" d-flex justify-content-between align-items-center my-4">
-            <button @click="delete_all('\\App\\Models\\Receipt')" class="btn btn-sm my-f-11-i my-font-IYM-i {{(\App\Models\Receipt::count() > 0) ? 'btn-r' : 'btn-bl' }}" {{(\App\Models\Receipt::count() > 0) ? '' : 'disabled' }}>حذف دیتا</button>
+            <button @click="open_win_delete('\\App\\Models\\Receipt')" class="btn btn-sm my-f-11-i my-font-IYM-i {{(\App\Models\Receipt::count() > 0) ? 'btn-r' : 'btn-bl' }}" {{(\App\Models\Receipt::count() > 0) ? '' : 'disabled' }}>حذف دیتا</button>
             <span dir="rtl" class="form-check-label my-select-none my-f-12 my-font-IYL my-color-b-800" > حذف تمام دیتاهای   هزینه دریافتی  از بخش صندوقداری <span class="my-f-10-i my-color-b-500">(قابلیت برگشت ندارد)</span></span>
         </div>
         <hr>
@@ -49,6 +49,22 @@
                 <label dir="rtl" class="form-check-label my-select-none my-f-12 my-font-IYL my-color-b-800 my-pointer" for="flexSwitchCheckChecked5">   بستانکاری <span class="my-f-10-i my-color-b-500">(با فعال بودن این گزینه منو مورد نظر فعال می شود)</span></label>
             </div>
         </div>
+    </div>
+</div>
+
+<div  class="w-100 page-hiden" style="height: 100vh;z-index:2;background-color: #3a3a3a;filter: blur(200px);position: fixed;top:0;left:0"></div>
+<div class="page-news page-delete p-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-exclamation-circle my-f-22" style="color: rgb(255, 73, 73)"></i></span>
+        <span class="text-center my-font-IYM my-f-12 my-color-b-600">اخطار</span>
+    </div>
+    <hr>
+    <div class="my-3">
+        <p dir="rtl" class="text-center my-font-IYM my-f-13 my-color-b-600">ایا از حذف همه دیتا ها اطمینان دارید...</p>
+    </div>
+    <div dir="rtl" class="col-auto d-flex align-items-center">
+        <button @click="delete_all()" type="button" class="btn btn-r btn-sm my-font-IYL-i my-f-11-i mb-3">بله</button>
+        <button @click="cls_page" type="button" class="btn btn-bl mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن بنچره</button>
     </div>
 </div>
 @endsection
