@@ -159,7 +159,7 @@ class CashierContoller extends Controller
     {
         $file = $request->file('image');
         Storage::put("/public/images/{$file->getClientOriginalName()}" , file_get_contents($file->getRealPath()));
-        Product::latest('id')->first()->update(['name'=>$request->name,'price'=>$request->price , 'image'=> 'storage/images/'.$file->getClientOriginalName() , 'stuats' => $request->status]);
+        Product::latest('id')->first()->update(['name'=>$request->name,'price'=> $this->toRtoS($request->price) , 'image'=> 'storage/images/'.$file->getClientOriginalName() , 'stuats' => $request->status]);
         return back()->with('msg' , 'محصول جدید اضافه شد');
     }
 
@@ -196,13 +196,16 @@ class CashierContoller extends Controller
         return view('cashier.edit_product' , ['data'=>$name , 'menu' => 'products']);
     }
 
+    public function toRtoS($price)
+    {
+        return str_replace(',','',$price);
+
+    }
     public function edit_product_p(EditProductRequest $request , $name)
     {
-        $request->price =  str_replace(',','',$request->price);
-        return $request->price;
-
-
-        Product::whereName($name)->update(['name' => $request->name , 'price' => $request->price , 'barcode' => $request->barcode]);;
+        $product = Product::whereName($name)->first();
+        $price =  ($request->price == null) ? $product->price :$this->toRtoS($request->price)  ;
+        Product::whereName($name)->update(['name' => $request->name , 'price' => $price, 'barcode' => $request->barcode])  ;
         return redirect()->route('cashier.products')->with('msg' , 'محصول با موفقیت ویرایش شد');
     }
 
@@ -295,7 +298,7 @@ class CashierContoller extends Controller
     {
         Creditor::create([
             'name' => $request->name,
-            'price' => $request->price,
+            'price' =>  $this->toRtoS($request->price),
             'des' => $request->des,
         ]);
         return back()->with('msg' , 'بدهکار جدید اضافه شد.');
@@ -306,7 +309,7 @@ class CashierContoller extends Controller
     {
         Receipt::create([
             'name' => $request->name,
-            'price' => $request->price,
+            'price' =>  $this->toRtoS($request->price),
         ]);
         return back()->with('msg' , 'دریافتی جدید اضافه شد.');
     }
@@ -319,7 +322,9 @@ class CashierContoller extends Controller
 
     public function creditor_edit_post(EditCraditorRequest $request , $id)
     {
-        Creditor::find($id)->update(['name' => $request->name , 'price' => $request->price , 'des' => $request->des]);
+        $product = Creditor::whereId($id)->first();
+        $price =  ($request->price == null) ? $product->price :$this->toRtoS($request->price)  ;
+        Creditor::find($id)->update(['name' => $request->name , 'price' => $price , 'des' => $request->des]);
         return back()->with('msg' , 'ویرایش های لازم انجام شد.');
     }
 
@@ -332,7 +337,9 @@ class CashierContoller extends Controller
 
     public function receipt_edit_post(EditReceptRequest $request , $id)
     {
-        Receipt::find($id)->update(['name' => $request->name , 'price' => $request->price ]);
+        $product = Receipt::whereId($id)->first();
+        $price =  ($request->price == null) ? $product->price :$this->toRtoS($request->price)  ;
+        Receipt::find($id)->update(['name' => $request->name , 'price' => $price ]);
         return back()->with('msg' , 'ویرایش های لازم انجام شد.');
     }
 

@@ -14,8 +14,28 @@
                     <input type="text" class="form-control text-center" name="name" id="exampleFormControlInput1" placeholder="نام " value="{{$data->name}}">
                 </div>
                 <div class="mb-3 my-font-IYL my-f-11 my-color-b-600 text-center">
-                    <label for="exampleFormControlInput2" class="form-label">مقدار دریافتی </label>
-                    <input type="number" class="form-control text-center" name="price" id="exampleFormControlInput2"  placeholder="مقدار دریافتی " value="{{$data->price}}">
+                    <label dir="rtl" for="edit_price_product" class="form-label"> {{ToRilP($data->price)}}   مقدار فعلی: قیمت دریافتی</label>
+                    <script>
+                        function separateNum(value, input) {
+                            /* seprate number input 3 number */
+                            var nStr = value + '';
+                            nStr = nStr.replace(/\,/g, "");
+                            x = nStr.split('.');
+                            x1 = x[0];
+                            x2 = x.length > 1 ? '.' + x[1] : '';
+                            var rgx = /(\d+)(\d{3})/;
+                            while (rgx.test(x1)) {
+                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                            }
+                            if (input !== undefined) {
+
+                                input.value = x1 + x2;
+                            } else {
+                                return x1 + x2;
+                            }
+                        }
+                    </script>
+                    <input type="text" class="form-control text-center"  name="price" id="edit_price_product"  placeholder="مقدار فعلی دریافتی {{ToRilP($data->price)}}" onkeyup="separateNum(this.value,this);">
                 </div>
                 <br>
                 <div class="d-flex justify-content-center">

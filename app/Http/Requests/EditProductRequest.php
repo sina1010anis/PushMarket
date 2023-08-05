@@ -23,7 +23,6 @@ class EditProductRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5|max:255',
-            'price' => 'required|min:3',
             'barcode' => 'required|min:5',
         ];
     }
@@ -33,10 +32,8 @@ class EditProductRequest extends FormRequest
         return [
             'name.required' => 'لطفا نام را وارد کنید',
             'name.min' => 'نام کمتر از 5 حرف نمیتواند باشد',
-            'price.min' => 'قیمت  کمتر از 3 حرف نمیتواند باشد',
             'barcode.min' => 'بارکد  کمتر از 5 حرف نمیتواند باشد',
             'name.max' => 'نام بیشتر از 255 حرف نمیتواند باشد',
-            'price.required' => 'لطفا قیمت را وارد کنید',
             'barcode.required' => 'لطفا بارکد را وارد کنید',
         ];
     }

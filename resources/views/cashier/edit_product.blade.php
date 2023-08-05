@@ -13,9 +13,32 @@
                     <label for="exampleFormControlInput1" class="form-label">نام محصول</label>
                     <input type="text" class="form-control text-center" name="name" id="exampleFormControlInput1" placeholder="نام محصول" value="{{$data->name}}">
                 </div>
+                <script>
+
+                </script>
                 <div class="mb-3 my-font-IYL my-f-11 my-color-b-600 text-center">
-                    <label for="edit_price_product" class="form-label">قیمت محصول</label>
-                    <input type="text" class="form-control text-center"  name="price" id="edit_price_product"  placeholder="قیمت محصول" :value="input_rile({{$data->price}})">
+                    <label dir="rtl" for="edit_price_product" class="form-label"> {{ToRilP($data->price)}} قیمت فعلی محصول: قیمت محصول</label>
+                    <script>
+                        function separateNum(value, input) {
+                            /* seprate number input 3 number */
+                            var nStr = value + '';
+                            nStr = nStr.replace(/\,/g, "");
+                            x = nStr.split('.');
+                            x1 = x[0];
+                            x2 = x.length > 1 ? '.' + x[1] : '';
+                            var rgx = /(\d+)(\d{3})/;
+                            while (rgx.test(x1)) {
+                                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                            }
+                            if (input !== undefined) {
+
+                                input.value = x1 + x2;
+                            } else {
+                                return x1 + x2;
+                            }
+                        }
+                    </script>
+                    <input type="text" class="form-control text-center"  name="price" id="edit_price_product"  placeholder="قیمت فعلی محصول {{ToRilP($data->price)}}" onkeyup="separateNum(this.value,this);">
                 </div>
                 <div class="mb-3 my-font-IYL my-f-11 my-color-b-600 text-center">
                     <label for="exampleFormControlInput3" class="form-label">بارکد محصول</label>

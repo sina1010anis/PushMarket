@@ -122,18 +122,48 @@
     <hr>
     <form action="{{route('acco.new.acco')}}" method="post">
         @csrf
-        <div  class="input-group mb-3 w-100 ">
+        <div  class=" ">
+        </div>
+
+        <div class="input-group mb-3 w-100">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">مانده حساب</span>
-            <input type="number" value="{{old('total')}}" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="مانده حساب ..." name="total">
+            <script>
+                function separateNum(value, input) {
+                    /* seprate number input 3 number */
+                    var nStr = value + '';
+                    nStr = nStr.replace(/\,/g, "");
+                    x = nStr.split('.');
+                    x1 = x[0];
+                    x2 = x.length > 1 ? '.' + x[1] : '';
+                    var rgx = /(\d+)(\d{3})/;
+                    while (rgx.test(x1)) {
+                        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                    }
+                    if (input !== undefined) {
+
+                        input.value = x1 + x2;
+                    } else {
+                        return x1 + x2;
+                    }
+                }
+            </script>
+            {{-- <input type="text" class="form-control text-center"  name="price" id="edit_price_product"  placeholder="مقدار فعلی دریافتی {{ToRilP($data->price)}}" onkeyup="separateNum(this.value,this);"> --}}
+            <input type="test" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="مانده بر اساس {{($seting->where('type','unit')->first()->status == 1) ? 'ریال' : 'تومان'}}" name="total" onkeyup="separateNum(this.value,this);">
+
         </div>
-        <div  class="input-group mb-3 w-100 ">
+
+
+
+        <div class="input-group mb-3 w-100">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">بدهکاری</span>
-            <input type="number" value="{{old('indebted')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="بدهکاری..." name="indebted">
+            <input type="test" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="بدهکاری بر اساس {{($seting->where('type','unit')->first()->status == 1) ? 'ریال' : 'تومان'}}" name="indebted" onkeyup="separateNum(this.value,this);">
         </div>
-        <div  class="input-group mb-3 w-100 ">
+
+        <div class="input-group mb-3 w-100">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">بستانکاری</span>
-            <input type="number" value="{{old('creditor')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="بستانکاری ...." name="creditor">
+            <input type="test" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="بستانکاری بر اساس {{($seting->where('type','unit')->first()->status == 1) ? 'ریال' : 'تومان'}}" name="creditor" onkeyup="separateNum(this.value,this);">
         </div>
+
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">توضیحات</span>
             <input type="text" value="{{old('des')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="توضیحات ...." name="des">
@@ -150,11 +180,12 @@
     <hr>
     <form action="{{route('acco.new.cash')}}" method="post">
         @csrf
-        <div  class="input-group mb-3 w-100 ">
-            <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">مقدار </span>
-            <input type="number" value="{{old('total')}}" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="مقدار  ..." name="total">
 
+        <div class="input-group mb-3 w-100">
+            <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">مقدار</span>
+            <input type="test" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="مقدار بر اساس {{($seting->where('type','unit')->first()->status == 1) ? 'ریال' : 'تومان'}}" name="total" onkeyup="separateNum(this.value,this);">
         </div>
+
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">توضیحات</span>
             <input type="text" value="{{old('des')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="توضیحات ...." name="des">
@@ -171,11 +202,12 @@
     <hr>
     <form action="{{route('acco.new.bank')}}" method="post">
         @csrf
-        <div  class="input-group mb-3 w-100 ">
-            <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">مقدار </span>
-            <input type="number" value="{{old('total')}}" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="مقدار  ..." name="total">
 
+        <div class="input-group mb-3 w-100">
+            <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">مقدار</span>
+            <input type="test" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="مقدار بر اساس {{($seting->where('type','unit')->first()->status == 1) ? 'ریال' : 'تومان'}}" name="total" onkeyup="separateNum(this.value,this);">
         </div>
+
         <div  class="input-group mb-3 w-100 ">
             <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">توضیحات</span>
             <input type="text" value="{{old('des')}}"  class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="توضیحات ...." name="des">

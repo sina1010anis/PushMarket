@@ -16,6 +16,11 @@ use Illuminate\Http\Request;
 
 class AccountingController extends Controller
 {
+    public function toRtoS($price)
+    {
+        return str_replace(',','',$price);
+
+    }
     public function check_acco_lock(EditLockRequest $request){
         $count = Seting::where(['username'=> $request->username , 'password'=> $request->password , 'type' => 'lock_acco'])->count();
         if($count == 1){
@@ -44,9 +49,9 @@ class AccountingController extends Controller
     public function new_acco(NewAccoRequest $request)
     {
         Account::create([
-            'total' => $request->total,
-            'indebted' => $request->indebted,
-            'creditor' => $request->creditor,
+            'total' => $this->toRtoS($request->total),
+            'indebted' => $this->toRtoS($request->indebted),
+            'creditor' => $this->toRtoS($request->creditor),
             'des' => $request->des,
             'acco_id' => (Seting::where('type' , 'def_acco')->first())->status,
         ]);
@@ -60,18 +65,22 @@ class AccountingController extends Controller
 
     public function edit_acco_post(EditAccountRequest $request , $id)
     {
-        Account::whereId($id)->update(['total' => $request->total , 'indebted' => $request->indebted , 'creditor' => $request->creditor]);
+        $product = Account::whereId($id)->first();
+        $total =  ($request->total == null) ? $product->total :$this->toRtoS($request->total)  ;
+        $indebted =  ($request->indebted == null) ? $product->indebted :$this->toRtoS($request->indebted)  ;
+        $creditor =  ($request->creditor == null) ? $product->creditor :$this->toRtoS($request->creditor)  ;
+        Account::whereId($id)->update(['total' => $total , 'indebted' => $indebted , 'creditor' => $creditor , 'des'=> ($request->des == null) ? null : $request->des]);
         return redirect()->route('acco.index');
     }
 
     public function new_cash(NewRequestRequest $request)
     {
-        AccountCash::create(['total'=> $request->total , 'des' => $request->des , 'stauts' => 1]);
+        AccountCash::create(['total'=> $this->toRtoS($request->total) , 'des' => $request->des , 'stauts' => 1]);
         return back()->with('msg' , 'یک داده جدید اضافه شد');
     }
     public function new_bank(NewRequestRequest $request)
     {
-        AccountBanck::create(['total'=> $request->total , 'des' => $request->des , 'stauts' => 1]);
+        AccountBanck::create(['total'=> $this->toRtoS($request->total)  , 'des' => $request->des , 'stauts' => 1]);
         return back()->with('msg' , 'یک داده جدید اضافه شد');
     }
 

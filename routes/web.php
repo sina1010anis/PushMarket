@@ -47,6 +47,7 @@ Route::controller(CashierContoller::class)->prefix('cashier')->middleware('lock_
 
     Route::get('/report' , 'report')->name('report');
     Route::post('/report/products' , 'reprot_products')->name('reprot.products');
+    Route::post('/receipt/new' , 'receipt_new')->name('receipt.new');
 
     Route::get('/creditor' , 'creditor')->name('creditor');
     Route::post('/creditor/search/name' , 'creditor_search')->name('creditor.search');
@@ -57,7 +58,6 @@ Route::controller(CashierContoller::class)->prefix('cashier')->middleware('lock_
     Route::post('/receipt/edit/{id}' , 'receipt_edit_post')->name('receipt.edit.post');
     Route::post('/creditor/delete/{model}' , 'creditor_delete')->name('creditor.delete');
     Route::post('/creditor/new' , 'creditor_new')->name('creditor.new');
-    Route::post('/receipt/new' , 'receipt_new')->name('receipt.new');
 });
 Route::controller(AccountingController::class)->prefix('acco')->as('acco.')->middleware('lock_acco')->group(function(){
     Route::get('/', 'index')->name('index');

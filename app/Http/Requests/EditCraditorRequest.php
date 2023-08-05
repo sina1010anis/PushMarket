@@ -23,7 +23,6 @@ class EditCraditorRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'price' => 'required',
             'des' => 'required',
         ];
     }
@@ -31,7 +30,6 @@ class EditCraditorRequest extends FormRequest
     {
         return [
             'name.required' => 'لطفا نام را وارد کنید.',
-            'price.required' => 'لطفا قیمت را وارد کنید',
             'des.required' => 'لطفا توضیحات را کامل کنید',
         ];
     }

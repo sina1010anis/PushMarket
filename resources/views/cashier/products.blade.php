@@ -83,9 +83,33 @@
                         <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">نام</span>
                         <input type="text" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="نام محصول برای نمایش ..." name="name">
                     </div>
-                    <div  class="input-group mb-3 w-100 ">
+                    {{-- <div  class="input-group mb-3 w-100 ">
                         <span class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">قیمت</span>
                         <input type="text" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="قیمت محصول به ریال می باشد..." name="price">
+                    </div> --}}
+                    <div class="input-group mb-3 w-100 ">
+                        <label dir="rtl" for="edit_price_product" class="input-group-text my-font-IYL my-f-11-i" id="basic-addon1">  قیمت محصول</label>
+                        <script>
+                            function separateNum(value, input) {
+                                /* seprate number input 3 number */
+                                var nStr = value + '';
+                                nStr = nStr.replace(/\,/g, "");
+                                x = nStr.split('.');
+                                x1 = x[0];
+                                x2 = x.length > 1 ? '.' + x[1] : '';
+                                var rgx = /(\d+)(\d{3})/;
+                                while (rgx.test(x1)) {
+                                    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                }
+                                if (input !== undefined) {
+
+                                    input.value = x1 + x2;
+                                } else {
+                                    return x1 + x2;
+                                }
+                            }
+                        </script>
+                        <input type="text" class="form-control my-font-IYL my-f-12-i"  name="price" id="edit_price_product"  placeholder="قیمت محصول بر اساس {{($seting->where('type','unit')->first()->status == 1) ? 'ریال' : 'تومان'}} می باشد..." onkeyup="separateNum(this.value,this);">
                     </div>
                     <div class="mb-3 input-group-sm">
                         <input class="form-control my-font-IYL my-f-11-i" name="image" type="file" id="formFile">

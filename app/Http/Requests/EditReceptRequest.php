@@ -23,14 +23,12 @@ class EditReceptRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'price' => 'required',
         ];
     }
     public function messages(): array
     {
         return [
             'name.required' => 'لطفا نام را وارد کنید.',
-            'price.required' => 'لطفا قیمت را وارد کنید',
         ];
     }
 }

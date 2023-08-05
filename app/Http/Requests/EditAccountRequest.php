@@ -22,18 +22,14 @@ class EditAccountRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'total'=> 'required',
-            'indebted'=> 'required',
-            'creditor'=> 'required',
+
         ];
     }
 
     public function messages() : array
     {
         return [
-            'total.required' => 'لطفا موجودی را وارد کنید',
-            'indebted.required' => 'لطفا بدهکاری را وارد کنید',
-            'creditor.required' => 'لطفا بستانکاری را وارد کنید',
+
         ];
     }
 }
