@@ -105,7 +105,7 @@
                                                 <td>{{$store->location }} </td>
                                                 <td>{{$store->box }} </td>
                                                 <td>{{$store->total_number }} </td>
-                                                <td><span class="my-f-10 my-font-IYM my-color-b-900">{{jdate($store->created_at)->format('%A, %d %B %y')}}</span></td>
+                                                <td><span class="my-f-10 my-font-IYM my-color-b-900">{{substr(jdate($store->created_at) , 0 , 11)}}</span></td>
                                                 <td class="my-font-ISL my-f-12 my-color-b-600">
                                                     <div class="form-check ">
                                                         <input class="form-check-input my-pointer" type="checkbox" name="id_store[]" value="{{$store->id}}" id="flexCheckDefault{{$store->id}}">
@@ -178,11 +178,6 @@
                     </form>
                 </div>
 
-                    </div>
-                    <div class="col-12 d-flex justify-content-center align-items-center my-pos-rel" style="height: 69px!important;overflow: hidden">
-                        <div class="  box-view-version my-f-17 my-font-IYM my-select-none text-center pt-4 text-secondary" dir="rtl" style="height:150px">
-                            {{env('APP_VERSION')}}
-                        </div>
                     </div>
                 </div>
             </div>

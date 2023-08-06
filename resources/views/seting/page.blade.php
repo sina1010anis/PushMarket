@@ -114,11 +114,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 d-flex justify-content-center align-items-center my-pos-rel" style="height: 69px!important;overflow: hidden">
-                        <div class="  box-view-version my-f-17 my-font-IYM my-select-none text-center pt-4 text-secondary" dir="rtl" style="height:150px">
-                            {{env('APP_VERSION')}}
-                        </div>
-                    </div>
 
                 </div>
             </div>

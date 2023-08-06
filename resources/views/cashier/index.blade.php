@@ -141,7 +141,7 @@
                     @foreach ($creditors as $creditor)
                         <div class="w-100 my-3 border-bottom border-top p-2">
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="my-f-10 my-font-IYL my-color-b-700">{{jdate($creditor->created_at)->format('%A, %d %B %y')}}</span>
+                                <span class="my-f-10 my-font-IYL my-color-b-700">{{jdate($creditor->created_at)}}</span>
                                 <span class="my-f-10 my-font-IYL my-color-b-700">{{number_format($creditor->price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">{{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}}</span></span>
                                 <span class="my-f-10 my-font-IYL my-color-b-700">{{$creditor->name }}</span>
                             </div>

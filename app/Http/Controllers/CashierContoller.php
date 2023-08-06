@@ -261,7 +261,7 @@ class CashierContoller extends Controller
                     'time'=> (Seting::where('type' , 'time')->first()->status == 1)
                         ? $this->setCarbon($item['created_at'])->addHours(3)->addMinutes(30)->format('H:i:s')
                         :$this->setCarbon($item['created_at'])->format('H:i:s') ,
-                    'created_at'=>jdate($item['created_at'])->format('%A, %d %b %y')
+                        'created_at'=>substr(jdate($item['created_at']) , 0 , 11)
                 ];
         });
         return $data;
@@ -282,7 +282,7 @@ class CashierContoller extends Controller
                     'time'=> (Seting::where('type' , 'time')->first()->status == 1)
                         ? $this->setCarbon($item['created_at'])->addHours(3)->addMinutes(30)->format('H:i:s')
                         :$this->setCarbon($item['created_at'])->format('H:i:s') ,
-                    'created_at'=>jdate($item['created_at'])->format('%A, %d %b %y')
+                    'created_at'=>substr(jdate($item['created_at']) , 0 , 11)
                 ];
         });
         return $data;

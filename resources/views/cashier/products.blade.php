@@ -46,7 +46,7 @@
                                     کیلویی
                                 @endif
                             </td>
-                            <td class="my-font-ISL my-f-12 my-color-b-600">{{jdate($item->created_at)->format('%A, %d %B %y')}}</td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{jdate($item->created_at)}}</td>
                             <td class="my-font-ISL my-f-12 my-color-b-600">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="check_delete[]" value="{{$item->id}}" id="flexCheckDefault{{$item->id}}">

@@ -75,7 +75,7 @@
                                     </div>
                                 @endforeach
                             </td>
-                            <td class="my-font-ISL my-f-12 my-color-b-600">{{jdate($factor->created_at)->format('%A, %d %B %y')}}</td>
+                            <td class="my-font-ISL my-f-12 my-color-b-600">{{jdate($factor->created_at)}}</td>
                         </tr>
                     @endforeach
             </tbody>

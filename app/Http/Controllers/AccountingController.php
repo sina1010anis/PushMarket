@@ -96,18 +96,20 @@ class AccountingController extends Controller
     public function report()
     {
         $menu = 'report';
-        $accounts = Account::latest('id')->get();
+        $setting = Seting::whereType('def_acco')->first();
+        $accounts = Account::whereAcco_id($setting->status)->latest('id')->get();
         return view('acco.report' , compact('menu' , 'accounts'));
     }
 
     public function report_acco(Request $request)
     {
         $menu = 'report';
+        $setting = Seting::whereType('def_acco')->first();
         if(isset($request->as_date) and isset($request->ta_date)){
-            $accounts = Account::where('created_at' , '>=' , $request->as_date)->where('created_at' , '<=' , $request->ta_date)->latest('id')->get();
+            $accounts = Account::whereAcco_id($setting->status)->where('created_at' , '>=' , $request->as_date)->where('created_at' , '<=' , $request->ta_date)->latest('id')->get();
             $date = "از تاریخ ".jdate($request->as_date)->format('%B %d، %Y')." : تا تاریخ ".jdate($request->ta_date)->format('%B %d، %Y');
         }else{
-            $accounts = Account::whereDate('created_at' , $request->date)->latest('id')->get();
+            $accounts = Account::whereAcco_id($setting->status)->whereDate('created_at' , $request->date)->latest('id')->get();
             $date = "تاریخ های ".jdate($request->date)->format('%B %d، %Y');
         }
         return view('acco.report' , compact('accounts' , 'date' , 'menu'));
