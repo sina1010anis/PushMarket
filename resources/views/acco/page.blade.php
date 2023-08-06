@@ -66,7 +66,7 @@
                     @endforeach
                 </div>
             @endif
-                @yield('index')
+            @yield('index')
             </div>
         </div>
     </body>

@@ -2,9 +2,12 @@
 
 @section('index')
 
-<div dir="rtl" class="d-flex justify-content-center align-items-center my-3">
-    <div class="w-75">
-        <div class="w-100 p-2 border rounded-5 shadow">
+
+<div class="w-100 d-flex justify-content-center align-items-center my-font-IYM" style="height: 100%;">
+
+    <div dir="rtl" class="d-flex justify-content-center align-items-center my-3" >
+        <div class="w-75">
+            <div class="w-100 p-2 border rounded-5 shadow" style="width: 750px!important;max-width: 100%!important">
             <p class="my-font-IYM my-f-15 my-color-b-800 text-center">ویرایش محصولی از انبار</p>
             <hr>
             <br>
@@ -33,5 +36,6 @@
             </form>
         </div>
     </div>
+</div>
 </div>
 @endsection
