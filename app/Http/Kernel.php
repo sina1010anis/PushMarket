@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\LockAcco;
 use App\Http\Middleware\LockCashire;
+use App\Http\Middleware\LockStore;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,6 +68,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'lock_cashire' => LockCashire::class,
-        'lock_acco' => LockAcco::class
+        'lock_acco' => LockAcco::class,
+        'lock_store' => LockStore::class
     ];
 }

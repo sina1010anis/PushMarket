@@ -24,7 +24,7 @@ class AccountingController extends Controller
     public function check_acco_lock(EditLockRequest $request){
         $count = Seting::where(['username'=> $request->username , 'password'=> $request->password , 'type' => 'lock_acco'])->count();
         if($count == 1){
-            return redirect()->route('cashier.index');
+            return redirect()->route('acco.index');
         }
     }
     public function lock()

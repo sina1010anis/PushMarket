@@ -74,7 +74,7 @@ Route::controller(AccountingController::class)->prefix('acco')->as('acco.')->mid
     Route::get('/report', 'report')->name('report');
     Route::post('/report/acco', 'report_acco')->name('report.acco');
 });
-Route::controller(StoreController::class)->prefix('store')->as('store.')->group(function(){
+Route::controller(StoreController::class)->prefix('store')->as('store.')->middleware('lock_store')->group(function(){
     Route::get('/', 'index')->name('index');
 
     Route::get('/store/edit/product/{data}', 'edit_product')->name('edit.product');
@@ -83,6 +83,8 @@ Route::controller(StoreController::class)->prefix('store')->as('store.')->group(
     Route::post('/store/delete', 'delete_store')->name('delete.store');
 
     Route::post('/store/new', 'new_store')->name('new.store');
+
+    Route::get('/lock', 'lock_page')->name('lock.page');
 });
 
 
@@ -121,3 +123,5 @@ Route::post('check/cashire/lock' , [CashierContoller::class , 'check_cashire_loc
 
 Route::get('/acco/lock' , [AccountingController::class , 'lock'])->name('acco.lock');
 Route::post('/check/acco/lock' , [AccountingController::class , 'check_acco_lock'])->name('check.acco.lock');
+
+Route::post('check/store/lock' , [StoreController::class , 'check_store_lock'])->name('check.store.lock');

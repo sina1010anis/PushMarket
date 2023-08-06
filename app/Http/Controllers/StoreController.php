@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\NewStoreRequest;
-use App\Http\Requests\StoreRequest;
 use App\Models\Store;
+use App\Models\Seting;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreRequest;
+use App\Http\Requests\EditLockRequest;
+use App\Http\Requests\NewStoreRequest;
 
 class StoreController extends Controller
 {
@@ -41,6 +43,24 @@ class StoreController extends Controller
             'box' => $request->box,
         ]);
         return back()->with('msg' , 'یک محصول جدید به انبار اضافه شد');
+    }
 
+    public function lock_page()
+    {
+        if(session()->has('lock_store')){
+            return view('store.lock');
+        }else{
+            return $this->index();
+        }
+    }
+
+    public function check_store_lock(EditLockRequest $request)
+    {
+        $count = Seting::where(['username'=> $request->username , 'password'=> $request->password , 'type' => 'lock_store'])->count();
+        if($count == 1){
+            return redirect()->route('store.index');
+        }else{
+            return back()->with('msg' , 'نام کاربری یا رومز عبور اشتباه است');
+        }
     }
 }

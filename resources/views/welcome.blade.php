@@ -6,6 +6,7 @@
 
         <title>Push Market</title>
         <link rel="stylesheet" href="{{mix('css/app.css')}}">
+        <link href="/storage/images/logo.png" rel="shortcut icon" />
         <script src="{{mix('js/app.js')}}" defer></script>
     </head>
     <body class="antialiased">
