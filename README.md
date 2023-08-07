@@ -1,7 +1,7 @@
 # PushMarket: software
 
 <p align="center">
-<a href=""><img src="/publc/logo.jpeg" alt="Logo" width="150px"></a>
+<a href=""><img src="/public/logo.jpeg" alt="Logo" width="150px"></a>
 </p>
 
 <p align="center">
@@ -56,22 +56,22 @@ Part 4 Management: In this section, you can add more cashiers and work separatel
 Part 5 Lock: In this section, you can lock the desired menus and not allow access to anyone.
 
 ## Images of the software environment:
-<p align="center"><a href=""><img src="/publc/screenshots/1.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/2.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/3.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/4.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/5.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/6.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/7.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/8.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/9.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/10.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/11.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/12.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/13.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/14.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/15.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/publc/screenshots/16.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/1.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/2.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/3.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/4.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/5.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/6.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/7.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/8.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/9.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/10.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/11.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/12.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/13.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/14.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/15.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/screenshots/16.png" alt="" width="550px" style="max-width:100%"></a></p><br>
 
 ## Last changes:
 1-fix
