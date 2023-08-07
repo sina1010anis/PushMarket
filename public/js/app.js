@@ -17733,7 +17733,10 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
       }).then(function (res) {
         if (res.data == 'ok') {
           jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
-          jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeIn();
+          jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').css({
+            "transform": "translate(-50%,-50%) scale(1)",
+            "transition": '0.2s'
+          });
         } else {
           alert('این بارکد قبلا ثبت شده است.');
         }
@@ -17804,11 +17807,17 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
     },
     open_page_new_creditor: function open_page_new_creditor() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeIn();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').css({
+        "transform": "translate(-50%,-50%) scale(1)",
+        "transition": '0.2s'
+      });
     },
     open_page_new_receipt: function open_page_new_receipt() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').fadeIn();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').css({
+        "transform": "translate(-50%,-50%) scale(1)",
+        "transition": '0.2s'
+      });
     },
     ToRial: function ToRial(str) {
       return str.toLocaleString("en");
@@ -17832,10 +17841,16 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
     },
     new_acco: function new_acco() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').fadeIn();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').css({
+        "transform": "translate(-50%,-50%) scale(1)",
+        "transition": '0.2s'
+      });
     },
     new_news: function new_news() {
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeIn();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').css({
+        "transform": "translate(-50%,-50%) scale(1)",
+        "transition": '0.2s'
+      });
     },
     win_news: function win_news() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
@@ -17846,9 +17861,19 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
     },
     cls_page: function cls_page() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeOut();
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeOut();
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').fadeOut();
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new').fadeOut();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').css({
+        "transform": "translate(-50%,-50%) scale(0)",
+        "transition": '0.2s'
+      });
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-2').css({
+        "transform": "translate(-50%,-50%) scale(0)",
+        "transition": '0.2s'
+      });
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new').css({
+        "transform": "translate(-50%,-50%) scale(0)",
+        "transition": '0.2s'
+      });
+      ;
       jquery__WEBPACK_IMPORTED_MODULE_5___default()(".page-news").css({
         "transform": "translate(-50%,-50%) scale(0)",
         "transition": '0.2s'
@@ -17864,15 +17889,24 @@ var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
     },
     new_store: function new_store() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').fadeIn();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product').css({
+        "transform": "translate(-50%,-50%) scale(1)",
+        "transition": '0.2s'
+      });
     },
     new_cash: function new_cash() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-3').fadeIn();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-3').css({
+        "transform": "translate(-50%,-50%) scale(1)",
+        "transition": '0.2s'
+      });
     },
     new_bank: function new_bank() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-hiden').fadeIn();
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-4').fadeIn();
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('.page-new-product-4').css({
+        "transform": "translate(-50%,-50%) scale(1)",
+        "transition": '0.2s'
+      });
     },
     edit_status_cash: function edit_status_cash(status_n, id, type) {
       //return console.log(status_n+' '+id+' '+type);

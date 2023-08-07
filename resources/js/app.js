@@ -75,7 +75,7 @@ const app = createApp({
                 if(res.data == 'ok')
                 {
                     $('.page-hiden').fadeIn();
-                    $('.page-new-product').fadeIn();
+                    $('.page-new-product').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
                 }else{
                     alert('این بارکد قبلا ثبت شده است.')
                 }
@@ -137,13 +137,13 @@ const app = createApp({
         open_page_new_creditor()
         {
             $('.page-hiden').fadeIn();
-            $('.page-new-product').fadeIn();
+            $('.page-new-product').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
         },
 
         open_page_new_receipt()
         {
             $('.page-hiden').fadeIn();
-            $('.page-new-product-2').fadeIn();
+            $('.page-new-product-2').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
         },
         ToRial(str) {
             return str.toLocaleString("en");;
@@ -164,11 +164,11 @@ const app = createApp({
         new_acco()
         {
             $('.page-hiden').fadeIn();
-            $('.page-new-product-2').fadeIn();
+            $('.page-new-product-2').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
         },
         new_news()
         {
-            $('.page-new-product').fadeIn();
+            $('.page-new-product').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
         },
         win_news()
         {
@@ -178,9 +178,9 @@ const app = createApp({
         cls_page()
         {
             $('.page-hiden').fadeOut();
-            $('.page-new-product').fadeOut();
-            $('.page-new-product-2').fadeOut();
-            $('.page-new').fadeOut();
+            $('.page-new-product').css({"transform": "translate(-50%,-50%) scale(0)" , "transition" : '0.2s'});
+            $('.page-new-product-2').css({"transform": "translate(-50%,-50%) scale(0)" , "transition" : '0.2s'});
+            $('.page-new').css({"transform": "translate(-50%,-50%) scale(0)" , "transition" : '0.2s'});;
             $(".page-news").css({"transform": "translate(-50%,-50%) scale(0)" , "transition" : '0.2s'});
         },
         open_win_delete(model)
@@ -193,17 +193,17 @@ const app = createApp({
         new_store()
         {
             $('.page-hiden').fadeIn();
-            $('.page-new-product').fadeIn();
+            $('.page-new-product').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
         },
         new_cash()
         {
             $('.page-hiden').fadeIn();
-            $('.page-new-product-3').fadeIn();
+            $('.page-new-product-3').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
         },
         new_bank()
         {
             $('.page-hiden').fadeIn();
-            $('.page-new-product-4').fadeIn();
+            $('.page-new-product-4').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
         },
         edit_status_cash(status_n , id , type)
         {
