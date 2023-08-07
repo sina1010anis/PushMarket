@@ -1,7 +1,7 @@
 # PushMarket: software
 
 <p align="center">
-<a href=""><img src="/public/logo.jpeg" alt="Logo" width="150px"></a>
+<a href=""><img src="/public/logo.png" alt="Logo" width="150px"></a>
 </p>
 
 <p align="center">
