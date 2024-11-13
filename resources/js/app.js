@@ -3,6 +3,7 @@ import { createApp, h } from "vue";
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import  Version from './components/Version'
+import  Load from './components/Load'
 import axios from 'axios';
 import $ from 'jquery'
 import moment from 'jalali-moment';
@@ -37,7 +38,8 @@ const app = createApp({
 
     }),
     components:{
-        Version
+        Version,
+        Load,
     },
     methods:{
         send_product(){

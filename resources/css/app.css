@@ -640,3 +640,20 @@ input:focus{
     top: 0;
     right: 0;
 }
+.btn-text{
+
+    position: relative;
+    bottom: 2.5px;
+
+}
+.btn-cus{
+
+    transition: 0.2s!important;
+
+}
+.btn-cus:hover{
+
+    scale: 1.05;
+
+
+}

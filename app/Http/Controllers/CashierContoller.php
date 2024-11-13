@@ -22,6 +22,7 @@ use App\Http\Requests\CreditorNewRequest;
 use App\Http\Requests\EditProductRequest;
 use App\Http\Requests\EditCraditorRequest;
 use App\Http\Requests\NewNewsRequest;
+use App\Repository\Products\ProductCore;
 
 class CashierContoller extends Controller
 {
@@ -85,34 +86,30 @@ class CashierContoller extends Controller
         $product_count = ProductSimpel::where('factor_id' , null)->count();
         return ['first' => null , 'factor' => $factor, 'total_number'=> $factor->sum('total_number'), 'total_price'=> $factor->sum('total_price') , 'number'=>$product_count];
     }
+
     public function save_product(Request $request)
     {
-        $count_data = Product::whereBarcode($request->code)->count();
-        if($count_data > 0){
-            $data = Product::whereBarcode($request->code)->first();
-            $count = ProductSimpel::where('product_id' , $data->id)->where('factor_id' , null)->count();
-            if($count == 0){
-                ProductSimpel::create([
-                    'product_id' => $data->id,
-                    'total_number' => 1,
-                    'total_price' => $data->price,
-                    'name' => $data->name,
-                    'image' => $data->image,
-                    'price' => $data->price,
-                    'factor_id' => null,
-                ]);
-            }else{
-                ProductSimpel::where('product_id' ,$data->id)->where('factor_id' , null)->increment('total_number' , 1);
-                ProductSimpel::where('product_id' ,$data->id)->where('factor_id' , null)->increment('total_price' , $data->price);
+
+        $obj_product = new ProductCore($request->code);
+
+        if($obj_product->hasProduct()){
+
+            $obj_product->firstProduct();
+
+            if($obj_product->countProductSimpel() == 0){
+
+                $obj_product->createProductSimpel();
+
+            } else {
+
+                $obj_product->incrementProductSimpel();
+
             }
-            $factor = ProductSimpel::latest('id')->where('factor_id' , null)->get();
-            $product_count = ProductSimpel::where('factor_id' , null)->count();
-            return ['first' => $data , 'factor' => $factor , 'total_number'=> $factor->sum('total_number'), 'total_price'=> $factor->sum('total_price') , 'number'=>$product_count];
-        }else{
-            $factor = ProductSimpel::latest('id')->where('factor_id' , null)->get();
-            $product_count = ProductSimpel::where('factor_id' , null)->count();
-            return ['first' => null , 'factor' => $factor, 'total_number'=> $factor->sum('total_number'), 'total_price'=> $factor->sum('total_price') , 'number'=>$product_count];
+
         }
+
+        return $obj_product->buildOutput();
+
     }
 
     public function edit_number(EditNumber $request)
