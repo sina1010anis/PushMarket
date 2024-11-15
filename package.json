@@ -18,12 +18,18 @@
         "vue-template-compiler": "^0.1.0"
     },
     "dependencies": {
+        "@alireza-ab/vue-persian-datepicker": "^2.3.2",
+        "@cafebazaar/emrooz": "^0.1.7",
         "bootstrap": "^5.3.0",
         "bootstrap-icons": "^1.10.5",
+        "chart.js": "^4.4.6",
         "jalaali-js": "^1.2.6",
         "jalali-moment": "^3.3.11",
         "jquery": "^3.7.0",
         "vue": "^3.2.36",
+        "vue-chartjs": "^5.3.2",
+        "vue-persian-datetime-picker": "^2.10.4",
+        "vue3-persian-datetime-picker": "^1.2.2",
         "vuetify": "^3.7.4"
     }
 }

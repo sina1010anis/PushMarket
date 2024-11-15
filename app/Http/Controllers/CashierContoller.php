@@ -23,6 +23,7 @@ use App\Http\Requests\EditProductRequest;
 use App\Http\Requests\EditCraditorRequest;
 use App\Http\Requests\NewNewsRequest;
 use App\Repository\Products\ProductCore;
+use Illuminate\Support\Facades\DB;
 
 class CashierContoller extends Controller
 {
@@ -68,26 +69,27 @@ class CashierContoller extends Controller
         ProductSimpel::where('factor_id' ,null)->update(['factor_id' => $new_factor->id]);
         return back()->with('msg' , 'فاکتور ساخته شد');
     }
-    public function edit_total_number(Request $request)
+    public function editTotalNumber(Request $request)
     {
-        $data = ProductSimpel::find($request->id);
+
+        $obj_product = new ProductCore();
+
         if($request->mode == 'down'){
-            if($data->total_number > 1){
-                ProductSimpel::whereId($request->id)->decrement('total_number');
-            }else{
-                ProductSimpel::whereId($request->id)->delete();
-            }
+
+            $obj_product->decrementCountProductSimpel($request->id);
+
         }else{
-            ProductSimpel::whereId($request->id)->increment('total_number');
+
+            $obj_product->incrementCountProductSimpel($request->id);
+
         }
-        $number = ProductSimpel::find($request->id);
-        ProductSimpel::where('id',$data->id)->update(['total_price' => $number->total_number*$number->price]);
-        $factor = ProductSimpel::latest('id')->where('factor_id' , null)->get();
-        $product_count = ProductSimpel::where('factor_id' , null)->count();
-        return ['first' => null , 'factor' => $factor, 'total_number'=> $factor->sum('total_number'), 'total_price'=> $factor->sum('total_price') , 'number'=>$product_count];
+
+        $obj_product->updateProductSimpel($request->id);
+
+        return $obj_product->buildOutput();
     }
 
-    public function save_product(Request $request)
+    public function saveProduct(Request $request)
     {
 
         $obj_product = new ProductCore($request->code);
@@ -209,33 +211,101 @@ class CashierContoller extends Controller
     public function delete_news(NewsRequest $request)
     {
         New_P::whereIn('id' , $request->news)->delete();
+
         return back()->with('msg' , 'خبر های مورد نظر حذف شد');
     }
 
-    public function new_news(NewNewsRequest $request)
+    public function newNews(NewNewsRequest $request)
     {
         New_P::create(['title' => $request->title , 'body' => $request->body]);
+
         return back()->with('msg' , 'خبر مورد نظر اضافه شد.');
     }
     public function report()
     {
-        $factors = Factors::where('created_at' , '>=' , Carbon::today())->latest('id')->get();
+
+        $factors = Factors::where('created_at' , '>=' , Carbon::today())->with('products')->latest('id')->get();
+
         $menu = 'report';
 
         return view('cashier.report' , compact('factors' , 'menu'));
     }
 
-    public function reprot_products(Request $request)
+    public function reprotProducts(Request $request)
     {
-        $menu = 'report';
-        if(isset($request->as_date) and isset($request->ta_date)){
-            $factors = Factors::where('created_at' , '>=' , $request->as_date)->where('created_at' , '<=' , $request->ta_date)->latest('id')->get();
-            $date = "از تاریخ ".jdate($request->as_date)->format('%B %d، %Y')." : تا تاریخ ".jdate($request->ta_date)->format('%B %d، %Y');
+
+        if($request->mode == 'bet'){
+
+
+            $factors = Factors::where('created_at' , '>=' , $this->makeDate($request->date_as))->where('created_at' , '<=' , $this->makeDate($request->date_ta))->with('products')->latest('id')->get();
+
+            $out = [];
+
+            $report = [];
+
+            $date_o = Carbon::parse($this->makeDate($request->date_as))->toDateString();
+
+            $date_n = $this->makeDate($request->date_ta);
+
+            for ($i = 0; Carbon::parse($date_o)->timestamp <= Carbon::parse($date_n)->timestamp; $i++) {
+
+                $data = Factors::whereDate('created_at', $date_o)->sum('total_price');
+
+                $rep = Factors::whereDate('created_at', $date_o)->with('products')->get();
+
+                if ($rep->count() >= 1) {
+
+                    $report[] = $rep;
+
+                }
+
+
+                $out[]=[$date_o, $data];
+
+                $date_o = Carbon::parse($date_o)->addDays(1)->toDateString();
+
+            }
+
+
         }else{
-            $factors = Factors::whereDate('created_at' , $request->date)->latest('id')->get();
-            $date = "تاریخ های ".jdate($request->date)->format('%B %d، %Y');
+
+            return $request->mode;
+
+
+            $factors = Factors::whereDate('created_at' , $this->makeDate($request->date_in))->with('products')->latest('id')->get();
+
+            $out = [[$this->makeDate($request->date_in), $factors->sum('total_price')]];
+
+            $report = ['data' => 'بدون داده'];
+
         }
-        return view('cashier.report' , compact('factors' , 'date' , 'menu'));
+
+        return ['chart'=>$out, 'factors' => $factors, 'report' => $report];
+
+
+    }
+
+    private function reportData()
+    {
+
+        return 'ok';
+
+    }
+
+    private function makeDate($date)
+    {
+
+
+        $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers($this->editDate($date), true);
+
+        return \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y-m-d', $dateString)->format('Y-m-d');
+
+    }
+
+    private function editDate($date)
+    {
+
+        return substr($date, 0, 4).'-'.substr($date, 5, 2).'-'.substr($date, 8, 2);
 
     }
 
@@ -340,9 +410,23 @@ class CashierContoller extends Controller
         return back()->with('msg' , 'ویرایش های لازم انجام شد.');
     }
 
-    public function search_price(Request $request)
+    public function searchPrice(Request $request)
     {
-        $data = ($request->model == 'price') ? Product::whereBarcode($request->code)->get() : Product::where('name','LIKE','%'.$request->name.'%')->get();
-        return $data;
+
+        return ProductCore::searchProduct($request);
+
+    }
+
+    public function searchProductCodeReport(Request $request)
+    {
+
+        if ($request->ajax()) {
+
+            $id = Product::where('barcode', $request->code)->first();
+
+            return ['name' => $id->name, 'total_price' => ProductSimpel::whereProduct_id($id->id)->get()->sum('total_price'), 'total_number' => ProductSimpel::whereProduct_id($id->id)->get()->sum('total_number')];
+
+        }
+
     }
 }

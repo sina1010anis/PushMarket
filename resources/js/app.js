@@ -4,13 +4,18 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import  Version from './components/Version'
 import  Load from './components/Load'
+import  Report from './components/Report'
 import axios from 'axios';
 import $ from 'jquery'
 import moment from 'jalali-moment';
 import Log from 'laravel-mix/src/Log';
+import DatePicker from 'vue3-persian-datetime-picker'
+
 
 const app = createApp({
     data:()=>({
+        date:'',
+        value:'',
         text:'Vue',
         barcode:null,
         first_product:null,
@@ -40,6 +45,8 @@ const app = createApp({
     components:{
         Version,
         Load,
+        Report,
+        DatePicker
     },
     methods:{
         send_product(){
@@ -312,8 +319,22 @@ const app = createApp({
             });
         } , 4500)
 
-    }
+    },
+
+    created() {
+        window.addEventListener('keydown', (e) => {
+            if (e.key == 'Tab') {
+
+                axios.get('cashier/save/factor').then(()=>{
+                    window.location.reload();
+                })
+
+            }
+
+        });
+      },
+
 })
 
 
-app.mount('#app')
+app.mount('#app');

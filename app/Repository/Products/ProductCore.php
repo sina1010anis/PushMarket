@@ -4,13 +4,15 @@ namespace App\Repository\Products;
 
 use App\Models\Product;
 use App\Models\ProductSimpel;
+use Illuminate\Http\Request;
 
 class ProductCore
 {
 
     private $product;
+    private $product_simpel;
 
-    public function __construct(private string $code){}
+    public function __construct(private string|null $code = null){}
 
     public function hasProduct(): bool
     {
@@ -91,6 +93,49 @@ class ProductCore
     {
 
         return ['first' => $this->product , 'factor' => $this->getProductSimpelNew()->get() , 'total_number'=> $this->getProductSimpelNew()->get()->sum('total_number'), 'total_price'=> $this->getProductSimpelNew()->get()->sum('total_price') , 'number'=>$this->getProductSimpelNew()->count()];
+
+    }
+
+    public function findProductSimpel(int $id)
+    {
+
+        return ProductSimpel::find($id);
+
+    }
+
+    public function decrementCountProductSimpel(int $id): void
+    {
+
+        if($this->findProductSimpel($id)->total_number > 1){
+
+            $this->findProductSimpel($id)->decrement('total_number');
+
+        }else{
+
+            $this->findProductSimpel($id)->delete();
+
+        }
+
+    }
+
+    public function incrementCountProductSimpel(int $id): void
+    {
+
+        $this->findProductSimpel($id)->increment('total_number');
+
+    }
+
+    public function updateProductSimpel(int $id)
+    {
+
+        $this->findProductSimpel($id)->update(['total_price' => $this->findProductSimpel($id)->total_number * $this->findProductSimpel($id)->price]);
+
+    }
+
+    public static function searchProduct(Request $request)
+    {
+
+        return ($request->model == 'price') ? Product::whereBarcode($request->code)->get() : Product::where('name','LIKE','%'.$request->name.'%')->get();
 
     }
 

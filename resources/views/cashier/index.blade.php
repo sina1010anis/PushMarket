@@ -108,7 +108,9 @@
                     <span >تعداد کل: @{{(total_number != null) ? total_number : 0}}</span>
                 </div>
                 <div v-if="total_price != null && total_price != 0" dir="rtl" class="d-flex my-font-IYM my-f-13 justify-content-center align-items-center p-2 mt-2" style="height: 30px">
-                    <a href="{{route('cashier.save.factor')}}" class="btn btn-g btn my-font-IYL my-f-9 mt-2">ثبت فاکتور</a>
+                    <a @click.tab="test" href="{{route('cashier.save.factor')}}">
+                        <x-btn icon='<i class="bi bi-pencil-square"></i>' title="ثبت فاکتور" mode="green" class_cu="btn-lg"></x-btn>
+                    </a>
                 </div>
             </div>
         </div>

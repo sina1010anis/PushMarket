@@ -11,7 +11,7 @@ class Btn extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $icon, public $title, public $mode)
+    public function __construct(public $icon, public $title, public $mode, public $class_cu = null)
     {
         //
     }
