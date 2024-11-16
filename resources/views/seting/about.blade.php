@@ -17,7 +17,7 @@
                 <span class="my-font-IYM my-color-b-800 my-f-14">:نوع نرم افزار</span>
             </div>
             <div class="d-flex justify-content-between align-items-center my-4">
-                <span class="my-font-IYM my-color-b-400 my-f-14"> {{env('APP_VERSION')}} </span>
+                <span class="my-font-IYM my-color-b-400 my-f-14"> 1.0.3 </span>
                 <span class="my-font-IYM my-color-b-800 my-f-14">:نسخه نرم افزار</span>
             </div>
             <div class="d-flex justify-content-between align-items-center my-4">

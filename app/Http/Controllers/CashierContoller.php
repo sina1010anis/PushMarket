@@ -269,9 +269,6 @@ class CashierContoller extends Controller
 
         }else{
 
-            return $request->mode;
-
-
             $factors = Factors::whereDate('created_at' , $this->makeDate($request->date_in))->with('products')->latest('id')->get();
 
             $out = [[$this->makeDate($request->date_in), $factors->sum('total_price')]];

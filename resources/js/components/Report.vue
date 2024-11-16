@@ -43,8 +43,9 @@
             <button @click="sin_product()" title="برسی فروش یک محصول" type="button" class="btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-zoom-in"></i></span><span class="btn-text"><b></b></span></button>
             <button title="فاکتور های روز قبل" type="button" class="btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-arrow-right"></i></span><span class="btn-text"><b></b></span></button>
             <button title="فاکتور های روز بعد" type="button" class="btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-arrow-left"></i></span><span class="btn-text"><b></b></span></button>
-            <span v-if="new_data == null" class="btn btn-bl btn-cus my-font-IYM-i btn-lg my-f-15-i me-auto">فاکتور های تاریخ : {{set_date(factors[0].created_at)}}</span>
-            <span v-else class="btn btn-bl btn-cus my-font-IYM-i btn-lg my-f-15-i me-auto">از  {{date_as}} - تا  {{date_ta}}</span>
+            <span v-if="new_data == null && factors != ''" class="btn btn-bl btn-cus my-font-IYM-i btn-lg my-f-15-i me-auto">فاکتور های تاریخ : {{set_date(factors[0].created_at)}}</span>
+            <span v-else-if="new_data != null" class="btn btn-bl btn-cus my-font-IYM-i btn-lg my-f-15-i me-auto">از  {{date_as}} - تا  {{date_ta}}</span>
+            <span v-else-if="new_data == null && factors == ''" class="btn btn-bl btn-cus my-font-IYM-i btn-lg my-f-15-i me-auto">بدون داده</span>
         </div>
 
         <div class="col-12 mt-3">
@@ -71,7 +72,7 @@
                     </td>
                     <td class="my-font-ISL my-f-12 my-color-b-600">{{set_date(item.created_at)}}</td>
                 </tr>
-                <tr v-else class="table-secondary" v-for="(item, index) in new_data">
+                <tr v-else-if="new_data != null" class="table-secondary" v-for="(item, index) in new_data">
                     <th scope="row">{{index+1}}</th>
                     <td class="my-font-ISL my-f-13 my-color-b-600"><b>{{ set_split(item.total_price)}}</b></td>
                     <td class="my-font-ISL my-f-12 my-color-b-600">{{item.total_number}}</td>
@@ -82,6 +83,9 @@
                             </div>
                     </td>
                     <td class="my-font-ISL my-f-12 my-color-b-600">{{set_date(item.created_at)}}</td>
+                </tr>
+                <tr v-else class="table-secondary" >
+                    <th scope="row">داده وارد نشده است</th>
                 </tr>
             </tbody>
         </table>
@@ -130,7 +134,8 @@
     <p class="text-center my-font-IYM my-f-12 my-color-b-600">گزارش گیری تک محصول</p>
     <hr>
         <div  class="input-group mb-3 w-100 ">
-            <input type="text" v-model="code_report" @keyup.enter="send_code_report" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="جستوجو با کد محصول" name="code">
+                <label dir="rtl" for="code_sus_1" class="form-label my-font-IYB my-f-13 text-primary my-color-b-800">کد محصول</label>
+                <input dir="rtl" v-model="code_report" id="input_sin_product" @keyup.enter="send_code_report" type="text" style="font-size: 12px!important" class="bg-info bg-opacity-10 w-100 border border-primary text-primary form-control form-control-sm my-font-ISL p-1 my-color-b-500" placeholder="کد محصول را اسکن کنید">
         </div>
         <div dir="rtl" class="col-auto d-flex align-items-center">
             <button @click="cls_page_chart" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>
@@ -200,6 +205,8 @@ ChartJS.register(
 
             axios.post('/cashier/search/product/code/report', {code:this.code_report}).then((res)=>{
 
+                this.code_report = null
+
                 this.data_code_report = res.data;
 
             })
@@ -209,6 +216,10 @@ ChartJS.register(
 
             $('.page-hiden').fadeIn();
             $('.page-new-product').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
+            var inputElem = document.getElementById("input_sin_product");
+            window.addEventListener('click', function(e) {
+                inputElem.focus();
+            })
 
         },
         async see_factor(mode)
@@ -287,6 +298,10 @@ ChartJS.register(
             $(".page-news").css({"transform": "translate(-50%,-50%) scale(0)" , "transition" : '0.2s'});
             $(".page-report").css({"transform": "translate(-50%,-50%) scale(0)" , "transition" : '0.2s'});
             $(".page-new-product").css({"transform": "translate(-50%,-50%) scale(0)" , "transition" : '0.2s'});
+            var inputElem = document.getElementById("input_sin_product");
+            window.addEventListener('click', function(e) {
+                inputElem.blur();
+            })
         },
 
         cls_page(){
@@ -312,7 +327,7 @@ ChartJS.register(
             let persianDate = moment(gy+'-'+gm+'-'+gd).locale('fa').format('YYYY-MM-DD'); // 1367/11/4
             return persianDate;
         }
-      }
+      },
 
   }
   </script>

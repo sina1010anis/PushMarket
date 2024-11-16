@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('product_simpels', function (Blueprint $table) {
             $table->foreignId('product_id')->constrained();
-            $table->integer('total_number');
+            $table->float('total_number');
             $table->bigInteger('total_price');
         });
     }
