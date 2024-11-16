@@ -2,7 +2,7 @@
 
 
         @if ($seting->where('type' , 'loding')->first()->status == 1)
-            <div class="loding" id="loding_id" style="height: 100vh;z-index: 20;position:fixed;top:0;left:0;width: 100%;background-color: white">
+            <div class="loding" id="loding_id" style="height: 100vh;z-index: 20;position:fixed;top:0;left:0;width: 100%;background-color: #114b72">
 
                 <div id="container">
                     <div id="ring"></div>

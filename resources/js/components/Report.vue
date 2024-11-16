@@ -1,8 +1,7 @@
 <template>
-    <div dir="rtl" class="row" >
+    <div dir="rtl" class="row m-0 p-0"  >
         <div class="col-12 box-date"  >
             <form style="background-color: #efdbca;"  class=" text-center border p-1">
-                <!-- action="{{route('cashier.reprot.products')}}" -->
                 <p class="text-center my-f-12 my-font-IYM my-color-b-800">گزارش بین دو تاریخ</p>
                 <div class="d-flex justify-content-between flex-column align-items-center my-3">
                     <div class="my-3">
@@ -14,14 +13,13 @@
                         <date-picker v-model="date_ta" />
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button type="button" @click="see_factor('bet')" class="btn btn-b btn-cus my-font-IYM-i my-f-9-i"><span class="my-f-15-i ms-2"><i class="bi bi-eye"></i></span><span class="btn-text"><b>برسی فاکتور</b></span></button>
+                        <button type="button" @click="see_factor('bet')" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i"><span class="my-f-15-i ms-2"><i class="bi bi-eye"></i></span><span class="btn-text"><b>برسی فاکتور</b></span></button>
                     </div>
                 </div>
             </form>
         </div>
         <div class="col-12 box-date mt-5">
             <form style="background-color: #efdbca;" method="post" class="text-center border p-1">
-                <!-- action="{{route('cashier.reprot.products')}}"  -->
                 <p class="text-center my-f-12 my-font-IYM my-color-b-800">گزارش تاریخ</p>
                 <div class="d-flex justify-content-between flex-column align-items-center my-3">
                     <div class="my-3">
@@ -29,7 +27,7 @@
                         <date-picker v-model="date_in" />
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button type="button" @click="see_factor('sin')" class="btn btn-b btn-cus my-font-IYM-i my-f-9-i"><span class="my-f-15-i ms-2"><i class="bi bi-eye"></i></span><span class="btn-text"><b>برسی فاکتور</b></span></button>
+                        <button type="button" @click="see_factor('sin')" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i"><span class="my-f-15-i ms-2"><i class="bi bi-eye"></i></span><span class="btn-text"><b>برسی فاکتور</b></span></button>
                     </div>
                 </div>
             </form>
@@ -37,60 +35,60 @@
         </div>
 
         <div class="col-12 p-2 d-flex align-items-center">
-            <button title="باز و بسته کردن تاریخ ها"@click="cls_page()" type="button" class="btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-15-i"><i class="bi bi-arrow-down-up"></i></span><span class="btn-text"><b></b></span></button>
-            <button @click="open_chart()" title="نمودار فروش" type="button" class="btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-15-i"><i class="bi bi-bar-chart-fill"></i></span><span class="btn-text"><b></b></span></button>
-            <button @click="open_report()" title="محصولات فروخته شده" type="button" class="btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-card-list"></i></span><span class="btn-text"><b></b></span></button>
-            <button @click="sin_product()" title="برسی فروش یک محصول" type="button" class="btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-zoom-in"></i></span><span class="btn-text"><b></b></span></button>
-            <button title="فاکتور های روز قبل" type="button" class="btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-arrow-right"></i></span><span class="btn-text"><b></b></span></button>
-            <button title="فاکتور های روز بعد" type="button" class="btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-arrow-left"></i></span><span class="btn-text"><b></b></span></button>
+            <button title="باز و بسته کردن تاریخ ها"@click="cls_page()" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-15-i"><i class="bi bi-arrow-down-up"></i></span><span class="btn-text px-2 my-f-10"><b>باز و بستن تاریخ</b></span></button>
+            <button @click="open_chart()" title="نمودار فروش" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-15-i"><i class="bi bi-bar-chart-fill"></i></span><span class="btn-text p-x2 my-f-10"><b>نمودار فروش</b></span></button>
+            <button @click="open_report()" title="محصولات فروخته شده" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-card-list"></i></span><span class="btn-text px-2 my-f-10"><b>لیست فروش روزانه</b></span></button>
+            <button @click="sin_product()" title="برسی فروش یک محصول" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-zoom-in"></i></span><span class="btn-text px-2 my-f-10"><b>برسی فروش تک محصول</b></span></button>
+            <button title="فاکتور های روز قبل" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-arrow-right"></i></span><span class="btn-text px-2 my-f-10"><b>فاکتور های روز بعد </b></span></button>
+            <button title="فاکتور های روز بعد" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-arrow-left"></i></span><span class="btn-text px-2 my-f-10"><b>فاکتور های روز قبل</b></span></button>
             <span v-if="new_data == null && factors != ''" class="btn btn-bl btn-cus my-font-IYM-i btn-lg my-f-15-i me-auto">فاکتور های تاریخ : {{set_date(factors[0].created_at)}}</span>
             <span v-else-if="new_data != null" class="btn btn-bl btn-cus my-font-IYM-i btn-lg my-f-15-i me-auto">از  {{date_as}} - تا  {{date_ta}}</span>
             <span v-else-if="new_data == null && factors == ''" class="btn btn-bl btn-cus my-font-IYM-i btn-lg my-f-15-i me-auto">بدون داده</span>
         </div>
 
         <div class="col-12 mt-3">
-        <table dir="rtl" class="table table-striped table-hover">
-            <thead>
-                <tr class="table-dark">
-                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">ردیف</th>
-                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">جمع قیمت</th>
-                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">جمع تعداد محصولات</th>
-                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">محصولات</th>
-                    <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">تاریخ ثبت</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-if="new_data == null" class="table-secondary" v-for="(item, index) in factors">
-                    <th scope="row">{{index+1}}</th>
-                    <td class="my-font-ISL my-f-13 my-color-b-600"><b>{{ set_split(item.total_price)}}</b></td>
-                    <td class="my-font-ISL my-f-12 my-color-b-600">{{item.total_number}}</td>
-                    <td class="my-font-ISL my-f-12 my-color-b-600">
-                            <div v-for="(product) in item.products" class="w-100  my-1 d-flex justify-content-between align-items-center border-bottom" >
-                                <img :src="'/'+product.image" width="35" height="35" alt="">
-                                <p class="my-f-9 my-font-ISL my-color-b-600">{{product.total_number + ' - ' +  set_split(product.total_price)}}</p>
-                            </div>
-                    </td>
-                    <td class="my-font-ISL my-f-12 my-color-b-600">{{set_date(item.created_at)}}</td>
-                </tr>
-                <tr v-else-if="new_data != null" class="table-secondary" v-for="(item, index) in new_data">
-                    <th scope="row">{{index+1}}</th>
-                    <td class="my-font-ISL my-f-13 my-color-b-600"><b>{{ set_split(item.total_price)}}</b></td>
-                    <td class="my-font-ISL my-f-12 my-color-b-600">{{item.total_number}}</td>
-                    <td class="my-font-ISL my-f-12 my-color-b-600">
-                            <div v-for="(product) in item.products" class="w-100  my-1 d-flex justify-content-between align-items-center border-bottom" >
-                                <img :src="'/'+product.image" width="35" height="35" alt="">
-                                <p class="my-f-9 my-font-ISL my-color-b-600">{{product.total_number + ' - ' +  set_split(product.total_price)}}</p>
-                            </div>
-                    </td>
-                    <td class="my-font-ISL my-f-12 my-color-b-600">{{set_date(item.created_at)}}</td>
-                </tr>
-                <tr v-else class="table-secondary" >
-                    <th scope="row">داده وارد نشده است</th>
-                </tr>
-            </tbody>
-        </table>
+            <table dir="rtl" class="table table-striped table-hover">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">ردیف</th>
+                        <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">جمع قیمت</th>
+                        <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">جمع تعداد محصولات</th>
+                        <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">محصولات</th>
+                        <th scope="col" class="my-f-12 my-font-IYL my-color-b-700">تاریخ ثبت</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-if="new_data == null" class="table-secondary" v-for="(item, index) in factors">
+                        <th scope="row">{{index+1}}</th>
+                        <td class="my-font-ISL my-f-13 my-color-b-600"><b>{{ set_split(item.total_price)}}</b></td>
+                        <td class="my-font-ISL my-f-12 my-color-b-600">{{item.total_number}}</td>
+                        <td class="my-font-ISL my-f-12 my-color-b-600">
+                                <div v-for="(product) in item.products" class="w-100  my-1 d-flex justify-content-between align-items-center border-bottom" >
+                                    <img :src="'/'+product.image" width="35" height="35" alt="">
+                                    <p class="my-f-9 my-font-ISL my-color-b-600">{{product.total_number + ' - ' +  set_split(product.total_price)}}</p>
+                                </div>
+                        </td>
+                        <td class="my-font-ISL my-f-12 my-color-b-600">{{set_date(item.created_at)}}</td>
+                    </tr>
+                    <tr v-else-if="new_data != null" class="table-secondary" v-for="(item, index) in new_data">
+                        <th scope="row">{{index+1}}</th>
+                        <td class="my-font-ISL my-f-13 my-color-b-600"><b>{{ set_split(item.total_price)}}</b></td>
+                        <td class="my-font-ISL my-f-12 my-color-b-600">{{item.total_number}}</td>
+                        <td class="my-font-ISL my-f-12 my-color-b-600">
+                                <div v-for="(product) in item.products" class="w-100  my-1 d-flex justify-content-between align-items-center border-bottom" >
+                                    <img :src="'/'+product.image" width="35" height="35" alt="">
+                                    <p class="my-f-9 my-font-ISL my-color-b-600">{{product.total_number + ' - ' +  set_split(product.total_price)}}</p>
+                                </div>
+                        </td>
+                        <td class="my-font-ISL my-f-12 my-color-b-600">{{set_date(item.created_at)}}</td>
+                    </tr>
+                    <tr v-else class="table-secondary" >
+                        <th scope="row">داده وارد نشده است</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 <div  class="w-100 page-hiden" style="height: 100vh;z-index:2;background-color: #3a3a3a;filter: blur(200px);position: fixed;top:0;left:0"></div>
 <div class="page-news p-3">

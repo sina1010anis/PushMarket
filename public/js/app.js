@@ -20360,7 +20360,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = {
   dir: "rtl",
-  "class": "row"
+  "class": "row m-0 p-0"
 };
 var _hoisted_2 = {
   "class": "col-12 box-date"
@@ -20564,7 +20564,7 @@ var _hoisted_59 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_date_picker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("date-picker");
   var _component_Line = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Line");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" action=\"{{route('cashier.reprot.products')}}\" "), _cache[17] || (_cache[17] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_3, [_cache[17] || (_cache[17] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "text-center my-f-12 my-font-IYM my-color-b-800"
   }, "گزارش بین دو تاریخ", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_cache[14] || (_cache[14] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "for": "as_date",
@@ -20587,14 +20587,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $options.see_factor('bet');
     }),
-    "class": "btn btn-b btn-cus my-font-IYM-i my-f-9-i"
+    "class": "btn btn-sa btn-cus my-font-IYM-i my-f-9-i"
   }, _cache[16] || (_cache[16] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "my-f-15-i ms-2"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "bi bi-eye"
   })], -1 /* HOISTED */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "btn-text"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "برسی فاکتور")], -1 /* HOISTED */)]))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" action=\"{{route('cashier.reprot.products')}}\"  "), _cache[20] || (_cache[20] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "برسی فاکتور")], -1 /* HOISTED */)]))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_9, [_cache[20] || (_cache[20] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "text-center my-f-12 my-font-IYM my-color-b-800"
   }, "گزارش تاریخ", -1 /* HOISTED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_cache[18] || (_cache[18] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "for": "as_date",
@@ -20609,7 +20609,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[4] || (_cache[4] = function ($event) {
       return $options.see_factor('sin');
     }),
-    "class": "btn btn-b btn-cus my-font-IYM-i my-f-9-i"
+    "class": "btn btn-sa btn-cus my-font-IYM-i my-f-9-i"
   }, _cache[19] || (_cache[19] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "my-f-15-i ms-2"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
@@ -20622,53 +20622,53 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.cls_page();
     }),
     type: "button",
-    "class": "btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"
+    "class": "btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"
   }, _cache[21] || (_cache[21] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "my-f-15-i"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "bi bi-arrow-down-up"
   })], -1 /* HOISTED */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": "btn-text"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b")], -1 /* HOISTED */)])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn-text px-2 my-f-10"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "باز و بستن تاریخ")], -1 /* HOISTED */)])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[6] || (_cache[6] = function ($event) {
       return $options.open_chart();
     }),
     title: "نمودار فروش",
     type: "button",
-    "class": "btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"
+    "class": "btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"
   }, _cache[22] || (_cache[22] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "my-f-15-i"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "bi bi-bar-chart-fill"
   })], -1 /* HOISTED */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": "btn-text"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b")], -1 /* HOISTED */)])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn-text p-x2 my-f-10"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "نمودار فروش")], -1 /* HOISTED */)])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[7] || (_cache[7] = function ($event) {
       return $options.open_report();
     }),
     title: "محصولات فروخته شده",
     type: "button",
-    "class": "btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"
+    "class": "btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"
   }, _cache[23] || (_cache[23] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "my-f-17-i"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "bi bi-card-list"
   })], -1 /* HOISTED */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": "btn-text"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b")], -1 /* HOISTED */)])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn-text px-2 my-f-10"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "لیست فروش روزانه")], -1 /* HOISTED */)])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[8] || (_cache[8] = function ($event) {
       return $options.sin_product();
     }),
     title: "برسی فروش یک محصول",
     type: "button",
-    "class": "btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2"
+    "class": "btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"
   }, _cache[24] || (_cache[24] = [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "my-f-17-i"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "bi bi-zoom-in"
   })], -1 /* HOISTED */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    "class": "btn-text"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b")], -1 /* HOISTED */)])), _cache[25] || (_cache[25] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<button title=\"فاکتور های روز قبل\" type=\"button\" class=\"btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2\"><span class=\"my-f-17-i\"><i class=\"bi bi-arrow-right\"></i></span><span class=\"btn-text\"><b></b></span></button><button title=\"فاکتور های روز بعد\" type=\"button\" class=\"btn btn-r btn-cus my-font-IYM-i my-f-9-i mx-2\"><span class=\"my-f-17-i\"><i class=\"bi bi-arrow-left\"></i></span><span class=\"btn-text\"><b></b></span></button>", 2)), _ctx.new_data == null && $props.factors != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_14, "فاکتور های تاریخ : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.set_date($props.factors[0].created_at)), 1 /* TEXT */)) : _ctx.new_data != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_15, "از " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.date_as) + " - تا " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.date_ta), 1 /* TEXT */)) : _ctx.new_data == null && $props.factors == '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_16, "بدون داده")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_18, [_cache[27] || (_cache[27] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+    "class": "btn-text px-2 my-f-10"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "برسی فروش تک محصول")], -1 /* HOISTED */)])), _cache[25] || (_cache[25] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<button title=\"فاکتور های روز قبل\" type=\"button\" class=\"btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2\"><span class=\"my-f-17-i\"><i class=\"bi bi-arrow-right\"></i></span><span class=\"btn-text px-2 my-f-10\"><b>فاکتور های روز بعد </b></span></button><button title=\"فاکتور های روز بعد\" type=\"button\" class=\"btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2\"><span class=\"my-f-17-i\"><i class=\"bi bi-arrow-left\"></i></span><span class=\"btn-text px-2 my-f-10\"><b>فاکتور های روز قبل</b></span></button>", 2)), _ctx.new_data == null && $props.factors != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_14, "فاکتور های تاریخ : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.set_date($props.factors[0].created_at)), 1 /* TEXT */)) : _ctx.new_data != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_15, "از " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.date_as) + " - تا " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.date_ta), 1 /* TEXT */)) : _ctx.new_data == null && $props.factors == '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_16, "بدون داده")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_18, [_cache[27] || (_cache[27] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
     "class": "table-dark"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
     scope: "col",

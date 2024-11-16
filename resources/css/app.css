@@ -13,6 +13,18 @@ a{
     text-decoration: none!important;
 }
 
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    background-color: #f1cba2;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #f8a650;
+    border-radius: 100px;
+}
+
 @font-face {
     font-family: IS;
     src: url("./font/IRANSansWeb.ttf");
@@ -529,6 +541,64 @@ input:focus{
     background-color: rgb(191, 255, 191)!important;color:rgb(0, 136, 0)!important
 }
 
+.btn-sa{
+    background-color: #0c3c5c!important;color:#f8a650!important
+}
+.btn-sa-re{
+    background-color: #f8a650!important;color:#0c3c5c!important
+}
+
+.bg-sa-o-h{
+    background-color: #ec6b05!important
+}
+.bg-sa-o-l{
+    background-color: #f8a650!important
+}
+
+.bg-sa-b-h{
+    background-color: #011f33!important
+}
+.bg-sa-b-l{
+    background-color: #0c3c5c!important
+}
+
+.co-sa-o-h{
+    color: #ec6b05!important
+}
+.co-sa-o-l{
+    color: #f8a650!important
+}
+.co-sa-o-vl{
+    color: #ebd5bd!important
+}
+.bo-sa-o-vl{
+    border:1px solid #ebd5bd!important
+}
+.bg-sa-o-vl{
+    background-color: #ebd5bd!important
+}
+.co-sa-b-h{
+    color: #011f33!important
+}
+.co-sa-b-l{
+    color: #0c3c5c!important
+}
+
+.bo-sa-o-h{
+    border:1px solid #ec6b05!important
+}
+.bo-sa-o-l{
+    border:1px solid #f8a650!important
+}
+
+.bo-sa-b-h{
+    border:1px solid #011f33!important
+}
+.bo-sa-b-l{
+    border:1px solid #0c3c5c!important
+}
+
+
 .my-color-r{
     color: rgb(252 65 65)!important;
 }
@@ -657,3 +727,4 @@ input:focus{
 
 
 }
+

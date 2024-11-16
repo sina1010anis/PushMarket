@@ -1,20 +1,20 @@
 @extends('cashier.page')
 
 @section('index')
-<div class="row">
-    <div class="col-9" style="background-color: #fff6f6">
+<div class="row m-0 p-0" style="height: 100vh">
+    <div class="col-9 bg-sa-b-l" >
         <div class="row my-3">
             <div class="col-6">
-                <input type="text" id="input_send" v-model="text_search_product" @keyup.enter="search_product('barcode')" class="w-100 text-center my-font-IYL my-f-11" placeholder="جستوجو محصول با بارکد...!" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
+                <input dir="rtl" v-model="text_search_product" @keyup.enter="search_product('barcode')" type="text" style="font-size: 12px!important;border: 1px solid #ec6b05;background-color: #ebd5bd" class=" form-control form-control-sm my-font-ISL p-1 my-color-b-500" id="code_sus_1" placeholder="جستجو محصولات با بارکد...">
             </div>
             <div class="col-6">
-                <input type="text" v-model="text_search_product_name" @keyup.enter="search_product('name')" class="w-100 text-center my-font-IYL my-f-11" placeholder="جستوجو محصولات با نام...!" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
+                <input dir="rtl" v-model="text_search_product_name" @keyup.enter="search_product('name')" type="text" style="font-size: 12px!important;border: 1px solid #ec6b05;background-color: #ebd5bd" class=" form-control form-control-sm my-font-ISL p-1 my-color-b-500" id="code_sus_1" placeholder="جستجو محصولات با نام...">
             </div>
         </div>
 
         <form action="{{route('cashier.delete.products')}}" method="post">
         <div class="d-flex justify-content-center my-2">
-            <button class="btn btn-r my-font-IYL my-f-10-i btn-sm">حذف محصولات</button>
+            <button class="btn btn-sa-re my-font-IYL my-f-10-i btn-sm"><i class="bi bi-trash3 px-2 my-f-14-i"></i>حذف محصولات</button>
         </div>
         <table dir="rtl" class="table table-hover">
             <thead>
@@ -67,11 +67,11 @@
     </div>
     <div  class="w-100 page-hiden" style="height: 100vh;z-index:2;background-color: #3a3a3a;filter: blur(200px);position: fixed;top:0;left:0"></div>
 
-    <div class="col-3 "  style="background-color: #f6fff6">
+    <div class="col-3 bg-sa-o-vl"  >
         <div class="w-100 h-50">
             <div class="my-3">
-                <p class="text-center my-font-IS my-f-12 my-color-b-800">ساخت محصول جدید</p>
-                <input type="text" v-model="barcode_new_product" @keyup.enter="new_products" class="w-100 text-center my-font-IYL my-f-11" placeholder="برای ساخت محصول جدید ابتدا بارکد را وارد کنید...!" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
+                <p class="text-center  my-font-IS my-f-12 my-color-b-800">ساخت محصول جدید</p>
+                <input type="text" v-model="barcode_new_product" @keyup.enter="new_products" class="w-100 bg-sa-o-vl rounded-2 bo-sa-o-h text-center my-font-IYL my-f-11" placeholder="برای ساخت محصول جدید ابتدا بارکد را وارد کنید...!" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
             </div>
 
             <div class="page-new-product p-3">
@@ -132,11 +132,11 @@
                         <div class="w-100 text-center">
                             <img :src="'/'+data_search_product.image" width="90" height="90" alt="">
                         </div>
-                        <p class="my-font-IYL my-f-11 my-color-b-800 text-center"> @{{data_search_product.name}}</p>
-                        <p class="my-font-IYL my-f-11 my-color-b-800 price-one text-center" >قیمت تک: @{{ToRial(data_search_product.price)}}</p>
+                        <p class="my-font-IYL my-f-13 co-sa-b-h text-center"> @{{data_search_product.name}}</p>
+                        <p class="my-font-IYL my-f-13 co-sa-b-h price-one text-center" >قیمت تک: @{{ToRial(data_search_product.price)}}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <a class="btn btn-r my-font-IS-i my-f-10-i mx-1 btn-sm" :href="'/cashier/delete/product/'+data_search_product.id">حذف</a>
-                            <a class="btn btn-b my-font-IS-i my-f-10-i mx-1 btn-sm" :href="'/cashier/edit/product/'+data_search_product.name">ویرایش</a>
+                            <a class="btn btn-sa my-font-IS-i my-f-10-i mx-1 btn-sm" :href="'/cashier/delete/product/'+data_search_product.id"><i class="bi bi-trash3 ps-2 my-f-13-i"></i>حذف</a>
+                            <a class="btn btn-sa-re my-font-IS-i my-f-10-i mx-1 btn-sm" :href="'/cashier/edit/product/'+data_search_product.name"><i class="bi bi-pencil ps-2 my-f-13-i"></i>ویرایش</a>
                         </div>
                     </div>
                 </div>

@@ -3,8 +3,8 @@
 @section('index')
 
 <div class="row m-0 p-0" style="height: 100vh;">
-    <div class="{{($seting->find(1)->status == 1) ? 'col-8' : 'col-12'}}" style="background-color: rgb(250, 255, 250);">
-        <div dir="rtl" class="row" style="background-color: rgb(255, 255, 247)">
+    <div class="{{($seting->find(1)->status == 1) ? 'col-8' : 'col-12'}} bg-sa-b-l" >
+        <div dir="rtl" class="row bg-sa-b-l">
             <div class="col-4">
                 <x-input-blue title="نام مشتری" name="name" plc="احمد ..."> </x-input-blue>
             </div>
@@ -28,18 +28,18 @@
         </div>
         <div class="my-3">
             <div class="w-100">
-                <div v-if="first_product != null" dir="rtl" class="bg-danger bg-opacity-10 rounded-2 border border-danger text-danger  d-flex justify-content-between align-items-center p-2 mb-2 border" style="height: 100px;">
+                <div v-if="first_product != null" dir="rtl" class="bo-sa-o-h bg-white rounded-2  d-flex justify-content-between align-items-center p-2 mb-2" style="height: 100px;">
                     <img :src="'/'+first_product.image" width="90" height="90" alt="">
                     <span class="my-font-IYB my-f-16 my-color-b-800">@{{first_product.name}}</span>
                     <span class="my-font-ISM my-f-12 my-color-b-800">قیمت تک: <span class="my-font-IYB my-f-16">@{{ToRial(first_product.price)}}</span> <span class="my-f-10 my-color-b-500 my-font-IYL">{{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}}</span></span>
                 </div>
-                <div v-else dir="rtl" class="bg-danger bg-opacity-10 border border-danger rounded-2 text-danger  d-flex justify-content-center align-items-center p-2 mb-2 border" style="height: 100px;">
+                <div v-else dir="rtl" class="bo-sa-o-h rounded-2 co-sa-o-h  d-flex justify-content-center align-items-center p-2 mb-2" style="height: 100px;">
 
                     <span class="my-font-IYB my-f-15 text-dange">محصولی یافت نشد</span>
                 </div>
 
 
-                <div v-if="factor_product != null" dir="rtl" class="w-100 bg-danger bg-opacity-10 border border-danger rounded-2 text-danger  px-2" style="position: relative;;overflow-y: scroll;height: 300px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
+                <div v-if="factor_product != null" dir="rtl" class="w-100  bo-sa-o-h rounded-2 text-danger  px-2" style="position: relative;;overflow-y: scroll;height: 300px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
                     <table class="table table-striped">
                         <thead>
                       <tr>
@@ -75,7 +75,7 @@
 
 
 
-                <div v-else dir="rtl" class="w-100 bg-danger bg-opacity-10 border border-danger rounded-2 text-danger  px-2" style="overflow-y: scroll;height: 300px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
+                <div v-else dir="rtl" class="w-100 bg-danger bg-opacity-10 bo-sa-o-h rounded-2 text-danger  px-2" style="overflow-y: scroll;height: 300px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
                     <table class="table table-striped">
                         <thead>
                       <tr>
@@ -102,10 +102,10 @@
 
                     </table>
                 </div>
-                <div dir="rtl" class="bg-danger bg-opacity-10 border border-danger rounded-2 d-flex my-font-IYM my-f-15 justify-content-between align-items-center p-2 mt-2 shadow-sm" style="height: 30px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
-                    <span >قیمت کل:@{{(total_price != null) ? total_price : 0}} <span class="my-f-10 my-color-b-500 my-font-IYL">{{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}}</span></span>
-                    <span >تعداد اقلام: @{{(number != null) ? number : 0}}</span>
-                    <span >تعداد کل: @{{(total_number != null) ? total_number : 0}}</span>
+                <div dir="rtl" class="bg-danger bg-opacity-10 bo-sa-o-h rounded-2 d-flex my-font-IYM my-f-15 justify-content-between align-items-center p-2 mt-2 shadow-sm" style="height: 30px;background-color:  rgb(246, 246, 246);border: 1px solid rgb(187, 187, 187)">
+                    <span class=co-sa-o-h>قیمت کل:@{{(total_price != null) ? total_price : 0}} <span class="my-f-10 my-color-b-500 my-font-IYL">{{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}}</span></span>
+                    <span class=co-sa-o-h>تعداد اقلام: @{{(number != null) ? number : 0}}</span>
+                    <span class=co-sa-o-h>تعداد کل: @{{(total_number != null) ? total_number : 0}}</span>
                 </div>
                 <div v-if="total_price != null && total_price != 0" dir="rtl" class="d-flex my-font-IYM my-f-13 justify-content-center align-items-center p-2 mt-2" style="height: 30px">
                     <a @click.tab="test" href="{{route('cashier.save.factor')}}">
@@ -117,16 +117,16 @@
     </div>
     @if ($seting->find(1)->status == 1)
         <div class="col-4 m-0 p-0" >
-            <div style="background-color: rgb(250, 250, 255)" class="h-50 w-100 p-3">
+            <div style="background-color: #ebd5bd" class="h-50 w-100 p-3">
                 <div dir="rtl" class="d-flex mb-3">
-                    <span class="my-font-IYB my-f-13 text-primary my-color-b-700 ms-auto ">لیست بدهکار ها</span>
+                    <span class="my-font-IYB my-f-13 co-sa-b-h my-color-b-700 ms-auto ">لیست بدهکار ها</span>
                     <a class="mx-2" href="{{route('cashier.creditor')}}">
                         <x-btn icon='<i class="bi ms-2  bi-list-task"></i>' title="لیست" mode="red"></x-btn>
                     </a>
                 </div>
                 <div class="overflow-y-scroll" style="max-height: 350px;height: 100%">
                     @foreach ($creditors as $creditor)
-                        <div class="w-100 my-3 border-bottom border-top p-2">
+                        <div class="w-100 my-3 border-start-0 border-end-0 bo-sa-o-h p-2">
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="my-f-10 my-font-IYB my-color-b-700">{{jdate($creditor->created_at)}}</span>
                                 <span class="my-f-10 my-font-IYB my-color-b-700">{{number_format($creditor->price , 0 , '.' , ',')}} <span class="my-f-10 my-color-b-500 my-font-IYL">{{($seting->find(2)->status == 1) ? 'ریال' : 'تومان'}}</span></span>
@@ -139,9 +139,9 @@
                     @endforeach
                 </div>
             </div>
-            <div style="background-color: rgb(241, 241, 255)" class="h-25 w-100 p-3 pt-2">
+            <div style="background-color: #ebd5bd" class="h-25 w-100 p-3 pt-2">
                 <div dir="rtl" class="d-flex mb-3">
-                    <span class="my-font-IYB my-f-13 text-primary my-color-b-700 ms-auto ">استعلام قیمت</span>
+                    <span class="my-font-IYB my-f-13 co-sa-b-h ms-auto ">استعلام قیمت</span>
                     <a href="{{route('cashier.products')}}">
                         <x-btn icon='<i class="bi ms-2  bi-list-task"></i>' title="لیست" mode="red"></x-btn>
                     </a>
@@ -150,10 +150,10 @@
                 <div>
                     <div class="row">
                         <div class="col-6 p-1">
-                            <input type="text" v-model="search_number" @keyup.enter="search_price" class="w-100 bg-info bg-opacity-10 border border-primary text-primary text-center mt-3 my-font-IYL my-f-11" placeholder="استعلام با بارکد محصول" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
+                            <input style="font-size: 12px!important;border: 1px solid #ec6b05;background-color: #ebd5bd" type="text" v-model="search_number" @keyup.enter="search_price" class="w-100 p-2  text-center mt-3 my-font-IYL my-f-11" placeholder="استعلام با بارکد محصول" dir="rtl" >
                         </div>
                         <div class="col-6 p-1">
-                            <input type="text" v-model="search_name" @keyup.enter="search_price_by_name" class="w-100 bg-info bg-opacity-10 border border-primary text-primary text-center mt-3 my-font-IYL my-f-11" placeholder="استعلام با نام محصول" dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
+                            <input style="font-size: 12px!important;border: 1px solid #ec6b05;background-color: #ebd5bd" type="text" v-model="search_name" @keyup.enter="search_price_by_name" class="w-100 p-2 text-center mt-3 my-font-IYL my-f-11" placeholder="استعلام با نام محصول" dir="rtl" >
                         </div>
                     </div>
                     <div v-if="price_product != null"  style="overflow-y: scroll;max-height: 90px!important;min-height: 90px!important;height: 90px!imporatn;">
@@ -165,9 +165,9 @@
                     </div>
                 </div>
             </div>
-            <div style="background-color: rgb(255, 241, 251)" class="h-25 w-100 p-3 pt-2">
+            <div style="background-color: #ebd5bd" class="h-25 w-100 p-3 pt-2">
                 <div dir="rtl" class="d-flex justify-content-between align-items-center">
-                    <span class="my-font-IYB my-f-13 text-primary my-color-b-700 ms-auto">جدیدترین اخبار </span>
+                    <span class="my-font-IYB my-f-13 co-sa-b-h ms-auto">جدیدترین اخبار </span>
                     <a class="mx-2" @click="win_news">
                         <x-btn icon='<i class="bi bi-wallet"></i>' title="همه اخبار" mode="blue"></x-btn>
                     </a>
@@ -177,7 +177,7 @@
                 </div>
                 <div style="overflow-y: scroll;max-height: 135px!important;min-height: 135px!important;height: 135px!imporatn;">
                     @foreach ($news as $new)
-                        <div class="w-100 my-3 border-bottom border-top p-2">
+                        <div class="w-100 my-3 border-start-0 border-end-0 bo-sa-o-h p-2">
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="my-f-10 my-font-IYB my-color-b-700">{{ToRilP( $new->body)}}</span>
                                 <span class="my-f-10 my-font-IYB my-color-b-700">{{$new->title}}</span>

@@ -1,19 +1,19 @@
 @extends('cashier.page')
 
 @section('index')
-<div class="d-flex justify-content-center my-3">
-    <div class="w-50 mx-2 border" style="max-height: 600px;overflow-y: scroll">
+<div class="d-flex justify-content-center my-3 mt-0 bg-sa-b-l" style="height: 100vh">
+    <div class="w-50 mx-2 rounded-2 bg-sa-o-vl bo-sa-o-h" style="max-height: 90%;overflow-y: scroll">
         <br>
-        <p class="text-center my-f-12 my-font-IYM my-color-b-700">لیست طلبکاری</p>
+        <p class="text-center my-f-15 my-font-IYM co-sa-b-h"><b>لیست طلبکاری</b></p>
         <br>
         <div class="d-flex justify-content-center align-items-center my-3">
-            <input type="text" v-model="name_creditor" @keyup="search_name_creditor" class="w-75 text-center my-font-IYL my-f-11" placeholder="جستوجو نام بدهکار..." dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
+            <input type="text" v-model="name_creditor" @keyup="search_name_creditor" class="w-75 text-center my-font-IYL rounded-2 my-f-12 bg-sa-o-vl bo-sa-o-h co-sa-b-h" placeholder="جستوجو نام بدهکار..." dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
         </div>
         <form action="{{route('cashier.creditor.delete' , ['model'=> 'creditor'])}}" method="POST">
         @csrf
-        <div class="d-flex justify-content-center">
-            <button type="button" @click="open_page_new_creditor" class="btn btn-g mx-3 my-font-IYL my-f-12-i"> اضافه نمودن</button>
-            <button type="submit" class="btn btn-r mx-3 my-font-IYL my-f-12-i ">حذف</button>
+        <div dir="rtl" class="d-flex justify-content-center">
+            <button type="button" @click="open_page_new_creditor" class="btn btn-sa-re mx-3 my-font-IYL my-f-12-i"><i class="bi bi-plus-lg my-f-15-i ps-2"></i>اضافه نمودن</button>
+            <button type="submit" class="btn btn-sa mx-3 my-font-IYL my-f-12-i "><i class="bi bi-trash3 my-f-15-i ps-2"></i>حذف</button>
         </div>
         <br>
         <table dir="rtl" class="table table-striped table-hover">
@@ -83,18 +83,18 @@
         </table>
         </form>
     </div>
-    <div class="w-50 mx-2 border" style="max-height: 600px;overflow-y: scroll">
+    <div class="w-50 mx-2 rounded-2 bg-sa-o-vl bo-sa-o-h" style="max-height: 90%;overflow-y: scroll">
         <br>
-        <p class="text-center my-f-12 my-font-IYM my-color-b-700">لیست دریافتی</p>
+        <p class="text-center my-f-15 my-font-IYM co-sa-b-h"><b>لیست دریافتی</b></p>
         <br>
         <div class="d-flex justify-content-center align-items-center my-3">
-            <input type="text" v-model="name_receipt" @keyup="search_name_receipt" class="w-75 text-center my-font-IYL my-f-11" placeholder="جستوجو نام دریافتی..." dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
+            <input type="text" v-model="name_receipt" @keyup="search_name_receipt" class="w-75 text-center my-font-IYL rounded-2 my-f-12 bg-sa-o-vl bo-sa-o-h co-sa-b-h" placeholder="جستوجو نام دریافتی..." dir="rtl" style="height: 30px;border: 1px solid rgb(205, 205, 205)">
         </div>
         <form action="{{route('cashier.creditor.delete' , ['model'=> 'receipt'])}}" method="POST">
             @csrf
         <div class="d-flex justify-content-center">
-            <button type="button" @click="open_page_new_receipt" class="btn btn-g mx-3 my-font-IYL my-f-12-i"> اضافه نمودن</button>
-            <button type="submit" class="btn btn-r mx-3 my-font-IYL my-f-12-i">حذف</button>
+            <button type="button" @click="open_page_new_receipt" class="btn btn-sa-re mx-3 my-font-IYL my-f-12-i"><i class="bi bi-plus-lg my-f-15-i ps-2"></i>اضافه نمودن</button>
+            <button type="submit" class="btn btn-sa mx-3 my-font-IYL my-f-12-i "><i class="bi bi-trash3 my-f-15-i ps-2"></i>حذف</button>
         </div>
         <br>
         <table dir="rtl" class="table table-striped table-hover">
