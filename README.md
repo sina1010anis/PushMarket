@@ -1,66 +1,80 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# PushMarket: software
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<a href=""><img src="/public/logo.png" alt="Logo" width="150px"></a>
 </p>
 
-## About Laravel
+<p align="center">
+<b>Simple business management software.</b>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p>
+A very simple software for business, taking into account all the conditions of supermarkets, having a settings section for better use, creating different cashiers for stores that have several cashiers.
+</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## What technologies are used?
+PHP 8.2
+Larvel v10
+Mysql
+Javascript
+Vuejs 3
+Bootstrap 5
+Css 
+HTML
 
-## Learning Laravel
+## Installation guide:
+```bash
+# Step 1: Install the app itself using git:
+git clone https://github.com/sina1010anis/PushMarket.git
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Step 2: Install the program prerequisites:
+composer install
+npm install
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# Step 3: After installing the prerequisites:
+php artisan key:generate
+php artisan migrate:fresh
+# Step 4: If you don't have the desired database, please import the pushmarket.sql file.
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Introduction of cashier:
+This software is intended for grocery stores, but it can be used for other jobs that have barcode capability. This department includes four departments: product sales, product management, invoice reporting, and accounts payable. The cash register and product sales department can read product barcodes using a barcode reader and use them to create and present a more accurate invoice.
 
-## Laravel Sponsors
+## Introduction to accounting:
+In this section, it is very simple to pay attention to accounting and it is only for the management of various inventories and does not have any special features.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Introduction of warehousing:
+In this department, like the accounting department, it is very simple and does not have special facilities, the most facilities are in the cashier department.
 
-### Premium Partners
+## Introduction of setting:
+In the settings section, attention has been paid to most of the sections, which are: 1-Cashiering 2-Warehousing 3-Accounting 4-Management 5-Lock 6-About
+Part 1 Cashiering: We provide facilities such as changing the currency, changing the cashier window, deleting data and hiding menus.
+Part 2 Storage: It doesn't just hide the menu
+Part 3 Accounting: delete data, create a bank account for further management and select them for the default account
+Part 4 Management: In this section, you can add more cashiers and work separately by activating the option.
+Part 5 Lock: In this section, you can lock the desired menus and not allow access to anyone.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Images of the software environment:
+<p align="center"><a href=""><img src="/public/Screenshots/1.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/2.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/3.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/4.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/5.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/6.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/7.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/8.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/9.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/10.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/11.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/12.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/13.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/14.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/15.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+<p align="center"><a href=""><img src="/public/Screenshots/16.png" alt="" width="550px" style="max-width:100%"></a></p><br>
 
-## Contributing
+## Last changes:
+1-fix
+2-Change the display of windows
+3-Solving appearance problems
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
