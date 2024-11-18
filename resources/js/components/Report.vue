@@ -18,22 +18,6 @@
                 </div>
             </form>
         </div>
-        <div class="col-12 box-date mt-5">
-            <form style="background-color: #efdbca;" method="post" class="text-center border p-1">
-                <p class="text-center my-f-12 my-font-IYM my-color-b-800">گزارش تاریخ</p>
-                <div class="d-flex justify-content-between flex-column align-items-center my-3">
-                    <div class="my-3">
-                        <label for="as_date" class="my-font-IYL my-f-11 my-color-b-600 mx-2"> تاریخ</label>
-                        <date-picker v-model="date_in" />
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="button" @click="see_factor('sin')" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i"><span class="my-f-15-i ms-2"><i class="bi bi-eye"></i></span><span class="btn-text"><b>برسی فاکتور</b></span></button>
-                    </div>
-                </div>
-            </form>
-
-        </div>
-
         <div class="col-12 p-2 d-flex align-items-center" dir="rtl">
             <button title="باز و بسته کردن تاریخ ها"@click="cls_page()" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-15-i"><i class="bi bi-arrow-down-up"></i></span><span class="btn-text px-2 my-f-10"><b>باز و بستن تاریخ</b></span></button>
             <button @click="open_chart()" title="نمودار فروش" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-15-i"><i class="bi bi-bar-chart-fill"></i></span><span class="btn-text p-x2 my-f-10"><b>نمودار فروش</b></span></button>
@@ -139,7 +123,7 @@
             <button @click="cls_page_chart" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>
         </div>
         <p class="my-font-IYM my-f-15 my-color-b-700 text-center"><b>نام محصول : </b><span class=" my-f-13 my-color-b-700">{{ data_code_report.name }}</span></p>
-        <p class="my-font-IYM my-f-15 my-color-b-700 text-center"><b> فروش کل : </b><span class=" my-f-13 my-color-b-700">{{ data_code_report.total_price }}</span></p>
+        <p class="my-font-IYM my-f-15 my-color-b-700 text-center"><b> فروش کل : </b><span class=" my-f-13 my-color-b-700">{{ ToRial(data_code_report.total_price) }}</span></p>
         <p class="my-font-IYM my-f-15 my-color-b-700 text-center"><b>تعداد فروش : </b><span class=" my-f-13 my-color-b-700">{{ data_code_report.total_number }}</span></p>
 </div>
 </template>
@@ -182,7 +166,7 @@ ChartJS.register(
         date_in:'',
         new_data: null,
         data_report:null,
-        data_code_report: {'name': 'خالی', 'total_price' : 'خالی', 'total_number' : 'خالی'},
+        data_code_report: {'name': 'خالی', 'total_price' : 0, 'total_number' : 0},
         data : {
             labels: ['test'],
             datasets: [
@@ -199,6 +183,9 @@ ChartJS.register(
       props:{
         factors:Object
       },methods:{
+        ToRial(str) {
+            return str.toLocaleString("en");;
+        },
         send_code_report(){
 
             axios.post('/cashier/search/product/code/report', {code:this.code_report}).then((res)=>{

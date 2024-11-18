@@ -23,7 +23,10 @@ use App\Http\Requests\EditProductRequest;
 use App\Http\Requests\EditCraditorRequest;
 use App\Http\Requests\NewNewsRequest;
 use App\Repository\Products\ProductCore;
+use App\Repository\Products\ProductSimpel as ProductsProductSimpel;
 use Illuminate\Support\Facades\DB;
+use App\Repository\Products\SaveFactor;
+use App\Repository\Products\SearchProduct;
 
 class CashierContoller extends Controller
 {
@@ -59,16 +62,13 @@ class CashierContoller extends Controller
         }
 
     }
-    public function save_factor()
+    public function saveFactor()
     {
-        $products = ProductSimpel::where('factor_id' ,null)->get();
-        $new_factor = Factors::create([
-            'total_price'=> $products->sum('total_price'),
-            'total_number'=> $products->sum('total_number')
-        ]);
-        ProductSimpel::where('factor_id' ,null)->update(['factor_id' => $new_factor->id]);
-        return back()->with('msg' , 'فاکتور ساخته شد');
+
+        return (new SaveFactor())->builderSaveProduct('فاکتور با موفقیت ساخته شد');
+
     }
+
     public function editTotalNumber(Request $request)
     {
 
@@ -114,16 +114,24 @@ class CashierContoller extends Controller
 
     }
 
-    public function edit_number(EditNumber $request)
+    public function editNumber(EditNumber $request)
     {
         $data = ProductSimpel::find($request->id);
+
         if($request->number > 0){
-            ProductSimpel::where('id',$data->id)->update(['total_number' => $request->number , 'total_price' => $request->number*$data->price]);
+
+            ProductsProductSimpel::updateTotalPriceTotalNumberProductSimpleForId($request->id, $request->number, $data->price);
+
         }else{
-            ProductSimpel::whereId($request->id)->delete();
+
+            ProductsProductSimpel::deleteProductSimpleForId($request->id);
+
         }
-        $factor = ProductSimpel::latest('id')->where('factor_id' , null)->get();
-        $product_count = ProductSimpel::where('factor_id' , null)->count();
+
+        $factor = ProductsProductSimpel::getNullProduct();
+
+        $product_count = ProductsProductSimpel::getNullProduct()->count();
+
         return ['first' => null , 'factor' => $factor, 'total_number'=> $factor->sum('total_number'), 'total_price'=> $factor->sum('total_price') , 'number'=>$product_count];
 
     }
@@ -136,34 +144,22 @@ class CashierContoller extends Controller
         return view('cashier.products' , compact('data' , 'menu'));
     }
 
-    public function new_products(Request $request)
+    public function newProducts(Request $request)
     {
-        $count = Product::whereBarcode($request->code)->count();
-        if($count == 0)
-        {
-            Product::create([
-                'name' => null,
-                'price' => null,
-                'barcode' => $request->code,
-                'image' => null,
-                'stuats' => null,
-            ]);
-            return 'ok';
-        }else{
-            return 'no';
-        }
+        return (new ProductCore())->createProductNullMode($request->code);
     }
 
-    public function u_new_products(NewProduct $request)
+    public function uNewProducts(NewProduct $request)
     {
-        $file = $request->file('image');
-        Storage::put("/public/images/{$file->getClientOriginalName()}" , file_get_contents($file->getRealPath()));
-        Product::latest('id')->first()->update(['name'=>$request->name,'price'=> $this->toRtoS($request->price) , 'image'=> 'storage/images/'.$file->getClientOriginalName() , 'stuats' => $request->status]);
-        return back()->with('msg' , 'محصول جدید اضافه شد');
+
+        return (new ProductCore())->createProductFull($request);
+
     }
 
     public function search_product(Request $request)
     {
+
+        return (new SearchProduct())->searchProductFirst($request);
 
         if($request->type == 'barcode'){
             $count =Product::whereBarcode($request->code)->count();
@@ -175,6 +171,7 @@ class CashierContoller extends Controller
 
         return $data;
     }
+
 
     public function delete_product($id)
     {
@@ -410,7 +407,7 @@ class CashierContoller extends Controller
     public function searchPrice(Request $request)
     {
 
-        return ProductCore::searchProduct($request);
+        return (new SearchProduct())->searchProductGet($request);
 
     }
 

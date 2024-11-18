@@ -5,8 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Push Market</title>
-        <link rel="stylesheet" href="{{mix('css/app.css')}}">
-        <link href="/storage/images/logoH.png" rel="shortcut icon" />
+        <link href="/public/logo.png" rel="shortcut icon" />
         @vite('resources/css/app.css')
     </head>
     <body class="antialiased">

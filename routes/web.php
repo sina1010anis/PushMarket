@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\CashierContoller;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\NotBookController;
 use App\Http\Controllers\SetingController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
@@ -23,14 +24,14 @@ Route::controller(CashierContoller::class)->prefix('cashier')->middleware('lock_
     Route::get('/', 'index')->name('index');
     Route::get('/products', 'products')->name('products');
     Route::post('/search/product/code/report', 'searchProductCodeReport')->name('search.product.code.report');
-    Route::post('/new/products', 'new_products')->name('new.products');
+    Route::post('/new/products', 'newProducts')->name('new.products');
     Route::post('/new/news', 'newNews')->name('new.news');
-    Route::post('/u_new/products', 'u_new_products')->name('u_new.products');
+    Route::post('/u_new/products', 'uNewProducts')->name('u_new.products');
     Route::post('/search/product', 'search_product')->name('search.product');
     Route::post('/search/price', 'searchPrice')->name('search.price');
     Route::post('/save/product', 'saveProduct')->name('save.product');
-    Route::get('/save/factor', 'save_factor')->name('save.factor');
-    Route::post('/edit/number', 'edit_number')->name('edit.number');
+    Route::get('/save/factor', 'saveFactor')->name('save.factor');
+    Route::post('/edit/number', 'editNumber')->name('edit.number');
     Route::post('/edit/total/number', 'editTotalNumber')->name('edit.total.number');
     Route::get('/edit/product/{name}', 'edit_product')->name('edit.product');
     Route::post('/edit/product/{name}', 'edit_product_p')->name('edit.product.p');
@@ -97,3 +98,13 @@ Route::post('check/cashire/lock' , [CashierContoller::class , 'check_cashire_loc
 Route::get('/acco/lock' , [AccountingController::class , 'lock'])->name('acco.lock');
 Route::post('/check/acco/lock' , [AccountingController::class , 'check_acco_lock'])->name('check.acco.lock');
 Route::post('check/store/lock' , [StoreController::class , 'check_store_lock'])->name('check.store.lock');
+
+Route::controller(NotBookController::class)->prefix('notbook')->as('notbook.')->group(function () {
+
+    Route::get('/', 'index')->name('index');
+    Route::post('/delete', 'deleteBooks')->name('delete');
+    Route::post('/delete/menu', 'deleteMenuBooks')->name('delete.menu');
+    Route::post('/new/menu', 'newMenuBooks')->name('new.menu');
+    Route::post('/new/book', 'newBook')->name('new.book');
+
+});

@@ -38,7 +38,8 @@ const app = createApp({
         status_loding:false,
         id_acco:null,
         modele_delete:null,
-        price_product:null
+        price_product:null,
+        id_delete_book:null
 
     }),
     components:{
@@ -48,6 +49,37 @@ const app = createApp({
         DatePicker
     },
     methods:{
+        open_book_delete(id)
+        {
+            this.id_delete_book = id
+            $(".page-news").css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
+            $('.page-hiden').fadeIn();
+
+        },
+
+        open_book_new()
+        {
+            $(".page-new-product").css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
+            $('.page-hiden').fadeIn();
+
+        },
+        delete_menu_book(){
+
+            axios.post('/notbook/delete/menu', {id:this.id_delete_book}).then((res)=>{
+
+                // console.log(res.data);
+
+
+                location.reload()
+
+            })
+
+        },
+        slid_table(id){
+
+            $("#items_notbook_"+id).stop().slideToggle()
+
+        },
         send_product(){
             axios.post('/cashier/save/product' , {code:this.barcode}).then((res)=>{
                 //return console.log(res.data)
@@ -65,9 +97,9 @@ const app = createApp({
             })
         },
         search_price(){
-            axios.post('/cashier/search/price' , {code:this.search_number , model:'price'}).then((res)=>{
-                //return console.log(res.data)
+            axios.post('/cashier/search/price' , {code:this.search_number , type:'barcode'}).then((res)=>{
                 this.search_number = null
+                this.price_product = null
                 this.price_product = res.data
             }).catch((res)=>{
                 this.first_product = null
@@ -158,9 +190,11 @@ const app = createApp({
         },
         search_price_by_name()
         {
-            axios.post('/cashier/search/price' , {name:this.search_name , model:'name'}).then((res)=>{
-                //return console.log(res.data)
+            axios.post('/cashier/search/price' , {name:this.search_name , type:'name'}).then((res)=>{
+                //return console.log(res.data
+
                 this.search_name = null
+                this.price_product = null
                 this.price_product = res.data
             }).catch((res)=>{
                 this.first_product = null

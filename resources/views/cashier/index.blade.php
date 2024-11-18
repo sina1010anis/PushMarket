@@ -140,7 +140,7 @@
                 </div>
             </div>
             <div style="background-color: #ebd5bd" class="h-25 w-100 p-3 pt-2">
-                <div dir="rtl" class="d-flex mb-3">
+                <div dir="rtl" class="d-flex justify-content-between align-items-center mb-3">
                     <span class="my-font-IYB my-f-13 co-sa-b-h ms-auto ">استعلام قیمت</span>
                     <a href="{{route('cashier.products')}}">
                         <x-btn icon='<i class="bi ms-2  bi-list-task"></i>' title="لیست" mode="red"></x-btn>

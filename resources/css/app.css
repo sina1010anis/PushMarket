@@ -731,3 +731,8 @@ input:focus{
 
 }
 
+.box-notbook div{
+
+    display: none;
+
+}

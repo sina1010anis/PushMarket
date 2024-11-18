@@ -5,6 +5,8 @@ namespace App\Repository\Products;
 use App\Models\Product;
 use App\Models\ProductSimpel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProductCore
 {
@@ -136,6 +138,53 @@ class ProductCore
     {
 
         return ($request->model == 'price') ? Product::whereBarcode($request->code)->get() : Product::where('name','LIKE','%'.$request->name.'%')->get();
+
+    }
+
+    public function createProductNullMode($code)
+    {
+
+        $this->code = $code;
+
+        if(!$this->hasProduct()){
+
+            Product::create([
+                'name' => null,
+                'price' => null,
+                'barcode' => $code,
+                'image' => null,
+                'stuats' => null,
+            ]);
+
+            return 'ok';
+
+        }else{
+
+            return 'no';
+
+        }
+
+    }
+
+    public function createProductFull(Request $request)
+    {
+
+        $file = self::saveImage($request);
+
+        Product::latest('id')->first()->update(['name'=>$request->name,'price'=> toRtoS($request->price) , 'image'=> 'storage/images/'.$file->getClientOriginalName() , 'stuats' => $request->status]);
+
+        return back()->with('msg' , 'محصول جدید اضافه شد');
+
+    }
+
+    public static function saveImage(Request $request, $name_input = 'image', $address_store = '/images/')
+    {
+
+        $file = $request->file($name_input);
+
+        Storage::put($address_store . $file->getClientOriginalName() , file_get_contents($file->getRealPath()));
+
+        return $file;
 
     }
 
