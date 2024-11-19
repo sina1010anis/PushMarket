@@ -2,7 +2,8 @@
 
 @section('index')
 
-<div class="row" >
+    <report-acco :factors="{{$accounts}}"></report-acco>
+{{-- <div class="row m-0 p-0" >
     <div class="col-12">
         @if(!isset($date))
             <p dir="rtl" class="text-center border-bottom my-f-20 my-font-IYM my-color-b-800">فاکتور های تاریخ {{jdate()->now()}}</p>
@@ -88,6 +89,6 @@
             </tbody>
         </table>
     </div>
-</div>
+</div> --}}
 
 @endsection

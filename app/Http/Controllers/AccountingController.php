@@ -7,11 +7,13 @@ use App\Http\Requests\EditLockRequest;
 use App\Http\Requests\NewAccoRequest;
 use App\Http\Requests\NewAccountBankRequest;
 use App\Http\Requests\NewRequestRequest;
+use App\Http\Requests\ReportAccoRequest;
 use App\Models\Account;
 use App\Models\AccountBanck;
 use App\Models\AccountCash;
 use App\Models\AllAccount;
 use App\Models\Seting;
+use App\Repository\Setting\SettingClass;
 use Illuminate\Http\Request;
 
 class AccountingController extends Controller
@@ -96,23 +98,28 @@ class AccountingController extends Controller
     public function report()
     {
         $menu = 'report';
+
         $setting = Seting::whereType('def_acco')->first();
+
         $accounts = Account::whereAcco_id($setting->status)->latest('id')->get();
+
         return view('acco.report' , compact('menu' , 'accounts'));
+
     }
 
-    public function report_acco(Request $request)
+    public function reportAcco(ReportAccoRequest $request)
     {
-        $menu = 'report';
-        $setting = Seting::whereType('def_acco')->first();
-        if(isset($request->as_date) and isset($request->ta_date)){
-            $accounts = Account::whereAcco_id($setting->status)->where('created_at' , '>=' , $request->as_date)->where('created_at' , '<=' , $request->ta_date)->latest('id')->get();
-            $date = "از تاریخ ".jdate($request->as_date)->format('%B %d، %Y')." : تا تاریخ ".jdate($request->ta_date)->format('%B %d، %Y');
-        }else{
-            $accounts = Account::whereAcco_id($setting->status)->whereDate('created_at' , $request->date)->latest('id')->get();
-            $date = "تاریخ های ".jdate($request->date)->format('%B %d، %Y');
-        }
-        return view('acco.report' , compact('accounts' , 'date' , 'menu'));
+
+        return Account::whereAcco_id(SettingClass::get('def_acco'))->where('created_at' , '>=' , $this->makeDate($request->date_as))->where('created_at' , '<=' , $this->makeDate($request->date_ta))->latest('id')->get();
+
+    }
+
+    private function makeDate($date)
+    {
+
+        $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers(editDate($date), true);
+
+        return \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y-m-d', $dateString)->format('Y-m-d');
 
     }
 }

@@ -1,15 +1,15 @@
 @extends('acco.page')
 
 @section('index')
-    <div class="row h-100" >
-        <div class="col-8 p-2" style="background-color: rgb(255, 240, 240)">
+    <div class="row m-0 p-0" style="height: 100vh">
+        <div class="col-9 p-2 bg-sa-b-l">
             <div class="col-12 d-flex justify-content-between align-items-center">
-                <button @click="new_acco" class="btn btn-g my-font-IYM-i my-f-9 my-2 btn-sm">
-                    اضافه نمودن
-                </button>
-                <p class="my-font-IYM my-f-15 my-color-b-700 text-center p-0 m-0 my-select-none">
-                    <span class="my-f-12 my-color-b-500 ">({{$acco->name}} : {{$acco->number}})</span>
-                    مدریت حساب اصلی
+                <button dir="rtl" @click="new_acco" class="btn btn-sa-re btn-cus my-font-IYM-i my-f-9-i"><span class="my-f-15-i"><i class="bi bi-plus-lg"></i></span><span class="btn-text me-2"><b>اضافه نمودن</b></span></button>
+
+                <p class="my-font-IYM my-f-15 text-center p-0 m-0 my-select-none">
+                    <span class="my-f-12 co-sa-o-vl">({{$acco->name}} : {{$acco->number}})</span>
+                    <b class="co-sa-o-h">                    مدیریت حساب اصلی
+                    </b>
                 </p>
             </div>
             <hr>
@@ -45,18 +45,17 @@
               </table>
             </div>
         </div>
-        <div class="col-4">
-            <div class="h-50  p-2" style="background-color: rgb(240, 255, 245)">
+        <div class="col-3 bg-sa-o-vl">
+            <div class="h-50 bg-sa-o-vl p-2" >
                 <div class="col-12 d-flex justify-content-between align-items-center">
-                    <button @click="new_cash" class="btn btn-g my-font-IYM-i my-f-9 my-2 btn-sm">
-                        اضافه نمودن
-                    </button>
-                    <p class="my-font-IYM my-f-15 my-color-b-700 text-center p-0 m-0">مدریت حساب های نقدی</p>
+                    <button dir="rtl" @click="new_cash" class="btn btn-sa btn-cus my-font-IYM-i my-f-10-i"><span class="my-f-15-i"><i class="bi bi-plus-lg"></i></span><span class="btn-text me-2"><b>اضافه نمودن</b></span></button>
+
+                    <p class="my-font-IYB my-f-13 co-sa-b-h text-center p-0 m-0">مدیریت حساب های نقدی</p>
                 </div>
                 <hr>
                 <div class="overflow-y-scroll" style="max-height: 300px;height: 100%">
                     @forelse ($account_cashs as $account_cash)
-                        <div class="w-100 my-3 border-bottom border-top p-2">
+                        <div class="w-100 my-3 border-end-0 bo-sa-o-h border-start-0 p-2">
                             @if($account_cash->stauts == 0)
                                 <del>
                                     <div style="background-color: rgb(255, 233, 233)" class="d-flex justify-content-between align-items-center my-pointer" @click="edit_status_cash({{$account_cash->stauts}} , {{$account_cash->id}} , 'cash')">
@@ -75,21 +74,20 @@
                         </div>
                     @empty
                     <div class="d-flex justify-content-center align-items-center">
-                        <div dir="rtl" class="my-f-10 my-font-IYM my-color-b-900 text-center">چیزی یافت نشد...!</div>
+                        <div dir="rtl" class="my-f-10 my-font-IYM my-color-b-900 text-center">موردی یافت نشد...!</div>
                     </div>
                     @endforelse
                 </div>
             </div>
-            <div class="h-50 p-2"  style="background-color: rgb(251, 255, 240)">
+            <div class="h-50 p-2 bg-sa-o-vl" >
                 <div class="col-12 d-flex justify-content-between align-items-center">
-                    <button @click="new_bank" class="btn btn-g my-font-IYM-i my-f-9 my-2 btn-sm">
-                        اضافه نمودن
-                    </button>
-                    <p class="my-font-IYM my-f-15 my-color-b-700 text-center p-0 m-0">لیست حساب بانکی</p>
+                    <button dir="rtl" @click="new_bank" class="btn btn-sa btn-cus my-font-IYM-i my-f-10-i"><span class="my-f-15-i"><i class="bi bi-plus-lg"></i></span><span class="btn-text me-2"><b>اضافه نمودن</b></span></button>
+
+                    <p class="my-font-IYB my-f-13 co-sa-b-h text-center p-0 m-0">لیست حساب بانکی</p>
                 </div>                <hr>
                 <div class="overflow-y-scroll" style="max-height: 255px;height: 100%">
                 @forelse ($account_bancks as $account_banck)
-                <div class="w-100 my-3 border-bottom border-top p-2 my-pointer">
+                <div class="w-100 my-3 border-end-0 bo-sa-o-h border-start-0 p-2 my-pointer">
                     @if($account_banck->stauts == 0)
                         <del>
                             <div style="background-color: rgb(255, 233, 233)" class="d-flex justify-content-between align-items-center" @click="edit_status_cash({{$account_banck->stauts}} , {{$account_banck->id}} , 'bank')">

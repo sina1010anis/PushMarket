@@ -61,7 +61,7 @@ Route::controller(AccountingController::class)->prefix('acco')->as('acco.')->mid
     Route::get('/account/edit/{DataAcco}', 'edit_acco')->name('edit.acco');
     Route::post('/account/edit/{id}', 'edit_acco_post')->name('edit.acco.post');
     Route::get('/report', 'report')->name('report');
-    Route::post('/report/acco', 'report_acco')->name('report.acco');
+    Route::post('/report', 'reportAcco')->name('report.acco');
 });
 
 Route::controller(StoreController::class)->prefix('store')->as('store.')->middleware('lock_store')->group(function(){
