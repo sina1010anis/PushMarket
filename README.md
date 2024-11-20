@@ -58,117 +58,132 @@ Part 4 Management: In this section, you can add more cashiers and work separatel
 Part 5 Lock: In this section, you can lock the desired menus and not allow access to anyone.
 
 ## Images of the software environment:
-<p align="center"><a href=""><img src="/public/Screenshots/2.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/3.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/4.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/5.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/6.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/7.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/8.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/9.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/10.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/11.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/12.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/13.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/14.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/15.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-<p align="center"><a href=""><img src="/public/Screenshots/16.png" alt="" width="550px" style="max-width:100%"></a></p><br>
 <table style="width:100%">
-  <tr>
-    <th>1.0.0 (2023)</th>
-    <th> 1.0.3 (2024)</th>
-  </tr>
-  <tr>
-    <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/1.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-            <p align="center"><a href=""><img src="/public/Screenshots/n1.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
+    <tr>
+        <th>1.0.0 (2023)</th>
+        <th> 1.0.3 (2024)</th>
+    </tr>
+    <tr>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/2.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-            <p align="center"><a href=""><img src="/public/Screenshots/n2.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
+            <p align="center"><a href=""><img src="/public/Screenshots/1.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/3.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-            <p align="center"><a href=""><img src="/public/Screenshots/n3.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
+                <p align="center"><a href=""><img src="/public/Screenshots/n1.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+    </tr>
+    <tr>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/4.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-            <p align="center"><a href=""><img src="/public/Screenshots/n4.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
+            <p align="center"><a href=""><img src="/public/Screenshots/2.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/5.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-            <p align="center"><a href=""><img src="/public/Screenshots/n5.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
+                <p align="center"><a href=""><img src="/public/Screenshots/n2.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+    </tr>
+    <tr>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/6.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-            <p align="center"><a href=""><img src="/public/Screenshots/n6.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
+            <p align="center"><a href=""><img src="/public/Screenshots/3.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/7.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-            <p align="center"><a href=""><img src="/public/Screenshots/n7.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
+                <p align="center"><a href=""><img src="/public/Screenshots/n3.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+    </tr>
+    <tr>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/8.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-            <p align="center"><a href=""><img src="/public/Screenshots/n8.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
+            <p align="center"><a href=""><img src="/public/Screenshots/4.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/9.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-            <p align="center"><a href=""><img src="/public/Screenshots/n9.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
+                <p align="center"><a href=""><img src="/public/Screenshots/n4.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+    </tr>
+    <tr>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/10.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-    </td>
+            <p align="center"><a href=""><img src="/public/Screenshots/5.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/11.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-    </td>
+                <p align="center"><a href=""><img src="/public/Screenshots/n5.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+    </tr>
+    <tr>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/12.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-    </td>
+            <p align="center"><a href=""><img src="/public/Screenshots/6.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/13.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-    </td>
+                <p align="center"><a href=""><img src="/public/Screenshots/n6.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+    </tr>
+    <tr>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/14.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-    </td>
+            <p align="center"><a href=""><img src="/public/Screenshots/7.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/15.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-    </td>
+                <p align="center"><a href=""><img src="/public/Screenshots/n7.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+    </tr>
+    <tr>
         <td>
-        <p align="center"><a href=""><img src="/public/Screenshots/16.png" alt="" width="550px" style="max-width:100%"></a></p><br>
-    </td>
-    <td>
-    </td>
-  </tr>
+            <p align="center"><a href=""><img src="/public/Screenshots/8.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+        <td>
+                <p align="center"><a href=""><img src="/public/Screenshots/n8.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center"><a href=""><img src="/public/Screenshots/9.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+        <td>
+                <p align="center"><a href=""><img src="/public/Screenshots/n9.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center"><a href=""><img src="/public/Screenshots/10.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center"><a href=""><img src="/public/Screenshots/11.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center"><a href=""><img src="/public/Screenshots/12.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center"><a href=""><img src="/public/Screenshots/13.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center"><a href=""><img src="/public/Screenshots/14.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center"><a href=""><img src="/public/Screenshots/15.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p align="center"><a href=""><img src="/public/Screenshots/16.png" alt="" width="550px" style="max-width:100%"></a></p><br>
+        </td>
+        <td>
+        </td>
+    </tr>
 </table>
 
 
