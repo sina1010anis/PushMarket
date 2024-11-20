@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
 
             Seting::create([
                 'type' => $item[0],
-                'satus' => $item[1],
+                'status' => $item[1],
                 'username' => $item[2],
                 'password' => $item[3],
                 'created_at' => $item[4],

@@ -6,13 +6,11 @@
 
         <title>تنظیمات</title>
         <link rel="stylesheet" href="{{mix('css/app.css')}}">
-        <link href="/storage/images/v.jpg" rel="shortcut icon" />
-        <script src="{{mix('js/app.js')}}" defer></script>
+        @vite('resources/css/app.css')
+
     </head>
     <body class="antialiased">
-                    {{-- Loding Start --}}
-                    <x-load-page />
-
+        <x-load-page />
         <div id="app">
             <div class="container-xxl">
                 <div class="row">
@@ -87,4 +85,6 @@
             </div>
         </div>
     </body>
+    @vite('resources/js/app.js')
+
 </html>

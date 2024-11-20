@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Execl\ExportFactor;
 use App\Http\Requests\EditAccountRequest;
 use App\Http\Requests\EditLockRequest;
 use App\Http\Requests\NewAccoRequest;
-use App\Http\Requests\NewAccountBankRequest;
 use App\Http\Requests\NewRequestRequest;
 use App\Http\Requests\ReportAccoRequest;
 use App\Models\Account;
@@ -15,6 +15,7 @@ use App\Models\AllAccount;
 use App\Models\Seting;
 use App\Repository\Setting\SettingClass;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AccountingController extends Controller
 {
@@ -99,9 +100,7 @@ class AccountingController extends Controller
     {
         $menu = 'report';
 
-        $setting = Seting::whereType('def_acco')->first();
-
-        $accounts = Account::whereAcco_id($setting->status)->latest('id')->get();
+        $accounts = Account::whereAcco_id(SettingClass::get('def_acco'))->latest('id')->get();
 
         return view('acco.report' , compact('menu' , 'accounts'));
 
@@ -110,7 +109,9 @@ class AccountingController extends Controller
     public function reportAcco(ReportAccoRequest $request)
     {
 
-        return Account::whereAcco_id(SettingClass::get('def_acco'))->where('created_at' , '>=' , $this->makeDate($request->date_as))->where('created_at' , '<=' , $this->makeDate($request->date_ta))->latest('id')->get();
+        $query = Account::whereAcco_id(SettingClass::get('def_acco'))->where('created_at' , '>=' , $this->makeDate($request->date_as))->where('created_at' , '<=' , $this->makeDate($request->date_ta))->latest('id')->get();
+
+        return ['data' => $query, 'sum_total_new' => $query->sum('total'), 'sum_indebted_new' => $query->sum('indebted'), 'sum_creditor_new' => $query->sum('creditor')];
 
     }
 
@@ -120,6 +121,21 @@ class AccountingController extends Controller
         $dateString = \Morilog\Jalali\CalendarUtils::convertNumbers(editDate($date), true);
 
         return \Morilog\Jalali\CalendarUtils::createCarbonFromFormat('Y-m-d', $dateString)->format('Y-m-d');
+
+    }
+
+    public function exportExcel(Request $request)
+    {
+
+        return Excel::store(new ExportFactor($request->data), 'export/factors.xlsx');
+
+    }
+
+    public function exportDownload()
+    {
+
+        $file = public_path('storage/export/factors.xlsx');
+        return response()->download($file, 'factors.xlsx');
 
     }
 }

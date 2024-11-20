@@ -145,9 +145,7 @@
                     }
                 }
             </script>
-            {{-- <input type="text" class="form-control text-center"  name="price" id="edit_price_product"  placeholder="مقدار فعلی دریافتی {{ToRilP($data->price)}}" onkeyup="separateNum(this.value,this);"> --}}
             <input type="test" class="form-control my-font-IYL my-f-11-i" dir="rtl" placeholder="مانده بر اساس {{($seting->where('type','unit')->first()->status == 1) ? 'ریال' : 'تومان'}}" name="total" onkeyup="separateNum(this.value,this);">
-
         </div>
 
 

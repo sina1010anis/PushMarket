@@ -23,8 +23,8 @@
             <button @click="open_chart()" title="نمودار فروش" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-15-i"><i class="bi bi-bar-chart-fill"></i></span><span class="btn-text p-x2 my-f-10"><b>نمودار فروش</b></span></button>
             <button @click="open_report()" title="محصولات فروخته شده" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-card-list"></i></span><span class="btn-text px-2 my-f-10"><b>لیست فروش روزانه</b></span></button>
             <button @click="sin_product()" title="برسی فروش یک محصول" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-zoom-in"></i></span><span class="btn-text px-2 my-f-10"><b>برسی فروش تک محصول</b></span></button>
-            <button title="فاکتور های روز قبل" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-arrow-right"></i></span><span class="btn-text px-2 my-f-10"><b>فاکتور های روز بعد </b></span></button>
-            <button title="فاکتور های روز بعد" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-17-i"><i class="bi bi-arrow-left"></i></span><span class="btn-text px-2 my-f-10"><b>فاکتور های روز قبل</b></span></button>
+            <button @click="export_excel()" title=" خروجی اکسل" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-15-i"><i class="bi bi-file-earmark-spreadsheet"></i></span><span class="btn-text p-x2 my-f-10"><b>  خروجی اکسل  </b></span></button>
+            <button @click="file_excel()" title="  دانلود خروجی اکسل" type="button" class="btn btn-sa btn-cus my-font-IYM-i my-f-9-i mx-2"><span class="my-f-15-i"><i class="bi bi-download"></i></span><span class="btn-text p-x2 my-f-10"><b>   دانلود خروجی اکسل  </b></span></button>
             <button v-if="new_data == null && factors != ''" class="btn btn-bl btn-cus my-font-IYM-i btn-lg my-f-15-i me-auto">فاکتور های تاریخ : {{set_date(factors[0].created_at)}}</button>
             <button v-else-if="new_data != null" class="btn btn-bl btn-cus my-font-IYM-i btn-lg my-f-15-i me-auto">از  {{date_as}} - تا  {{date_ta}}</button>
             <button v-else-if="new_data == null && factors == ''" class="btn btn-bl btn-cus my-font-IYM-i btn-lg my-f-15-i me-auto">بدون داده</button>
@@ -126,6 +126,39 @@
         <p class="my-font-IYM my-f-15 my-color-b-700 text-center"><b> فروش کل : </b><span class=" my-f-13 my-color-b-700">{{ ToRial(data_code_report.total_price) }}</span></p>
         <p class="my-font-IYM my-f-15 my-color-b-700 text-center"><b>تعداد فروش : </b><span class=" my-f-13 my-color-b-700">{{ data_code_report.total_number }}</span></p>
 </div>
+
+<div class="page-new-product page-new-product-2 p-3 shadow d-flex justify-content-center align-items-center">
+    <marquee class="my-font-IYM my-f-12" direction="right">
+        ... در حال انجام عملیات لطفا صبر کنید
+    </marquee>
+</div>
+<div class="page-new-product page-new-product-3 p-3 shadow ">
+    <p class="my-font-IYM my-f-12" dir="rtl">
+        عملیات با موفقیت انجام شد برای دنلود فایل استخراج شده در همین صفحه دکمه <span @click="file_excel()" class="co-sa-o-h my-pointer my-font-IYM"><b>دانلود خروجی اکسل</b></span> را بزنید
+    </p>
+    <div dir="rtl" class="col-auto d-flex align-items-center">
+        <button @click="cls_page_chart" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>
+    </div>
+</div>
+<div class="page-new-product page-new-product-4 p-3 shadow ">
+    <p class="my-font-IYM my-f-12" dir="rtl">
+        مشکلی پیش امده لطفا بعدا تلاش کنید
+    </p>
+            <div dir="rtl" class="col-auto d-flex align-items-center">
+            <button @click="cls_page_chart" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>
+        </div>
+</div>
+<div class="page-new-product page-new-product-5 page-new-product-1 p-3 shadow">
+    <p class="text-center my-font-IYM my-f-12 my-color-b-600">فایل های اکسل فاکتور</p>
+    <hr>
+
+        <div>
+            <slot name="view_file_excle"/>
+        </div>
+        <div dir="rtl" class="col-auto d-flex align-items-center">
+            <button @click="cls_page_chart" type="button" class="btn btn-r mx-2 btn-sm my-font-IYL-i my-f-11-i mb-3">بستن</button>
+        </div>
+</div>
 </template>
 
   <script>
@@ -183,6 +216,39 @@ ChartJS.register(
       props:{
         factors:Object
       },methods:{
+        file_excel(){
+
+            $('.page-hiden').fadeIn();
+
+            $('.page-new-product-5').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
+
+        },
+        export_excel(){
+
+
+            const data = (this.new_data == null) ? this.factors : this.new_data;
+
+            $('.page-hiden').fadeIn();
+
+            $('.page-new-product-2').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
+
+            axios.post('/cashier/export/excel', {data:data}).then((res)=>{
+
+                $(".page-new-product").css({"transform": "translate(-50%,-50%) scale(0)" , "transition" : '0.2s'});
+
+                $('.page-new-product-3').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
+
+            }).catch((res) => {
+
+                $(".page-new-product").css({"transform": "translate(-50%,-50%) scale(0)" , "transition" : '0.2s'});
+
+                $('.page-new-product-4').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
+
+                console.log(res.data);
+
+            })
+
+        },
         ToRial(str) {
             return str.toLocaleString("en");;
         },

@@ -50,6 +50,8 @@ Route::controller(CashierContoller::class)->prefix('cashier')->middleware('lock_
     Route::post('/receipt/edit/{id}' , 'receipt_edit_post')->name('receipt.edit.post');
     Route::post('/creditor/delete/{model}' , 'creditor_delete')->name('creditor.delete');
     Route::post('/creditor/new' , 'creditor_new')->name('creditor.new');
+    Route::post('/export/excel', 'exportExcel')->name('export.excel');
+    Route::post('/export/download', 'exportDownload')->name('export.download');
 });
 
 Route::controller(AccountingController::class)->prefix('acco')->as('acco.')->middleware('lock_acco')->group(function(){
@@ -62,6 +64,8 @@ Route::controller(AccountingController::class)->prefix('acco')->as('acco.')->mid
     Route::post('/account/edit/{id}', 'edit_acco_post')->name('edit.acco.post');
     Route::get('/report', 'report')->name('report');
     Route::post('/report', 'reportAcco')->name('report.acco');
+    Route::post('/export/excel', 'exportExcel')->name('export.excel');
+    Route::post('/export/download', 'exportDownload')->name('export.download');
 });
 
 Route::controller(StoreController::class)->prefix('store')->as('store.')->middleware('lock_store')->group(function(){

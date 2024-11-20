@@ -15,7 +15,7 @@ A very simple software for business, taking into account all the conditions of s
 
 ## What technologies are used?
 PHP 8.2
-Larvel v10
+Larvel v11
 Mysql
 Javascript
 Vuejs 3
@@ -33,8 +33,10 @@ composer install
 npm install
 
 # Step 3: After installing the prerequisites:
+cp .env.example .env
 php artisan key:generate
-php artisan migrate:fresh
+php artisan storage:link
+php artisan migrate --seed
 # Step 4: If you don't have the desired database, please import the pushmarket.sql file.
 ```
 

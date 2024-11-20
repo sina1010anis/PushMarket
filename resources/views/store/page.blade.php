@@ -3,19 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="/public/logo.png" rel="shortcut icon" />
 
-        <title>حسابداری </title>
+        <title> انبارداری</title>
         @vite('resources/css/app.css')
+
     </head>
     <body class="antialiased">
         <x-load-page />
+
+
         <div id="app">
             <div class="container-fluid m-0 p-0">
                 <div dir="rtl" class="w-100 d-flex align-items-center my-f-11 my-color-b-900 my-font-IS p-2" style="height: 50px;background-color: #011f33">
                     <a href="/" class="me-4 pb-2" style="text-decoration: none!important;color:#ec6b05;">صفحه اصلی</a>
-                     @if($seting->find(8)->status == 1)<a href="{{route('acco.index')}}" class="me-4 pb-2  @if($menu == 'index') border-bottom @endif" style="text-decoration: none!important;color:#ec6b05;">مدریت حساب ها </a>@endif
-                     @if($seting->find(9)->status == 1)<a href="{{route('acco.report')}}" class="me-4 pb-2  @if($menu == 'report') border-bottom @endif" style="text-decoration: none!important;color:#ec6b05;">گزارش کار   </a>@endif
                     <span dir="rtl"  class="me-auto text-start" style="text-decoration: none!important;color:#ec6b05;">{{jdate()->now()}}</span>
                 </div>
                 @if (session('msg'))
@@ -35,6 +35,9 @@
             @yield('index')
             </div>
         </div>
+
+
+
     </body>
     @vite('resources/js/app.js')
 

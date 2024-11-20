@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Execl\ExportFactor;
 use App\Models\New_P;
 use App\Models\Seting;
 use App\Models\Factors;
@@ -27,6 +28,7 @@ use App\Repository\Products\ProductSimpel as ProductsProductSimpel;
 use Illuminate\Support\Facades\DB;
 use App\Repository\Products\SaveFactor;
 use App\Repository\Products\SearchProduct;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CashierContoller extends Controller
 {
@@ -421,6 +423,22 @@ class CashierContoller extends Controller
             return ['name' => $id->name, 'total_price' => ProductSimpel::whereProduct_id($id->id)->get()->sum('total_price'), 'total_number' => ProductSimpel::whereProduct_id($id->id)->get()->sum('total_number')];
 
         }
+
+    }
+
+    public function exportExcel(Request $request)
+    {
+
+        return Excel::store(new ExportFactor($request->data), 'export/cashier.xlsx');
+
+    }
+
+    public function exportDownload()
+    {
+
+        $file = public_path('storage/export/cashier.xlsx');
+
+        return response()->download($file, 'cashier.xlsx');
 
     }
 }
