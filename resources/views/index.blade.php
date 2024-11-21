@@ -6,7 +6,7 @@
             <i class="bi bi-gear" style="font-size: 65px"></i>
             <span class="my-f-15">تنظیمات</span>
         </a>
-        <a href="{{route('notbook.index')}}"  class="btn btn-sa btn-lg m-3 px-5 shadow d-flex btn-menu-as flex-column">
+        <a href="{{route('calendar.index')}}"  class="btn btn-sa btn-lg m-3 px-5 shadow d-flex btn-menu-as flex-column">
             <i class="bi bi-calendar2-date" style="font-size: 65px"></i>
             <span class="my-f-15"> تقویم کاری</span>
         </a>

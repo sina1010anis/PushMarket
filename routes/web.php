@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountingController;
+use App\Http\Controllers\CalController;
 use App\Http\Controllers\CashierContoller;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NotBookController;
@@ -73,8 +74,18 @@ Route::controller(StoreController::class)->prefix('store')->as('store.')->middle
     Route::get('/store/edit/product/{data}', 'edit_product')->name('edit.product');
     Route::post('/store/edit/product/{id}', 'edit_product_post')->name('edit.product.post');
     Route::post('/store/delete', 'delete_store')->name('delete.store');
+    Route::post('/exit/delete', 'delete_exit')->name('delete.exit');
     Route::post('/store/new', 'new_store')->name('new.store');
+    Route::post('/exit/new', 'new_exit')->name('new.exit');
     Route::get('/lock', 'lock_page')->name('lock.page');
+    Route::post('/report', 'report')->name('report');
+    Route::post('/exit/report', 'exitReport')->name('exit.report');
+
+    Route::post('/export/excel', 'exportExcel')->name('export.excel');
+    Route::post('/export/download', 'exportDownload')->name('export.download');
+
+    Route::post('/exit/export/excel', 'exitexportExcel')->name('exit.export.excel');
+    Route::post('/exit/export/download', 'exitExportDownload')->name('exit.export.download');
 });
 
 
@@ -110,5 +121,11 @@ Route::controller(NotBookController::class)->prefix('notbook')->as('notbook.')->
     Route::post('/delete/menu', 'deleteMenuBooks')->name('delete.menu');
     Route::post('/new/menu', 'newMenuBooks')->name('new.menu');
     Route::post('/new/book', 'newBook')->name('new.book');
+
+});
+
+Route::controller(CalController::class)->prefix('calendar')->as('calendar.')->group(function () {
+
+    Route::get('/', 'index')->name('index');
 
 });

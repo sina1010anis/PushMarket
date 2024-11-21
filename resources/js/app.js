@@ -6,6 +6,7 @@ import  Version from './components/Version.vue'
 import  Load from './components/Load.vue'
 import  Report from './components/Report.vue'
 import  ReportAcco from './components/ReportAcco.vue'
+import  ReportStore from './components/ReportStore.vue'
 import axios from 'axios';
 import $ from 'jquery'
 import moment from 'jalali-moment';
@@ -48,7 +49,8 @@ const app = createApp({
         Load,
         Report,
         DatePicker,
-        ReportAcco
+        ReportAcco,
+        ReportStore
     },
     methods:{
         open_book_delete(id)

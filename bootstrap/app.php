@@ -19,7 +19,13 @@ return Application::configure(basePath: dirname(__DIR__))
             'lock_acco' => LockAcco::class,
             'lock_store' => LockStore::class,
             'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-    ]);
+        ]);
+        $middleware->validateCsrfTokens(except: [
+            '/store/store/new',
+            '/store/store/delete',
+            '/store/exit/delete',
+            '/store/exit/new',
+        ]);
 
     })
     ->withExceptions(function (Exceptions $exceptions) {

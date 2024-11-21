@@ -112,7 +112,7 @@
         </div>
     </div>
 </div>
-<div class="page-new-product p-3 shadow">
+<div class="page-new-product page-new-product-6 p-3 shadow">
     <p class="text-center my-font-IYM my-f-12 my-color-b-600">گزارش گیری تک محصول</p>
     <hr>
         <div  class="input-group mb-3 w-100 ">
@@ -266,7 +266,7 @@ ChartJS.register(
         sin_product(){
 
             $('.page-hiden').fadeIn();
-            $('.page-new-product').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
+            $('.page-new-product-6').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
             var inputElem = document.getElementById("input_sin_product");
             window.addEventListener('click', function(e) {
                 inputElem.focus();
@@ -276,7 +276,15 @@ ChartJS.register(
         async see_factor(mode)
         {
 
+            $('.page-hiden').fadeIn();
+
+            $('.page-new-product-2').css({"transform": "translate(-50%,-50%) scale(1)" , "transition" : '0.2s'});
+
             axios.post('/cashier/report/products', {mode:mode, date_as:this.date_as, date_ta:this.date_ta, date_in:this.date_in}).then((res)=>{
+
+                $('.page-hiden').fadeOut();
+
+                $('.page-new-product-2').css({"transform": "translate(-50%,-50%) scale(0)" , "transition" : '0.2s'});
 
                 console.log(res.data.report);
 
